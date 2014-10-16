@@ -1,13 +1,13 @@
 # Project Name
-
-> Pithy project description
+Vantage
+> Vantage aggregates social and traditional(?) media using place and time to provide a panoramic view of interesting events.
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
-
+  - __Product Owner__: Jason
+  - __Scrum Master__: Rick
+  - __Development Team Members__: Jamon, Kia, Rick, Jason
+  
 ## Table of Contents
 
 1. [Usage](#Usage)
@@ -20,15 +20,20 @@
 
 ## Usage
 
-> Some usage instructions
+> TBD
 
 ## Requirements
 
 - Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Express 4.x
+- Lo-Dash 2.4.x
+- Grunt
+- Bootstrap
+- Cheerio
+- Body Parser
+- queryString
+- Angular
+- API access to Twitter, Instagram, Google
 
 ## Development
 
