@@ -12,4 +12,4 @@ var router = express.Router();
 app.use('/api', router);
 
 console.log('Listening on port:', port);
-app.listne(port);
+app.listen(port);
