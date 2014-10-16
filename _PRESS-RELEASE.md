@@ -17,22 +17,8 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+Vantage
 
- - FullView
- - TotalView
- - POV
- - inView
- - inSight
- - ViewFinder
- - Scene
- - Viewpoint
- - Standpoint
- - Vantage
- - Panorama
- - Mosaic
- - Tapestry
- - Lens
 
 ## Sub-Heading ##
 Vantage aggregates social and traditional(?) media using place and time to provide a panoramic view of interesting events.
