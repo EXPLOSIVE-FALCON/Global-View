@@ -1,37 +1,9 @@
-var google = require('../apis/google');
+var helpers = require('../helpers/helpers');
 module.exports = function(app) {
 
-  app.get('/twitter', function(req, res) {
-    var query = req.query;
-    var response = {
-      response: 'Request Received!',
-      results: query
-    };
-    res.json(response);
-  });
+  app.get('/twitter', helpers.twitter);
 
-  app.get('/news', function(req, res) {
-    var query = req.query;
-    var search = query.search + ' location:' + query.location;
-    var resultAmt = query.amount || 5;
-    google(search, resultAmt, function(err, newsResults) {
-      if (!!err) { throw 'Erorr: ' + err; }
+  app.get('/news', helpers.google);
 
-      var sendBack = {
-        response: 'Request Received!',
-        results: newsResults
-      }
-
-      res.json(sendBack)
-    });
-  });
-
-  app.get('/instagram', function(req, res) {
-    var query = req.query;
-    var response = {
-      response: 'Request Received!',
-      results: query
-    };
-    res.json(response);
-  }); 
+  app.get('/instagram', helpers.instagram); 
 };
