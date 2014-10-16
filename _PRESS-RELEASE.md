@@ -35,23 +35,23 @@ Once the project moves into development, the press release can be used as a touc
  - Lens
 
 ## Sub-Heading ##
-{{PRODUCT NAME}} aggregates social and traditional(?) media to provide a panoramic view of interesting events.
+Vantage aggregates social and traditional(?) media using place and time to provide a panoramic view of interesting events.
 
 
 ## Summary ##
-{{PRODUCT NAME}} uses social and traditional(?) media to help people experience an event from everybody's point of view.  Instead of relying solely their own pictures, tweets, and memories of an event, users can visit {{PRODUCT NAME}} to experience the event through the collective, public lens of anybody and everybody who attended the same event.
+Vantage uses social and traditional(?) media to help people experience an event from everybody's point of view.  Instead of relying solely their own pictures, tweets, and memories of an event, users can visit Vantage to experience the event through the collective, public lens of anybody and everybody who attended the same event.
 
 
 ## Problem ##
 An event is something that is generally experience broadly, but shared narrowly.  For example, people might collectively take hundreds of pictures at a wedding, but these pictures tend to not be shared amongst the attending crowd.  
 
 ## Solution ##
-{{PRODUCT NAME}} aims to provide a platform that allows people to enjoy the collective experience of an event by tying place and time to social media.
+Vantage aims to provide a platform that allows people to enjoy the collective experience of an event by tying place and time to social media.
 
 // Provides users a quick dashboard interface of social media feed
 
 ## Quote from You ##
-"{{PRODUCT NAME}} is the best way for people to experience an event through the eyes of everybody in attendance."
+"Vantage is the best way for people to experience an event through the eyes of everybody in attendance."
 
 
 ## How to Get Started ##
@@ -59,7 +59,7 @@ Go to ____.__ and enter the time and place of an event.
 
 ## Customer Quote ##
 
-"Wax Works was a great time, but I'm usually too busy to get the full experience while DJ'ing.  Using {{PRODUCT NAME}} lets me see the event through the eyes and screens of everybody who came out to Room 389." - Jamon Douglas
+"Wax Works was a great time, but I'm usually too busy to get the full experience while DJ'ing.  Using Vantage lets me see the event through the eyes and screens of everybody who came out to Room 389." - Jamon Douglas
 
 ## Closing and Call to Action ##
 Search for where you celebrated your last birthday at ___.__
