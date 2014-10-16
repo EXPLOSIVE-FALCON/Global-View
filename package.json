@@ -1,0 +1,9 @@
+{
+  "name": "Citizen News Finder",
+  "version": "0.0.0",
+  "main": "server.js",
+  "devDependencies": {
+  },
+  "dependencies": {
+  }
+}
