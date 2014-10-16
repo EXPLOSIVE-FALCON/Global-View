@@ -1,15 +1,17 @@
 var express = require('express');
-var partials = require('express-partials');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 5000;
+var app = express();
+var api = require('./routers/apiRoutes');
 
-app.use(partials());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
 
-var router = express.Router();
+var apiRouter = express.Router();
 
-app.use('/api', router);
+// redirect all requests coming through /api to routers/apiRoutes.js
+app.use('/api', apiRouter);
+api(apiRouter);
 
 console.log('Listening on port:', port);
 app.listen(port);
