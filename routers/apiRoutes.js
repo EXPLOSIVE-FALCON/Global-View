@@ -1,6 +1,6 @@
 module.exports = function(app) {
 
-  app.get('/twitter*/', function(req, res) {
+  app.get('/twitter', function(req, res) {
     var query = req.query;
     var response = {
       response: 'Request Received!',
@@ -9,7 +9,7 @@ module.exports = function(app) {
     res.json(response);
   });
 
-  app.get('/news*/', function(req, res) {
+  app.get('/news', function(req, res) {
     var query = req.query;
     var response = {
       response: 'Request Received!',
@@ -18,7 +18,7 @@ module.exports = function(app) {
     res.json(response);
   });
 
-  app.get('/instagram*/', function(req, res) {
+  app.get('/instagram', function(req, res) {
     var query = req.query;
     var response = {
       response: 'Request Received!',
