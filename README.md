@@ -6,9 +6,9 @@ Vantage
 
 ## Team
 
-  - __Product Owner__: Jason
-  - __Scrum Master__: Rick
-  - __Development Team Members__: Jamon, Kia, Rick, Jason
+  - __Product Owner__: Jason Erpenbeck
+  - __Scrum Master__: Richard Avendano
+  - __Development Team Members__: Jamon Douglas, Kia Winslow, Richard Avendano, Jason Erpenbeck
   
 ## Table of Contents
 
