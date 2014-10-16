@@ -1,29 +1,9 @@
+var helpers = require('../helpers/helpers');
 module.exports = function(app) {
 
-  app.get('/twitter', function(req, res) {
-    var query = req.query;
-    var response = {
-      response: 'Request Received!',
-      results: query
-    };
-    res.json(response);
-  });
+  app.get('/twitter', helpers.twitter);
 
-  app.get('/news', function(req, res) {
-    var query = req.query;
-    var response = {
-      response: 'Request Received!',
-      results: query
-    };
-    res.json(response);
-  });
+  app.get('/news', helpers.google);
 
-  app.get('/instagram', function(req, res) {
-    var query = req.query;
-    var response = {
-      response: 'Request Received!',
-      results: query
-    };
-    res.json(response);
-  }); 
+  app.get('/instagram', helpers.instagram); 
 };
