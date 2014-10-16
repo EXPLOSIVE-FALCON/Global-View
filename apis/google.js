@@ -25,11 +25,11 @@ var buildNews = function(i, elem, $) {
   var item = {};
   item.title = $(linkElem).first().text() || null, 
   item.link = href['/url?q'] || null;
-  item.source = sourceTime[0] source || null;
+  item.source = sourceTime[0] || null;
   item.description = newsDescription.text() || null;
   item.time = sourceTime[1] || null;
 
-  $(removElem).find('div').remove();
+  $(removeElem).find('div').remove();
   return item;
 };
 
@@ -38,7 +38,7 @@ var buildNews = function(i, elem, $) {
 module.exports = function(query, queryAmount, callback) {
   queryAmount = queryAmount > 100 ? 100 : queryAmount;
 
-  var site = util.format(URL, querystring.escape(query), pageResults);
+  var site = util.format(URL, querystring.escape(query), queryAmount);
 
   request(site, function(err, res, body) {
     if (err) {
