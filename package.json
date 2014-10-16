@@ -12,6 +12,8 @@
     "cheerio": "^0.17.0",
     "express": "^4.9.7",
     "express-partials": "^0.3.0",
-    "lodash": "^2.4.1"
+    "lodash": "^2.4.1",
+    "querystring": "^0.2.0",
+    "util": "^0.10.3"
   }
 }

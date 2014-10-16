@@ -1,3 +1,4 @@
+var google = require('../apis/google');
 module.exports = function(app) {
 
   app.get('/twitter', function(req, res) {
