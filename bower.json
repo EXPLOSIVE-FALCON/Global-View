@@ -2,5 +2,7 @@
   "name": "CitizenNewsFinder",
   "version": "0.0.",
   "dependencies": {
+    "angular": "~1.3.0",
+    "lodash": "~2.4.1"
   }
 }
