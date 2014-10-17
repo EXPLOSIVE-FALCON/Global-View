@@ -2,8 +2,7 @@ angular.module('vantage', [
   'services',
   'tweets',
   'ngRoute'
-  ])
-
+])
 .config(function($routeProvider, $httpProvider) {
   $routeProvider
     .when('/tweets', {
@@ -12,5 +11,5 @@ angular.module('vantage', [
     })
     .otherwise({
       redirectTo: '/'
-    })
-})
+    });
+});
