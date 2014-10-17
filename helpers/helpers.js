@@ -10,9 +10,9 @@ exports.google = function(req, res) {
     if (!!err) { throw 'Erorr: ' + err; }
 
     var sendBack = {
-      response: 'Request Received!',
-      results: newsResults
-    }
+      result: 'Request Received!',
+      data: newsResults
+    };
 
     res.json(sendBack)
   });
@@ -21,8 +21,8 @@ exports.google = function(req, res) {
 exports.twitter = function(req, res) {
   var query = req.query;
   var response = {
-    response: 'Request Received!',
-    results: query
+    result: 'Request Received!',
+    data: query
   };
   res.json(response);
 };
@@ -30,8 +30,8 @@ exports.twitter = function(req, res) {
 exports.instagram = function(req, res) {
   var query = req.query;
   var response = {
-    response: 'Request Received!',
-    results: query
+    result: 'Request Received!',
+    data: query
   };
   res.json(response);
 };
