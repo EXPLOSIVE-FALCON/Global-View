@@ -5,7 +5,7 @@ var app = express();
 var api = require('./routers/apiRoutes');
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/client'));
 
 var apiRouter = express.Router();
 
