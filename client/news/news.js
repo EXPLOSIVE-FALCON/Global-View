@@ -9,5 +9,9 @@ angular.module('news', [])
         $scope.data = data;
       })
   };
-  $scope.getNews({});
+  $scope.getNews({
+    query: 'ebola',
+    location: 'san francisco',
+    amount: 5
+  });
 });

@@ -46,15 +46,11 @@ angular.module('services', [])
 
 .factory('GoogleNews', function($http){
   // search term, location, and amount of results to return
-  var getNews = function(query, location, amount) {
+  var getNews = function(params) {
     return $http({
       method: 'GET',
-      url: 'api/news',
-      params: {
-        search: query,
-        location: location,
-        amount: amount
-      }
+      url: '/api/google',
+      params: params
     })
     .then(function(response){
       console.log('response.data');
