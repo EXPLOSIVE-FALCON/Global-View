@@ -2,15 +2,13 @@
 
 ## Client API 
 
-### Request Types:
-
 ### Google
 
 ```sh
 GET /api/google
 ```
 
-### Query Parameters
+#### Query Parameters
 
 | Name     | Type   | Description                           |
 |----------|--------|---------------------------------------|
@@ -18,12 +16,12 @@ GET /api/google
 | Location | String | Filter by location on news.google.com |
 | Amount   | Number | Amount of search results to return    |
 
-### Response
+#### Response
 
 Status-Code: 200 OK
 
 ```sh
-GET /api/google?query=ebola&location=tx&amount=5
+GET /api/google?query=ebola&location=tx&amount=2
 ```
 
 ```json
@@ -35,8 +33,12 @@ GET /api/google?query=ebola&location=tx&amount=5
       "link" : "http://www.mprnews.org/story/2014/10/16/osterholm-ebola",
       "source" : "Minnesota Public Radio News‎",
       "description" : "Liberian Army soldiers work on the first of 17 new Ebola treatment center on Wednesday in Tubmanburg, Liberia. John Moore / Getty Images ...",
-      "time" : "16 minutes ago"},{"title":"As Ebola surprises, Minnesota public health experts step up ...",
-      "link" : "http://www.twincities.com/localnews/ci_26734512/twin-cities-public-health-professionals-prep-ebola","source":"TwinCities.com-Pioneer Press‎",
+      "time" : "16 minutes ago"
+    },
+    { 
+      "title" : "As Ebola surprises, Minnesota public health experts step up ...",
+      "link" : "http://www.twincities.com/localnews/ci_26734512/twin-cities-public-health-professionals-prep-ebola",
+      "source" : "TwinCities.com-Pioneer Press‎",
       "description" : "This undated file image made available by the Centers for Disease Control (CDC) shows the Ebola virus. (AP Photo/Centers for Disease ...",
       "time" : "8 hours ago"
     }
@@ -50,7 +52,7 @@ GET /api/google?query=ebola&location=tx&amount=5
 GET /api/twitter
 ```
 
-### Query Parameters
+#### Query Parameters
 
 | Name  | Type | Description |
 |-------|------|-------------|
@@ -58,7 +60,7 @@ GET /api/twitter
 | Param | null | Parameter   |
 | Param | null | Parameter   |
 
-### Response
+#### Response
 
 Status-Code: 200 OK
 
@@ -83,7 +85,7 @@ GET /api/google?query=ebola&location=tx&amount=5
 GET /api/instagram
 ```
 
-### Query Parameters
+#### Query Parameters
 
 | Name  | Type | Description |
 |-------|------|-------------|
@@ -91,7 +93,7 @@ GET /api/instagram
 | Param | null | Parameter   |
 | Param | null | Parameter   |
 
-### Response
+#### Response
 
 Status-Code: 200 OK
 
