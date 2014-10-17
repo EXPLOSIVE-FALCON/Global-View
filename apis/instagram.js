@@ -4,13 +4,6 @@ var util = require('util');
 var _ = require('lodash');
 var instaKeys = require('../instaKeys');
 
-/* Sample GET Request URLS for Locations and Photos, respectively
-https://api.instagram.com/v1/locations/search?lat=34&lng=-118&distance=1000
-https://api.instagram.com/v1/locations/19440498/media/recent?min_timestamp=1413061158101&max_timestamp=1413493114700
- */
-
-console.log(instaKeys);
-
 var instaSettings = {
   headers: instaKeys.keys,
   locationGET: 'https://api.instagram.com/v1/locations/search',
@@ -29,13 +22,19 @@ var instaLocations = function(lat,lng,perimeter) {
     } else {
       var results = JSON.parse(body);
 
+      _.forEach(results.data, function(item) {
+
+      });
+
+      // Calculate distance from lat/lng inputs in instaLocations
       for(var i=0;i<results.data.length;i++) {
-        // Calculate distance from lat/lng inputs in instaLocations
         results.data[i].distance = distanceBetween(lat, results.data[i].latitude, lng, results.data[i].longitude);
       }
 
+      // sort data by distance
       results.data = _.sortBy(results.data, 'distance');
 
+      // get photos from each location
       for(var j=0;j<results.data.length;j++) {
         instaPhotos(results.data[j].id);
       }
@@ -45,10 +44,9 @@ var instaLocations = function(lat,lng,perimeter) {
 
 };
 
-instaLocations(34,-118,1000);
-
 var instaPhotos = function(locationId) {
   var locationURL = [instaSettings.photoGET,locationId,instaSettings.photoGET2,'?','access_token=',instaSettings.headers.instaToken].join('').trim();
+
   request(locationURL,function(err,res,body) {
     if(!!err) {
       throw 'Error: ' + err;
@@ -74,3 +72,6 @@ var distanceBetween = function(lat1, lat2, lng1, lng2) {
 var deg2radCalc = function(number) {
   return (number / 180) * Math.PI;
 }
+
+// sample invocation of instagram API
+instaLocations(34,-118,1000);
