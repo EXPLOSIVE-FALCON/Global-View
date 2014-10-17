@@ -51,7 +51,7 @@ bower install
 
 ### Reference 
 
-View the project reference [here](https://github.com/RichardAvendano/Global-View/blob/documentation/reference.md)
+See [Reference.md](https://github.com/RichardAvendano/Global-View/blob/documentation/reference.md) for reference.
 
 <!-- ### Roadmap
 
