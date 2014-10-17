@@ -1,3 +1,10 @@
+| Name     | Type   | Description                           |
+|----------|--------|---------------------------------------|
+ Query       String    Search Term for news.google.com       
+ Location    String    Filter by location on news.google.com 
+ Amount      Number                                        
+
+
 # Reference
 
 ## Server API
