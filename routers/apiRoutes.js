@@ -5,5 +5,5 @@ module.exports = function(app) {
 
   app.get('/news', helpers.google);
 
-  app.get('/instagram', helpers.instagram); 
+  app.get('/instagram', helpers.instagram);
 };

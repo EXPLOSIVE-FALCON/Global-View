@@ -28,4 +28,4 @@ dist/
 .DS_Store
 */.DS_Store
 node_modules/
-public/bower_components/
+client/lib
