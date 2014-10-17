@@ -1,8 +1,6 @@
-# Reference
+# Client API 
 
-## Client API 
-
-### Google
+## Google
 
 ```sh
 GET /api/google
@@ -46,7 +44,7 @@ GET /api/google?query=ebola&location=tx&amount=2
 }
 ```
 
-### Twitter
+## Twitter
 
 ```sh
 GET /api/twitter
@@ -79,7 +77,7 @@ GET /api/google?query=ebola&location=tx&amount=5
 }
 ```
 
-### Instagram
+## Instagram
 
 ```sh
 GET /api/instagram
@@ -112,7 +110,7 @@ GET /api/google?query=ebola&location=tx&amount=5
 }
 ```
 
-## Server API
+# Server API
 
 ### queryGoogle(query, queryAmount, callback)
 
