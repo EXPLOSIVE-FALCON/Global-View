@@ -5,7 +5,7 @@ angular.module('services', [])
   var getTweets = function(request) {
     return $http({
       method: 'GET',
-      url: '/twitter'
+      url: 'api/twitter'
     })
     .then(function(response){
       console.log('response.data');
@@ -27,7 +27,7 @@ angular.module('services', [])
   var getInstaPhotos = function(request) {
     return $http({
       method: 'GET',
-      url: '/instagram'
+      url: 'api/instagram'
     })
     .then(function(response){
       console.log('response.data');
@@ -46,15 +46,11 @@ angular.module('services', [])
 
 .factory('GoogleNews', function($http){
   // search term, location, and amount of results to return
-  var getNews = function(query, location, amount) {
+  var getNews = function(params) {
     return $http({
       method: 'GET',
-      url: '/news',
-      params: {
-        search: query,
-        location: location,
-        amount: amount
-      }
+      url: '/api/google',
+      params: params
     })
     .then(function(response){
       console.log('response.data');
