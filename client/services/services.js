@@ -1,6 +1,5 @@
 angular.module('services', [])
 
-
 .factory('Twitter', function($http){
 
   var getTweets = function(request) {
@@ -14,12 +13,12 @@ angular.module('services', [])
     })
     .catch(function(error){
       console.error(error);
-    })
-  }
+    });
+  };
 
   return {
     getTweets: getTweets
-  }
+  };
 })
 
 
@@ -37,11 +36,11 @@ angular.module('services', [])
     .catch(function(error){
       console.error(error);
     })
-  }
+  };
 
   return {
     getInstaPhotos: getInstaPhotos
-  }
+  };
 })
 
 
@@ -63,10 +62,10 @@ angular.module('services', [])
     })
     .catch(function(error){
       console.error(error);
-    })
-  }
+    });
+  };
 
   return {
     getNews: getNews
-  }
-})
+  };
+});
