@@ -24,7 +24,7 @@ angular.module('services', [])
 
 .factory('Instagram', function($http){
 
-  var getInstaPhotos = function(request) {
+  var getPhotos = function(request) {
     return $http({
       method: 'GET',
       url: 'api/instagram'
@@ -39,7 +39,7 @@ angular.module('services', [])
   };
 
   return {
-    getInstaPhotos: getInstaPhotos
+    getPhotos: getPhotos
   };
 })
 
