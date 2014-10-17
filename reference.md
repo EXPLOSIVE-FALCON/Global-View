@@ -1,3 +1,4 @@
+<!-- Use http://www.tablesgenerator.com/markdown_tables to build tables  -->
 # Client API 
 
 ## Google
@@ -19,7 +20,7 @@ GET /api/google
 Status-Code: 200 OK
 
 ```sh
-GET /api/google?query=ebola&location=tx&amount=2
+GET /api/google?query=ebola&location=MN&amount=2
 ```
 
 ```json
