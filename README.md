@@ -51,7 +51,7 @@ bower install
 
 ### Reference 
 
-See [Reference.md](https://github.com/RichardAvendano/Global-View/blob/documentation/reference.md) for reference.
+See [Reference.md](https://github.com/EXPLOSIVE-FALCON/Global-View/blob/master/reference.md) for reference.
 
 <!-- ### Roadmap
 
