@@ -1,12 +1,12 @@
-var google = require('../apis/google');
-var instagram = require('../apis/instagram');
-var twitter = require('../apis/twitter');
+var queryGoogle = require('../apis/google');
+var queryInstagram = require('../apis/instagram');
+var queryTwitter = require('../apis/twitter');
 
 exports.google = function(req, res) {
   var query = req.query;
   var search = query.search + ' location:' + query.location;
   var resultAmt = query.amount || 5;
-  google(search, resultAmt, function(err, newsResults) {
+  queryGoogle(search, resultAmt, function(err, newsResults) {
     if (!!err) { throw 'Erorr: ' + err; }
 
     var sendBack = {

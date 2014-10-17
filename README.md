@@ -49,9 +49,13 @@ npm install
 bower install
 ```
 
-### Roadmap
+### Reference 
 
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
+See [Reference.md](https://github.com/RichardAvendano/Global-View/blob/documentation/reference.md) for reference.
+
+<!-- ### Roadmap
+
+View the project roadmap [here](LINK_TO_PROJECT_ISSUES) -->
 
 
 ## Contributing
