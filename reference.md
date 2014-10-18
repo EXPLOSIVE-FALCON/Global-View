@@ -112,9 +112,11 @@ GET /api/instagram?query=hr&latitude=37.7749295&longitude=-122.41941550000001&da
       place: <If Applicable, otherwise Null>
       image: {
         name: <name>,
-        url: <Direct Link to Photo>,
-        width: <width>,
-        height: <height>,
+        hashtag: <hashtag>,
+        url: {
+          thumbnail: <Direct Link to Photo>,
+          fullsize: <Direct Link to Photo>,
+        },
         location: {
           longitude: <Longitude Number>,
           latitude: <Latitude Number>
@@ -127,9 +129,11 @@ GET /api/instagram?query=hr&latitude=37.7749295&longitude=-122.41941550000001&da
       place: <If Applicable, otherwise Null>
       image: {
         name: <name>,
-        url: <Direct Link to Photo>,
-        width: <width>,
-        height: <height>,
+        hashtag: <hashtag>,
+        url: {
+          thumbnail: <Direct Link to Photo>,
+          fullsize: <Direct Link to Photo>,
+        },
         location: {
           longitude: <Longitude Number>,
           latitude: <Latitude Number>
