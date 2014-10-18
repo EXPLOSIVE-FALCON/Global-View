@@ -4,7 +4,7 @@
 ## Google
 
 ```sh
-GET /api/google
+GET /api/googlenews
 ```
 
 #### Query Parameters
@@ -20,7 +20,7 @@ GET /api/google
 Status-Code: 200 OK
 
 ```sh
-GET /api/google?query=ebola&location=MN&amount=2
+GET /api/googlenews?query=ebola&location=MN&amount=2
 ```
 
 ```json
