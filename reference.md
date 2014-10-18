@@ -86,18 +86,20 @@ GET /api/instagram
 
 #### Query Parameters
 
-| Name  | Type | Description |
-|-------|------|-------------|
-| Param | null | Parameter   |
-| Param | null | Parameter   |
-| Param | null | Parameter   |
+| Name      | Type   | Description               |
+|-----------|--------|---------------------------|
+| query     | String | Search Term for Instagram |
+| latitude  | Number | Latitude for Location     |
+| longitude | Number | Longitude for Location    |
+| amount    | Number | Number of Results         |
+| date      | TBD    | TBD                       |
 
 #### Response
 
 Status-Code: 200 OK
 
 ```sh
-GET /api/google?query=ebola&location=tx&amount=5
+GET /api/instagram?query=hr&latitude=37.7749295&longitude=-122.41941550000001&date=TBD&amount=2
 ```
 
 ```json
@@ -105,8 +107,35 @@ GET /api/google?query=ebola&location=tx&amount=5
   "result" : "Request Received!",
   "data" : [
     {
-    
-    }
+      profile_href: <Link to comment / profile page for image>.
+      date: <Date, format undecided>
+      place: <If Applicable, otherwise Null>
+      image: {
+        name: <name>,
+        url: <Direct Link to Photo>,
+        width: <width>,
+        height: <height>,
+        location: {
+          longitude: <Longitude Number>,
+          latitude: <Latitude Number>
+        }
+      }
+    },
+    {
+      profile_href: <Link to comment / profile page for image>,
+      date: <Date, format undecided>
+      place: <If Applicable, otherwise Null>
+      image: {
+        name: <name>,
+        url: <Direct Link to Photo>,
+        width: <width>,
+        height: <height>,
+        location: {
+          longitude: <Longitude Number>,
+          latitude: <Latitude Number>
+        }
+      }
+    },
   ]
 }
 ```
