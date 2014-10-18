@@ -102,7 +102,7 @@ Status-Code: 200 OK
 GET /api/instagram?query=hr&latitude=37.7749295&longitude=-122.41941550000001&date=TBD&amount=2
 ```
 
-```json
+```
 {
   "result" : "Request Received!",
   "data" : [
