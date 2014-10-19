@@ -8,15 +8,15 @@
   request = {
     longitude: number,
     latitude: number,
-    distance: number   
+    distance: number
   }
 
 var requestURL = 'https://api.instagram.com/v1/locations/search?lat=' + request.latitude + '&lng=' + request.latitude + '&distance=' + request.distance;
 
 ```
-  
-  
-#Server response looks like: 
+
+
+#Server response looks like:
 
 ```
         {
@@ -114,7 +114,7 @@ var requestURL = 'https://api.instagram.com/v1/locations/search?lat=' + request.
 request = {
   min_timestamp: number,
   max_timestamp: number,
-  locationID: 
+  locationID:
 }
 
 var requestURL = 'https://api.instagram.com/v1/locations/' + request.locationID + '/media/recent?min_timestamp=' + request.min_timestamp +'&max_timestamp=' + request.max_timestamp;
@@ -126,7 +126,7 @@ var requestURL = 'https://api.instagram.com/v1/locations/' + request.locationID 
 
 ```
   response.data = {
-  
+
   "pagination":  {
     "next_url": "https://api.instagram.com/v1/locations/19440498/media/recent?access_token=9690147.1fb234f.94f4f9b5898e4991b987867c75e43102&min_timestamp=1413061158101&max_id=392932100951236164&max_timestamp=1413493114700",
     "next_max_id": "392932100951236164"
