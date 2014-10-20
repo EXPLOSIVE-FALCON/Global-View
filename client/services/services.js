@@ -46,7 +46,13 @@ angular.module('services', [])
 
 .factory('GoogleNews', function($http){
   // search term, location, and amount of results to return
-  var getNews = function(params) {
+  var getNews = function(request) {
+    //creating the object with request for this service
+    params = {
+      query: request,
+      location: 'MN', // !!! need to change after getting the location from user
+      amount: 5
+    };
     return $http({
       method: 'GET',
       url: '/api/googlenews',
