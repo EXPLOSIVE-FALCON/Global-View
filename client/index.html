@@ -3,29 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <title>Vantage</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
+    <script src="//localhost:35729/livereload.js"></script>
+  </head>
+  <body>
+    <h1>Vantage</h1>
+    <ng-include src="'/news/news.html'">
+
     <script src="services/services.js"></script>
     <script src="tweets/tweets.js"></script>
     <script src="news/news.js"></script>
     <script src="photos/photos.js"></script>
     <script src="app.js"></script>
-    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
-
-  </head>
-  <body>
-    <h1>Vantage</h1>
-    <div id="container" ng-controller="NewsController">
-      <form ng-submit="getNews(request)">
-        <input type="text" ng-model="request">
-        <button>OK</button>
-        <ul ng-repeat="news in data">
-          <li>
-            {{news.time}} - <a href="{{news.link}}" target="_blank">{{news.title}}</a>
-          </li>
-        </ul>
-      </form>
-    </div>
-
   </body>
 </html>
