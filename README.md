@@ -45,6 +45,7 @@ From within the root directory:
 
 ```sh
 sudo npm install -g bower
+sudo npm install -g jsdoc@"<=3.3.0"
 npm install
 bower install
 ```
