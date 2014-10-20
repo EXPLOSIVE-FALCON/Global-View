@@ -1,13 +1,13 @@
 angular.module('services', [])
 
-.factory('Twitter', function($http){
+.factory('Twitter', function($http) {
 
   var getTweets = function(request) {
     return $http({
       method: 'GET',
       url: 'api/twitter'
     })
-    .then(function(response){
+    .then(function(response) {
       console.log('response.data');
       return response.data;
     })
@@ -22,7 +22,7 @@ angular.module('services', [])
 })
 
 
-.factory('Instagram', function($http){
+.factory('Instagram', function($http) {
 
   var getPhotos = function(request) {
     return $http({
@@ -44,7 +44,7 @@ angular.module('services', [])
 })
 
 
-.factory('GoogleNews', function($http){
+.factory('GoogleNews', function($http) {
   // search term, location, and amount of results to return
   var getNews = function(request) {
     //creating the object with request for this service
@@ -69,5 +69,33 @@ angular.module('services', [])
 
   return {
     getNews: getNews
+  };
+})
+
+// converts a street address into geo coordinates, needed for instagram & twitter apis
+.factory('GetLocation', function($http) {
+  var getLocation = function(request) {
+    var params = {
+      street: request.street,
+      city: request.city,
+      state: request.state
+    };
+
+    return $http({
+      method: 'GET',
+      url: 'https://maps.googleapis.com/maps/api/geocode/json',
+      params: params
+    })
+    .then(function(response) {
+      var lattitude = response.results[0].geometry.location.lat;
+      var longitude = response.results[0].geometry.location.lng;
+      var coords = [lattitude, longitude];
+      console.log(coords);
+      return coords;
+    });
+  };
+
+  return {
+    getLocation: getLocation
   };
 });
