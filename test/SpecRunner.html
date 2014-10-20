@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Mocha Spec Runner</title>
+  <link rel="stylesheet" href="lib/mocha/mocha.css">
+  <script src="lib/jquery.js"></script>
+  <script src="lib/mocha/mocha.js"></script>
+  <script src="lib/chai/chai.js"></script>
+  <script>
+    mocha.setup('bdd');
+    window.expect = chai.expect;
+    $(function() {
+      window.mochaPhantomJS ? mochaPhantomJS.run() : mocha.run();
+    });
+  </script>
+  <script src="../server/apis/google.js"></script>
+  <script src="../server/apis/instagram.js"></script>
+  <script src="../server/apis/twitter.js"></script>
+</head>
+<body>
+<div id="mocha"></div>
+</body>
+</html>

@@ -3,10 +3,14 @@
   "version": "0.0.0",
   "main": "server.js",
   "devDependencies": {
+    "chai": "^1.9.2",
     "grunt": "^0.4.5",
     "grunt-contrib-uglify": "^0.6.0",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-nodemon": "^0.3.0"
+    "grunt-nodemon": "^0.3.0",
+    "install": "^0.1.7",
+    "mocha": "^1.21.5",
+    "npm": "^2.1.4"
   },
   "dependencies": {
     "body-parser": "^1.9.0",
