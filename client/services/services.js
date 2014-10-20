@@ -49,7 +49,7 @@ angular.module('services', [])
   var getNews = function(params) {
     return $http({
       method: 'GET',
-      url: '/api/google',
+      url: '/api/googlenews',
       params: params
     })
     .then(function(response){
