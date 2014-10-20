@@ -4,14 +4,15 @@ angular.module('news', [])
   $scope.data = {};
   $scope.getNews = function(request) {
     GoogleNews.getNews(request)
-      .then(function(data) {
-        $scope.data = data;
+      .then(function(result) {
+        $scope.data = result.data;
+        console.log('inside get', $scope.data);
       })
   };
-  $scope.getNews({
-    query: 'ebola',
-    location: 'san francisco',
-    amount: 5
-  });
-  console.log($scope.data);
+  // $scope.getNews({
+  //   query: 'ebola',
+  //   location: 'san francisco',
+  //   amount: 5
+  // });
+  // console.log('after ebole',$scope.data);
 });
