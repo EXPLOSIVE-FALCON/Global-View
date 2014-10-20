@@ -1,4 +1,4 @@
-#User Stories
+#Vantage User Stories
 
 ### MVP
 1. As a user, I want to see pictures from an event of interest (which I may have attended) so that I can see other views and perspectives than just my own pictures.
