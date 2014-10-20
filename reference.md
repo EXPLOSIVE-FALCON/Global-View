@@ -53,15 +53,16 @@ GET /search/tweets.json
 
 #### Query Parameters
 
-| Name        | Type    | Description                                                                                                                                                            |
-|-------------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| q           | String  | (Required) Search Query 500 char max | UTF-8 URL encoded including operators                                                                                           |
-| count       | Integer | (Optional) Number of tweets to return for a query | Max is 100 |  default is 15                                                                                        |
-| geocode     | String  | (Optional) Returns tweets within a provided latitude longitude and radius |  Example: " 37.8044, 122.2708, 1mi" | latitude and longitude are required radius optional. |
-| result_type | String  | (Optional) Specifies what type of tweets you want returned | Possible value : mixed, popular, recent                                                                   |
-| until       | Date    | (Optional) Returns tweets created before the given date. Format of Date YYYY-MM-DD                                                                                     |
-| since_id    | Integer | (Optional) Returns tweets with an ID greater than the specified ID. Example: 12345                                                                                     |
-| max_id      | Integer | (Optional) Returns tweet with an ID smaller than the specified ID. Example:1906
+| Name      | Type   | Description                                                                           |
+|-----------|--------|---------------------------------------------------------------------------------------|
+| query     | String | (Required) Search Query 500 char max                                                  |
+| latitude  | Number | (Optional) Latitude of location.                                                      |
+| longitude | Number | (Optional) Longitude of location.                                                     |
+| radius    | String | (Optional) radius used to complete geocode search for tweets. Example "1mi" or "1km". |
+| date      | Date   | (Optional) Format of Date YYYY-MM-DD                                                  |
+|           |        |                                                                                       |
+|           |        |                                                                                       |                                                                          |
+
 
 #### Response
 
