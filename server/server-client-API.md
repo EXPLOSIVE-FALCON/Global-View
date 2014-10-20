@@ -683,18 +683,797 @@ var requestURL = 'https://api.instagram.com/v1/locations/' + request.locationID 
 }
 ```
 
-
+#########################################################
+#########################################################
+#########################################################
+#########################################################
+#########################################################
+#########################################################
+#########################################################
 ## Twitter
 
 Request from client includes an object with following structure:
 
-```
-  request = {
-    timeStart: number,
-    timeEnd: number,
-    query: string,
-    page: , //need to discuss
-    attitude: number,
-    latitude: number
+
+https://api.twitter.com/1.1/search/tweets.json?q=rawoakland&count=5
+
+  {
+  "statuses": [
+    {
+      "metadata": {
+        "iso_language_code": "en",
+        "result_type": "recent"
+      },
+      "created_at": "Fri Oct 17 02:45:23 +0000 2014",
+      "id": 522941414611910660,
+      "id_str": "522941414611910656",
+      "text": "Good signage. http://t.co/VxzXpzlmQV",
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "truncated": false,
+      "in_reply_to_status_id": null,
+      "in_reply_to_status_id_str": null,
+      "in_reply_to_user_id": null,
+      "in_reply_to_user_id_str": null,
+      "in_reply_to_screen_name": null,
+      "user": {
+        "id": 2208440312,
+        "id_str": "2208440312",
+        "name": "Roger Williams",
+        "screen_name": "rawoakland",
+        "location": "",
+        "profile_location": null,
+        "description": "You go first.......",
+        "url": null,
+        "entities": {
+          "description": {
+            "urls": []
+          }
+        },
+        "protected": false,
+        "followers_count": 10,
+        "friends_count": 16,
+        "listed_count": 0,
+        "created_at": "Fri Nov 22 06:23:46 +0000 2013",
+        "favourites_count": 3,
+        "utc_offset": null,
+        "time_zone": null,
+        "geo_enabled": false,
+        "verified": false,
+        "statuses_count": 49,
+        "lang": "en",
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "C0DEED",
+        "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+        "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+        "profile_background_tile": false,
+        "profile_image_url": "http://pbs.twimg.com/profile_images/378800000773181372/36073ff918073165739d1d2fcd83cf34_normal.jpeg",
+        "profile_image_url_https": "https://pbs.twimg.com/profile_images/378800000773181372/36073ff918073165739d1d2fcd83cf34_normal.jpeg",
+        "profile_link_color": "0084B4",
+        "profile_sidebar_border_color": "C0DEED",
+        "profile_sidebar_fill_color": "DDEEF6",
+        "profile_text_color": "333333",
+        "profile_use_background_image": true,
+        "default_profile": true,
+        "default_profile_image": false,
+        "following": false,
+        "follow_request_sent": false,
+        "notifications": false
+      },
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "retweet_count": 0,
+      "favorite_count": 0,
+      "entities": {
+        "hashtags": [],
+        "symbols": [],
+        "urls": [],
+        "user_mentions": [],
+        "media": [
+          {
+            "id": 522941413953384450,
+            "id_str": "522941413953384448",
+            "indices": [
+              14,
+              36
+            ],
+            "media_url": "http://pbs.twimg.com/media/B0HccgEIMAA602F.jpg",
+            "media_url_https": "https://pbs.twimg.com/media/B0HccgEIMAA602F.jpg",
+            "url": "http://t.co/VxzXpzlmQV",
+            "display_url": "pic.twitter.com/VxzXpzlmQV",
+            "expanded_url": "http://twitter.com/rawoakland/status/522941414611910656/photo/1",
+            "type": "photo",
+            "sizes": {
+              "small": {
+                "w": 340,
+                "h": 340,
+                "resize": "fit"
+              },
+              "medium": {
+                "w": 600,
+                "h": 600,
+                "resize": "fit"
+              },
+              "thumb": {
+                "w": 150,
+                "h": 150,
+                "resize": "crop"
+              },
+              "large": {
+                "w": 1024,
+                "h": 1024,
+                "resize": "fit"
+              }
+            }
+          }
+        ]
+      },
+      "favorited": false,
+      "retweeted": false,
+      "possibly_sensitive": false,
+      "lang": "en"
+    },
+    {
+      "metadata": {
+        "iso_language_code": "und",
+        "result_type": "recent"
+      },
+      "created_at": "Tue Oct 14 00:23:14 +0000 2014",
+      "id": 521818477162545150,
+      "id_str": "521818477162545153",
+      "text": "#LostFiles #RawOakland http://t.co/5nT5NYbpr3",
+      "source": "<a href=\"http://instagram.com\" rel=\"nofollow\">Instagram</a>",
+      "truncated": false,
+      "in_reply_to_status_id": null,
+      "in_reply_to_status_id_str": null,
+      "in_reply_to_user_id": null,
+      "in_reply_to_user_id_str": null,
+      "in_reply_to_screen_name": null,
+      "user": {
+        "id": 16689307,
+        "id_str": "16689307",
+        "name": "MsTiffdoesit",
+        "screen_name": "TiffNay",
+        "location": "Bay Area, California",
+        "profile_location": null,
+        "description": "Life at its essence boils down to one day at a time. Today is the day- Cherish the day!  #God1st  #Family1st  #TeamCowboys  #TeamLakers  Don't ya just ❤ it!",
+        "url": "https://t.co/d3RXFQThAu",
+        "entities": {
+          "url": {
+            "urls": [
+              {
+                "url": "https://t.co/d3RXFQThAu",
+                "expanded_url": "https://twitter.com/TiffNay",
+                "display_url": "twitter.com/TiffNay",
+                "indices": [
+                  0,
+                  23
+                ]
+              }
+            ]
+          },
+          "description": {
+            "urls": []
+          }
+        },
+        "protected": false,
+        "followers_count": 324,
+        "friends_count": 471,
+        "listed_count": 13,
+        "created_at": "Fri Oct 10 21:24:56 +0000 2008",
+        "favourites_count": 11,
+        "utc_offset": -25200,
+        "time_zone": "Pacific Time (US & Canada)",
+        "geo_enabled": false,
+        "verified": false,
+        "statuses_count": 3743,
+        "lang": "en",
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "642D8B",
+        "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/51702274/Photo_44.jpg",
+        "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/51702274/Photo_44.jpg",
+        "profile_background_tile": true,
+        "profile_image_url": "http://pbs.twimg.com/profile_images/2551297073/image_normal.jpg",
+        "profile_image_url_https": "https://pbs.twimg.com/profile_images/2551297073/image_normal.jpg",
+        "profile_banner_url": "https://pbs.twimg.com/profile_banners/16689307/1355113833",
+        "profile_link_color": "FF0000",
+        "profile_sidebar_border_color": "65B0DA",
+        "profile_sidebar_fill_color": "7AC3EE",
+        "profile_text_color": "3D1957",
+        "profile_use_background_image": true,
+        "default_profile": false,
+        "default_profile_image": false,
+        "following": true,
+        "follow_request_sent": false,
+        "notifications": false
+      },
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "retweet_count": 0,
+      "favorite_count": 0,
+      "entities": {
+        "hashtags": [
+          {
+            "text": "LostFiles",
+            "indices": [
+              0,
+              10
+            ]
+          },
+          {
+            "text": "RawOakland",
+            "indices": [
+              11,
+              22
+            ]
+          }
+        ],
+        "symbols": [],
+        "urls": [
+          {
+            "url": "http://t.co/5nT5NYbpr3",
+            "expanded_url": "http://instagram.com/p/uHNbymI_4T/",
+            "display_url": "instagram.com/p/uHNbymI_4T/",
+            "indices": [
+              23,
+              45
+            ]
+          }
+        ],
+        "user_mentions": []
+      },
+      "favorited": false,
+      "retweeted": false,
+      "possibly_sensitive": false,
+      "lang": "und"
+    },
+    {
+      "metadata": {
+        "iso_language_code": "en",
+        "result_type": "recent"
+      },
+      "created_at": "Mon Oct 13 22:11:39 +0000 2014",
+      "id": 521785364579504100,
+      "id_str": "521785364579504128",
+      "text": "Nothing comes between Tiff &amp; the music!! #Goodtimes #RawOakland #bailamos 🎶🎶💃 http://t.co/orCxth3NzC",
+      "source": "<a href=\"http://instagram.com\" rel=\"nofollow\">Instagram</a>",
+      "truncated": false,
+      "in_reply_to_status_id": null,
+      "in_reply_to_status_id_str": null,
+      "in_reply_to_user_id": null,
+      "in_reply_to_user_id_str": null,
+      "in_reply_to_screen_name": null,
+      "user": {
+        "id": 16689307,
+        "id_str": "16689307",
+        "name": "MsTiffdoesit",
+        "screen_name": "TiffNay",
+        "location": "Bay Area, California",
+        "profile_location": null,
+        "description": "Life at its essence boils down to one day at a time. Today is the day- Cherish the day!  #God1st  #Family1st  #TeamCowboys  #TeamLakers  Don't ya just ❤ it!",
+        "url": "https://t.co/d3RXFQThAu",
+        "entities": {
+          "url": {
+            "urls": [
+              {
+                "url": "https://t.co/d3RXFQThAu",
+                "expanded_url": "https://twitter.com/TiffNay",
+                "display_url": "twitter.com/TiffNay",
+                "indices": [
+                  0,
+                  23
+                ]
+              }
+            ]
+          },
+          "description": {
+            "urls": []
+          }
+        },
+        "protected": false,
+        "followers_count": 324,
+        "friends_count": 471,
+        "listed_count": 13,
+        "created_at": "Fri Oct 10 21:24:56 +0000 2008",
+        "favourites_count": 11,
+        "utc_offset": -25200,
+        "time_zone": "Pacific Time (US & Canada)",
+        "geo_enabled": false,
+        "verified": false,
+        "statuses_count": 3743,
+        "lang": "en",
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "642D8B",
+        "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/51702274/Photo_44.jpg",
+        "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/51702274/Photo_44.jpg",
+        "profile_background_tile": true,
+        "profile_image_url": "http://pbs.twimg.com/profile_images/2551297073/image_normal.jpg",
+        "profile_image_url_https": "https://pbs.twimg.com/profile_images/2551297073/image_normal.jpg",
+        "profile_banner_url": "https://pbs.twimg.com/profile_banners/16689307/1355113833",
+        "profile_link_color": "FF0000",
+        "profile_sidebar_border_color": "65B0DA",
+        "profile_sidebar_fill_color": "7AC3EE",
+        "profile_text_color": "3D1957",
+        "profile_use_background_image": true,
+        "default_profile": false,
+        "default_profile_image": false,
+        "following": true,
+        "follow_request_sent": false,
+        "notifications": false
+      },
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "retweet_count": 0,
+      "favorite_count": 0,
+      "entities": {
+        "hashtags": [
+          {
+            "text": "Goodtimes",
+            "indices": [
+              45,
+              55
+            ]
+          },
+          {
+            "text": "RawOakland",
+            "indices": [
+              56,
+              67
+            ]
+          },
+          {
+            "text": "bailamos",
+            "indices": [
+              68,
+              77
+            ]
+          }
+        ],
+        "symbols": [],
+        "urls": [
+          {
+            "url": "http://t.co/orCxth3NzC",
+            "expanded_url": "http://instagram.com/p/uG-YF7o_xi/",
+            "display_url": "instagram.com/p/uG-YF7o_xi/",
+            "indices": [
+              82,
+              104
+            ]
+          }
+        ],
+        "user_mentions": []
+      },
+      "favorited": false,
+      "retweeted": false,
+      "possibly_sensitive": false,
+      "lang": "en"
+    },
+    {
+      "metadata": {
+        "iso_language_code": "en",
+        "result_type": "recent"
+      },
+      "created_at": "Mon Oct 13 19:04:36 +0000 2014",
+      "id": 521738288453808100,
+      "id_str": "521738288453808128",
+      "text": "RT @OMAYGA: S/O @djdsharp for spinning #GetIt at #RAWOakland today #PrideAndPurpose available now #TeamP360 http://t.co/tlv6jDaWRG",
+      "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+      "truncated": false,
+      "in_reply_to_status_id": null,
+      "in_reply_to_status_id_str": null,
+      "in_reply_to_user_id": null,
+      "in_reply_to_user_id_str": null,
+      "in_reply_to_screen_name": null,
+      "user": {
+        "id": 1491215971,
+        "id_str": "1491215971",
+        "name": "P360 Entertainment",
+        "screen_name": "P360ENT",
+        "location": "#TeamP360",
+        "profile_location": null,
+        "description": "@OMAYGA @YoungChizle @Kazmek510 @RellStayfFly @steveyung415",
+        "url": null,
+        "entities": {
+          "description": {
+            "urls": []
+          }
+        },
+        "protected": false,
+        "followers_count": 116,
+        "friends_count": 276,
+        "listed_count": 0,
+        "created_at": "Fri Jun 07 20:04:36 +0000 2013",
+        "favourites_count": 0,
+        "utc_offset": -25200,
+        "time_zone": "Arizona",
+        "geo_enabled": false,
+        "verified": false,
+        "statuses_count": 162,
+        "lang": "en",
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "1A1B1F",
+        "profile_background_image_url": "http://abs.twimg.com/images/themes/theme9/bg.gif",
+        "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme9/bg.gif",
+        "profile_background_tile": false,
+        "profile_image_url": "http://pbs.twimg.com/profile_images/504132660050923520/f69el2hb_normal.jpeg",
+        "profile_image_url_https": "https://pbs.twimg.com/profile_images/504132660050923520/f69el2hb_normal.jpeg",
+        "profile_banner_url": "https://pbs.twimg.com/profile_banners/1491215971/1388854647",
+        "profile_link_color": "2FC2EF",
+        "profile_sidebar_border_color": "181A1E",
+        "profile_sidebar_fill_color": "252429",
+        "profile_text_color": "666666",
+        "profile_use_background_image": true,
+        "default_profile": false,
+        "default_profile_image": false,
+        "following": false,
+        "follow_request_sent": false,
+        "notifications": false
+      },
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "retweeted_status": {
+        "metadata": {
+          "iso_language_code": "en",
+          "result_type": "recent"
+        },
+        "created_at": "Mon Oct 13 05:20:35 +0000 2014",
+        "id": 521530918805057540,
+        "id_str": "521530918805057536",
+        "text": "S/O @djdsharp for spinning #GetIt at #RAWOakland today #PrideAndPurpose available now #TeamP360 http://t.co/tlv6jDaWRG",
+        "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+        "truncated": false,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "in_reply_to_screen_name": null,
+        "user": {
+          "id": 19721515,
+          "id_str": "19721515",
+          "name": "John OMAYGA Adams",
+          "screen_name": "OMAYGA",
+          "location": "Rich City,USA",
+          "profile_location": null,
+          "description": "ig realomayga | Like on FB http://t.co/SCzPUv0ATC #PrideAndPurpose available now Follow @P360Ent #TeamP360",
+          "url": "https://t.co/yhJtu6DJE1",
+          "entities": {
+            "url": {
+              "urls": [
+                {
+                  "url": "https://t.co/yhJtu6DJE1",
+                  "expanded_url": "https://itunes.apple.com/us/album/pride-and-purpose/id916612364",
+                  "display_url": "itunes.apple.com/us/album/pride…",
+                  "indices": [
+                    0,
+                    23
+                  ]
+                }
+              ]
+            },
+            "description": {
+              "urls": [
+                {
+                  "url": "http://t.co/SCzPUv0ATC",
+                  "expanded_url": "http://www.facebook.com/omaygamusic",
+                  "display_url": "facebook.com/omaygamusic",
+                  "indices": [
+                    27,
+                    49
+                  ]
+                }
+              ]
+            }
+          },
+          "protected": false,
+          "followers_count": 1315,
+          "friends_count": 1012,
+          "listed_count": 16,
+          "created_at": "Thu Jan 29 17:24:34 +0000 2009",
+          "favourites_count": 26,
+          "utc_offset": -14400,
+          "time_zone": "Eastern Time (US & Canada)",
+          "geo_enabled": true,
+          "verified": false,
+          "statuses_count": 11483,
+          "lang": "en",
+          "contributors_enabled": false,
+          "is_translator": false,
+          "is_translation_enabled": false,
+          "profile_background_color": "1A1B1F",
+          "profile_background_image_url": "http://abs.twimg.com/images/themes/theme9/bg.gif",
+          "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme9/bg.gif",
+          "profile_background_tile": true,
+          "profile_image_url": "http://pbs.twimg.com/profile_images/504132308027199488/B8qBQo6v_normal.jpeg",
+          "profile_image_url_https": "https://pbs.twimg.com/profile_images/504132308027199488/B8qBQo6v_normal.jpeg",
+          "profile_banner_url": "https://pbs.twimg.com/profile_banners/19721515/1391641204",
+          "profile_link_color": "2FC2EF",
+          "profile_sidebar_border_color": "FFFFFF",
+          "profile_sidebar_fill_color": "252429",
+          "profile_text_color": "666666",
+          "profile_use_background_image": false,
+          "default_profile": false,
+          "default_profile_image": false,
+          "following": false,
+          "follow_request_sent": false,
+          "notifications": false
+        },
+        "geo": null,
+        "coordinates": null,
+        "place": null,
+        "contributors": null,
+        "retweet_count": 1,
+        "favorite_count": 0,
+        "entities": {
+          "hashtags": [
+            {
+              "text": "GetIt",
+              "indices": [
+                27,
+                33
+              ]
+            },
+            {
+              "text": "RAWOakland",
+              "indices": [
+                37,
+                48
+              ]
+            },
+            {
+              "text": "PrideAndPurpose",
+              "indices": [
+                55,
+                71
+              ]
+            },
+            {
+              "text": "TeamP360",
+              "indices": [
+                86,
+                95
+              ]
+            }
+          ],
+          "symbols": [],
+          "urls": [
+            {
+              "url": "http://t.co/tlv6jDaWRG",
+              "expanded_url": "http://instagram.com/p/uFIfapE2Td/",
+              "display_url": "instagram.com/p/uFIfapE2Td/",
+              "indices": [
+                96,
+                118
+              ]
+            }
+          ],
+          "user_mentions": [
+            {
+              "screen_name": "djdsharp",
+              "name": "D Sharp",
+              "id": 21799988,
+              "id_str": "21799988",
+              "indices": [
+                4,
+                13
+              ]
+            }
+          ]
+        },
+        "favorited": false,
+        "retweeted": false,
+        "possibly_sensitive": false,
+        "lang": "en"
+      },
+      "retweet_count": 1,
+      "favorite_count": 0,
+      "entities": {
+        "hashtags": [
+          {
+            "text": "GetIt",
+            "indices": [
+              39,
+              45
+            ]
+          },
+          {
+            "text": "RAWOakland",
+            "indices": [
+              49,
+              60
+            ]
+          },
+          {
+            "text": "PrideAndPurpose",
+            "indices": [
+              67,
+              83
+            ]
+          },
+          {
+            "text": "TeamP360",
+            "indices": [
+              98,
+              107
+            ]
+          }
+        ],
+        "symbols": [],
+        "urls": [
+          {
+            "url": "http://t.co/tlv6jDaWRG",
+            "expanded_url": "http://instagram.com/p/uFIfapE2Td/",
+            "display_url": "instagram.com/p/uFIfapE2Td/",
+            "indices": [
+              108,
+              130
+            ]
+          }
+        ],
+        "user_mentions": [
+          {
+            "screen_name": "OMAYGA",
+            "name": "John OMAYGA Adams",
+            "id": 19721515,
+            "id_str": "19721515",
+            "indices": [
+              3,
+              10
+            ]
+          },
+          {
+            "screen_name": "djdsharp",
+            "name": "D Sharp",
+            "id": 21799988,
+            "id_str": "21799988",
+            "indices": [
+              16,
+              25
+            ]
+          }
+        ]
+      },
+      "favorited": false,
+      "retweeted": false,
+      "possibly_sensitive": false,
+      "lang": "en"
+    },
+    {
+      "metadata": {
+        "iso_language_code": "en",
+        "result_type": "recent"
+      },
+      "created_at": "Mon Oct 13 17:17:08 +0000 2014",
+      "id": 521711245251321860,
+      "id_str": "521711245251321858",
+      "text": "Photo: Loved ONES #rawoakland http://t.co/sn8eKwcwZC",
+      "source": "<a href=\"http://www.tumblr.com/\" rel=\"nofollow\">Tumblr</a>",
+      "truncated": false,
+      "in_reply_to_status_id": null,
+      "in_reply_to_status_id_str": null,
+      "in_reply_to_user_id": null,
+      "in_reply_to_user_id_str": null,
+      "in_reply_to_screen_name": null,
+      "user": {
+        "id": 23848155,
+        "id_str": "23848155",
+        "name": "little RED CORVETTE",
+        "screen_name": "_RED_Corvette",
+        "location": "Back in that BAY BAY",
+        "profile_location": null,
+        "description": "RED CORVETTE (Femme DJ)\n\nInsta: theehippiefiles",
+        "url": "http://t.co/sj6zEWLJLo",
+        "entities": {
+          "url": {
+            "urls": [
+              {
+                "url": "http://t.co/sj6zEWLJLo",
+                "expanded_url": "http://alltheethingsred.com",
+                "display_url": "alltheethingsred.com",
+                "indices": [
+                  0,
+                  22
+                ]
+              }
+            ]
+          },
+          "description": {
+            "urls": []
+          }
+        },
+        "protected": false,
+        "followers_count": 1193,
+        "friends_count": 855,
+        "listed_count": 23,
+        "created_at": "Wed Mar 11 22:59:15 +0000 2009",
+        "favourites_count": 78,
+        "utc_offset": -25200,
+        "time_zone": "Pacific Time (US & Canada)",
+        "geo_enabled": true,
+        "verified": false,
+        "statuses_count": 49618,
+        "lang": "en",
+        "contributors_enabled": false,
+        "is_translator": false,
+        "is_translation_enabled": false,
+        "profile_background_color": "131516",
+        "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/149146303/lil-kim-3-Copy.png",
+        "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/149146303/lil-kim-3-Copy.png",
+        "profile_background_tile": true,
+        "profile_image_url": "http://pbs.twimg.com/profile_images/3675970140/adc7a6398afc358242821e91fb3d2036_normal.jpeg",
+        "profile_image_url_https": "https://pbs.twimg.com/profile_images/3675970140/adc7a6398afc358242821e91fb3d2036_normal.jpeg",
+        "profile_banner_url": "https://pbs.twimg.com/profile_banners/23848155/1396377159",
+        "profile_link_color": "009999",
+        "profile_sidebar_border_color": "EEEEEE",
+        "profile_sidebar_fill_color": "EFEFEF",
+        "profile_text_color": "333333",
+        "profile_use_background_image": true,
+        "default_profile": false,
+        "default_profile_image": false,
+        "following": true,
+        "follow_request_sent": false,
+        "notifications": false
+      },
+      "geo": null,
+      "coordinates": null,
+      "place": null,
+      "contributors": null,
+      "retweet_count": 0,
+      "favorite_count": 0,
+      "entities": {
+        "hashtags": [
+          {
+            "text": "rawoakland",
+            "indices": [
+              18,
+              29
+            ]
+          }
+        ],
+        "symbols": [],
+        "urls": [
+          {
+            "url": "http://t.co/sn8eKwcwZC",
+            "expanded_url": "http://tmblr.co/ZbzEMy1T3bx_t",
+            "display_url": "tmblr.co/ZbzEMy1T3bx_t",
+            "indices": [
+              30,
+              52
+            ]
+          }
+        ],
+        "user_mentions": []
+      },
+      "favorited": false,
+      "retweeted": false,
+      "possibly_sensitive": false,
+      "lang": "en"
+    }
+  ],
+  "search_metadata": {
+    "completed_in": 0.073,
+    "max_id": 522941414611910660,
+    "max_id_str": "522941414611910656",
+    "next_results": "?max_id=521711245251321857&q=rawOakland&count=5&include_entities=1",
+    "query": "rawOakland",
+    "refresh_url": "?since_id=522941414611910656&q=rawOakland&include_entities=1",
+    "count": 5,
+    "since_id": 0,
+    "since_id_str": "0"
   }
-```
+}
+#########################################################
