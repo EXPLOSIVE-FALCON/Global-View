@@ -18,11 +18,17 @@
     <div id="container" ng-controller="NewsController">
       <form ng-submit="getNews(request)">
         <div class="row">
-          <div class="col-xs-3">
+          <div class="col-xs-2">
             <input type="text" ng-model="request.event" class="form-control" placeholder="event">
           </div>
-          <div class="col-xs-3">
-            <input type="text" class="form-control" ng-model="request.location" placeholder="location">
+          <div class="col-xs-2">
+            <input type="text" class="form-control" ng-model="request.state" placeholder="state">
+          </div>
+          <div class="col-xs-2">
+            <input type="text" class="form-control" ng-model="request.city" placeholder="city">
+          </div>
+          <div class="col-xs-2">
+            <input type="text" class="form-control" ng-model="request.street" placeholder="street">
           </div>
         </div>
 

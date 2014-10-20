@@ -54,7 +54,7 @@ angular.module('services', [])
     //creating the object with request for this service
     params = {
       query: request.event,
-      location: request.location,
+      location: request.city, //!!! need to add logic of inserting the location field depending on user request (if there is only state, put state etc.)
       amount: 5
     };
     return $http({
