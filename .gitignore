@@ -29,4 +29,5 @@ dist/
 */.DS_Store
 node_modules/
 client/lib
-/server/instaKeys.js
+server/instaKeys.js
+docs

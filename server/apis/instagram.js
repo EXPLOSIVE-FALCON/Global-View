@@ -74,4 +74,4 @@ var deg2radCalc = function(number) {
 }
 
 // sample invocation of instagram API
-instaLocations(34,-118,1000);
+// instaLocations(34,-118,1000);

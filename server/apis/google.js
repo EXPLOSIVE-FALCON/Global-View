@@ -1,4 +1,7 @@
-var request = require('request');
+/**
+* @module queryGoogle
+*/
+var request = require('request'); 
 var cheerio = require('cheerio');
 var querystring = require('querystring');
 var util = require('util');
@@ -13,11 +16,16 @@ var URL = 'http://www.google.com/search?hl=en&q=%s&start=0&sa=N&num=%s&ie=UTF-8&
 
 // selects correct news elements from dom and returns an object
 // with a title, link, source, description, and time
-var buildNews = function(i, elem, $) {
-  var linkElem = $(elem).find(linkSel);
-  var newsDescription = $(elem).find(newsSel);
-  var removeElem = $(elem).find(removSel);
-  var newsSource = $(elem).find(sourceSel);
+/** 
+* @function
+* @param {Object} element individual li.g element from DOM
+* @param {Object} $ jQuery like object containing entire DOM from results page
+*/
+var buildNewsStory = function(element, $) {
+  var linkElem = $(element).find(linkSel);
+  var newsDescription = $(element).find(newsSel);
+  var removeElem = $(element).find(removSel);
+  var newsSource = $(element).find(sourceSel);
 
   var href = querystring.parse($(linkElem).attr('href'));
   var sourceTime = newsSource.text().split(' - ');
@@ -33,25 +41,27 @@ var buildNews = function(i, elem, $) {
   return item;
 };
 
+/**
+* Takes Body of results page and invokes buildNewsStory over every news story in the DOM
+* @function
+* @param {Object} body blah
+*/
+var getNews = function(body) {
+  var $ = cheerio.load(body);
+  var links = [];
+  $(stories).each(function(i, elem) {
+    links.push(buildNewsStory(elem, $));
+  });
+  return links;
+};
+
 // invokes call to google with and returns "queryAmount" amount of
 // results, invokes callback on array of results
 module.exports = function(query, queryAmount, callback) {
-  queryAmount = queryAmount > 100 ? 100 : queryAmount;
-
+  queryAmount = queryAmount > 50 ? 50 : queryAmount;
   var site = util.format(URL, querystring.escape(query), queryAmount);
 
-  request(site, function(err, res, body) {
-    if (err) {
-      callback(err, null);
-    } else {
-      var $ = cheerio.load(body);
-      var links = [];
-      $(stories).each(function(i, elem) {
-        var newsStory = buildNews(i, elem, $)
-        links.push(newsStory);
-      });
-
-      callback(null, links);
-    }
+  request(site, function(error, res, body) {
+    callback(error, getNews(body));
   });
 };
