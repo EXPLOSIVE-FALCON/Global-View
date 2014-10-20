@@ -4,7 +4,7 @@ var queryTwitter = require('../apis/twitter');
 
 exports.google = function(req, res) {
   var query = req.query;
-  var search = query.search + ' location:' + query.location;
+  var search = query.query + ' location:' + query.location;
   var resultAmt = query.amount || 5;
   queryGoogle(search, resultAmt, function(err, newsResults) {
     if (!!err) { throw 'Erorr: ' + err; }
