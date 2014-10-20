@@ -1,4 +1,4 @@
-var request = require('request'); 
+var request = require('request');
 var cheerio = require('cheerio');
 var querystring = require('querystring');
 var util = require('util');
@@ -23,7 +23,7 @@ var buildNews = function(i, elem, $) {
   var sourceTime = newsSource.text().split(' - ');
 
   var item = {};
-  item.title = $(linkElem).first().text() || null, 
+  item.title = $(linkElem).first().text() || null,
   item.link = href['/url?q'] || null;
   item.source = sourceTime[0] || null;
   item.description = newsDescription.text() || null;
@@ -34,7 +34,7 @@ var buildNews = function(i, elem, $) {
 };
 
 // invokes call to google with and returns "queryAmount" amount of
-// results, invokes callback on array of results 
+// results, invokes callback on array of results
 module.exports = function(query, queryAmount, callback) {
   queryAmount = queryAmount > 100 ? 100 : queryAmount;
 
@@ -42,7 +42,7 @@ module.exports = function(query, queryAmount, callback) {
 
   request(site, function(err, res, body) {
     if (err) {
-      callback(err, null); 
+      callback(err, null);
     } else {
       var $ = cheerio.load(body);
       var links = [];
@@ -55,6 +55,3 @@ module.exports = function(query, queryAmount, callback) {
     }
   });
 };
-
-
-

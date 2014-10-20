@@ -11,21 +11,41 @@
     <script src="photos/photos.js"></script>
     <script src="app.js"></script>
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/style.css">
 
   </head>
   <body>
     <h1>Vantage</h1>
     <div id="container" ng-controller="NewsController">
       <form ng-submit="getNews(request)">
-        <input type="text" ng-model="request">
-        <button>OK</button>
-        <ul ng-repeat="news in data">
-          <li>
-            {{news.time}} - <a href="{{news.link}}" target="_blank">{{news.title}}</a>
-          </li>
-        </ul>
+        <div class="row">
+          <div class="col-xs-2">
+            <input type="text" ng-model="request.event" class="form-control" placeholder="event">
+          </div>
+          <div class="col-xs-2">
+            <input type="text" class="form-control" ng-model="request.state" placeholder="state">
+          </div>
+          <div class="col-xs-2">
+            <input type="text" class="form-control" ng-model="request.city" placeholder="city">
+          </div>
+          <div class="col-xs-2">
+            <input type="text" class="form-control" ng-model="request.street" placeholder="street">
+          </div>
+        <button class="btn btn-info">OK</button>
+        </div>
+
       </form>
+      <!-- need to move it in new.html -->
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="news in data">
+          {{news.time}} - <a href="{{news.link}}" target="_blank">{{news.title}}</a>
+        </li>
+      </ul>
     </div>
+
+
+
+
 
   </body>
 </html>
