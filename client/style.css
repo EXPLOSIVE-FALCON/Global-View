@@ -6,8 +6,8 @@
   position: relative;
 }
 
-.newsTitle >  a[data-title]:hover:after {
-  content: attr(data-title);
+.newsTitle >  a[data-description]:hover:after {
+  content: attr(data-description);
   padding: 4px 8px;
   color: #333;
   position: absolute;
