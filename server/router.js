@@ -1,8 +1,6 @@
 var helpers = require('./helpers/helpers');
 
-
-
-exports.api = function(app) {
+exports.apiRouter = function(app) {
 
   app.get('/twitter', helpers.twitter);
 
