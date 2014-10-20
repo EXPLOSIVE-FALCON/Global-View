@@ -8,7 +8,6 @@
 5. As a user, I want this event dashboard to load as quickly and accurately as possible, so that I don't have to wait.
 6. As a user, I want the process of inputting the time and place of an event to be simple, so that I don't have to do much to see an event.
 
-
 ### Additional Features
 1. As a user, I want this event dashboard to work reliably whenever I use it (i.e. avoid hitting API rate limits), so that I can view the full event dashboard.
 2. As a user, I want this service to accept a photo as input to render an event dashboard based on the photo's GPS field and timestamp, so that I don't have to remember where or when an event took place.
