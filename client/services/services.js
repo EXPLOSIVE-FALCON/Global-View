@@ -1,5 +1,9 @@
 angular.module('services', [])
 
+.factory('Query', function($http){
+
+})
+
 .factory('Twitter', function($http) {
 
   var getTweets = function(request) {
@@ -49,8 +53,8 @@ angular.module('services', [])
   var getNews = function(request) {
     //creating the object with request for this service
     params = {
-      query: request,
-      location: 'MN', // !!! need to change after getting the location from user
+      query: request.event,
+      location: request.location,
       amount: 5
     };
     return $http({
