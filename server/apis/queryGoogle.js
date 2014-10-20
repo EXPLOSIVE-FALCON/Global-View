@@ -14,9 +14,26 @@ var removSel = 'div.s';
 
 var URL = 'http://www.google.com/search?hl=en&q=%s&start=0&sa=N&num=%s&ie=UTF-8&oe=UTF-8&tbm=nws';
 
-// selects correct news elements from dom and returns an object
-// with a title, link, source, description, and time
+/**
+* Scrapes news.google.com and returns an array of results;
+* @function queryGoogle
+* @param {string} query Search Term on news.google.com
+* @param {string} location Search Location (City || State || Zip || Country) on news.google.com
+* @param {number} queryAmount Number of results to return - Max 50 
+* @param {function} callback callback function to invoke on results
+*/
+module.exports = function(query, location, queryAmount, callback) {
+  var search = query + ' location:' + location;
+  queryAmount = queryAmount > 50 ? 50 : queryAmount;
+  var site = util.format(URL, querystring.escape(search), queryAmount);
+
+  request(site, function(error, res, body) {
+    callback(error, getNews(body));
+  });
+};
+
 /** 
+* Takes an individual news story form google news DOM results and returns object
 * @function
 * @param {Object} element individual li.g element from DOM
 * @param {Object} $ jQuery like object containing entire DOM from results page
@@ -55,13 +72,3 @@ var getNews = function(body) {
   return links;
 };
 
-// invokes call to google with and returns "queryAmount" amount of
-// results, invokes callback on array of results
-module.exports = function(query, queryAmount, callback) {
-  queryAmount = queryAmount > 50 ? 50 : queryAmount;
-  var site = util.format(URL, querystring.escape(query), queryAmount);
-
-  request(site, function(error, res, body) {
-    callback(error, getNews(body));
-  });
-};
