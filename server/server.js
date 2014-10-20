@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 5000;
 var app = express();
-var api = require('./routers/apiRoutes');
+var api = require('./router').api;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', express.static(__dirname + '/../client'));

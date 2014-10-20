@@ -1,5 +1,8 @@
-var helpers = require('../helpers/helpers');
-module.exports = function(app) {
+var helpers = require('./helpers/helpers');
+
+
+
+exports.api = function(app) {
 
   app.get('/twitter', helpers.twitter);
 
