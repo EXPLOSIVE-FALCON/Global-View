@@ -8,15 +8,15 @@ angular.module('vantage', [
 .config(function($routeProvider, $httpProvider) {
   $routeProvider
     .when('/tweets', {
-      templateUrl: 'tweets/tweets.html',
+      templateUrl: 'views/tweets/tweets.html',
       controller: 'TweetsController'
     })
     .when('/news', {
-      templateUrl: 'news/news.html',
+      templateUrl: 'views/news/news.html',
       controller: 'NewsController'
     })
     .when('/photos', {
-      templateUrl: 'photos/photos.html',
+      templateUrl: 'views/photos/photos.html',
       controller: 'PhotoController'
     })
     .otherwise({
