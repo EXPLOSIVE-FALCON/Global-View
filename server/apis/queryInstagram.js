@@ -1,3 +1,6 @@
+/**
+* @module queryInstagram
+*/
 var request = require('request');
 var querystring = require('querystring');
 var util = require('util');
