@@ -4,14 +4,15 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     nodemon: {
       dev: {
-        script: 'server.js'
+        script: 'server/server.js'
       }
     },
     watch: {
       scripts: {
         files: [
-          'public/*.js',
-          'public/*.html'
+          'client/**/*.js',
+          'client/*.css',
+          'client/**/*.html'
         ],
         options: {
           livereload: true

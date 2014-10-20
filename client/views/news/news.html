@@ -1,0 +1,17 @@
+<div id="container" ng-controller="NewsController">
+  <h2>Google News</h2>
+  <form ng-submit="getNews(request)">
+    <input type="text" ng-model="request">
+    <button>OK</button>
+  </form>
+  <ul ng-repeat="news in data">
+    <li>
+      <div> 
+        <h5 class="newsTitle">
+          <a href="{{news.link}}" data-description="{{news.description}}">{{news.title}}</a>
+        </h5>
+        <p>{{news.source}}<small> - {{news.time}}</small></p> 
+      </div>
+    </li>
+  </ul>
+</div>
