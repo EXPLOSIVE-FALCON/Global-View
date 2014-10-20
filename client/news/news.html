@@ -1,12 +1,13 @@
-<div id='container'>
-  <h2>Google News</h2>
-  <form ng-submit='getNews(request)'>
-    <input type='text' ng-model='request'>
-    <button>OK</button>
-    <ul ng-repeat='news in data'>
-      <li>
-        <a href="{{news.link}}">{{news.description}}</a>
-      </li>
-    </ul>
-  </form>
-</div>
+<!-- this file is not used now, but I'm going to move news part here later -->
+test
+    <div id="container" ng-controller="NewsController">
+      <form ng-submit="getNews(request)">
+        <input type="text" ng-model="request">
+        <button>OK</button>
+      </form>
+      <ul ng-repeat="news in data">
+        <li>
+          {{news.time}} - <a href="{{news.link}}" target="_blank">{{news.title}}</a>
+        </li>
+      </ul>
+    </div>

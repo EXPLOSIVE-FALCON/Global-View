@@ -17,15 +17,28 @@
     <h1>Vantage</h1>
     <div id="container" ng-controller="NewsController">
       <form ng-submit="getNews(request)">
-        <input type="text" ng-model="request">
+        <div class="row">
+          <div class="col-xs-3">
+            <input type="text" ng-model="request.event" class="form-control" placeholder="event">
+          </div>
+          <div class="col-xs-3">
+            <input type="text" class="form-control" ng-model="request.location" placeholder="location">
+          </div>
+        </div>
+
         <button>OK</button>
-        <ul ng-repeat="news in data">
-          <li>
-            {{news.time}} - <a href="{{news.link}}" target="_blank">{{news.title}}</a>
-          </li>
-        </ul>
       </form>
+
+      <ul ng-repeat="news in data">
+        <li>
+          {{news.time}} - <a href="{{news.link}}" target="_blank">{{news.title}}</a>
+        </li>
+      </ul>
     </div>
+
+
+
+
 
   </body>
 </html>
