@@ -1055,60 +1055,102 @@ GET /api/instagram
 
 #### Query Parameters
 
-| Name      | Type   | Description               |
-|-----------|--------|---------------------------|
-| query     | String | Search Term for Instagram |
-| latitude  | Number | Latitude for Location     |
-| longitude | Number | Longitude for Location    |
-| amount    | Number | Number of Results         |
-| date      | TBD    | TBD                       |
+| Name      | Type   | Description                                                                  |
+|-----------|--------|------------------------------------------------------------------------------|
+| latitude  | Number | Latitude for Location *                                                      |
+| longitude | Number | Longitude for Location *                                                     |
+| minDate   | Number | Unix Timestamp for beginning of requested Date/Time range *                  |
+| maxDate   | Number | Unix Timestamp for ending of requested Date/Time range *                     |
+| distance  | Number | Distance (in meters) from center of lat, lng inputs (default = 1000)         |
+| query     | String | Search Term for Instagram                                                    |
+| amount    | Number | Number of Results                                                            |
+| * = required                                                                                      |
+
 
 #### Response
 
 Status-Code: 200 OK
 
 ```sh
-GET /api/instagram?query=hr&latitude=37.7749295&longitude=-122.41941550000001&date=TBD&amount=2
+GET /api/instagram?query=hr&latitude=34&longitude=-118&minDate=1413747713000&maxDate=1413834152000&amount=20
 ```
 
 ```
 {
-  "result" : "Request Received!",
-  "data" : [
+  "meta": { "code": 200 },
+  "data": [
     {
-      profile_href: <Link to comment / profile page for image>.
-      date: <Date, format undecided>
-      place: <If Applicable, otherwise Null>
-      image: {
-        name: <name>,
-        hashtag: <hashtag>,
-        url: {
-          thumbnail: <Direct Link to Photo>,
-          fullsize: <Direct Link to Photo>,
+      "link": < Link to profile page for image >,
+      "created_time": < UNIX date >,
+      "type": <"image" or "video">,
+      "location": {
+        "latitude": <Latitude Number of Photo>,
+        "name": <Location Name (if any)>, 
+        "longitude": <Longitude Number of Photo>,
+        "id": <Location (if any)>
         },
-        location: {
-          longitude: <Longitude Number>,
-          latitude: <Latitude Number>
+      "images": {
+        "low_resolution": {
+          "url": <url of photo>,
+          "width": 306,
+          "height": 306
+        },
+        "thumbnail": {
+          "url": <url of photo>,
+          "width": 150,
+          "height": 150
+        },
+        "standard_resolution": {
+          "url": <url of photo>,
+          "width": 640,
+          "height": 640
         }
-      }
+      },
+      likes: {
+        "count": <Number of likes>
+        },
+      "caption":  {
+        "text": "Caption text (if any) of photo",
+      }, 
+      "tags": ["hashtag1", "hashtag2", "hashtagN"],
+      "id": <user id of photo creator> 
     },
     {
-      profile_href: <Link to comment / profile page for image>,
-      date: <Date, format undecided>
-      place: <If Applicable, otherwise Null>
-      image: {
-        name: <name>,
-        hashtag: <hashtag>,
-        url: {
-          thumbnail: <Direct Link to Photo>,
-          fullsize: <Direct Link to Photo>,
+      "link": < Link to profile page for image >,
+      "created_time": < UNIX date >,
+      "type": <"image" or "video">,
+      "location": {
+        "latitude": <Latitude Number of Photo>,
+        "name": <Location Name (if any)>, 
+        "longitude": <Longitude Number of Photo>,
+        "id": <Location (if any)>
         },
-        location: {
-          longitude: <Longitude Number>,
-          latitude: <Latitude Number>
+      "images": {
+        "low_resolution": {
+          "url": <url of photo>,
+          "width": 306,
+          "height": 306
+        },
+        "thumbnail": {
+          "url": <url of photo>,
+          "width": 150,
+          "height": 150
+        },
+        "standard_resolution": {
+          "url": <url of photo>,
+          "width": 640,
+          "height": 640
         }
-      }
-    },
+      },
+      likes: {
+        "count": <Number of likes>
+        },
+      "caption":  {
+        "text": "Caption text (if any) of photo",
+      }, 
+      "tags": ["hashtag1", "hashtag2", "hashtagN"],
+      "id": <user id of photo creator> 
+    }
   ]
 }
 ```
