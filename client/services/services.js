@@ -1,5 +1,54 @@
 angular.module('services', [])
 
+.factory('Query', function($q, $http, Location, Twitter, Instagram){
+
+  var getData = function(request){
+
+    $scope.loading = false;
+
+    var params = {
+      street: request.street,
+      city: request.city,
+      state: request.state
+    };
+
+    return Location.getLocation(params)
+      .then(function(coords){
+        var tweetParams = {
+          query: request.query,
+          latitude: coords.latitude,
+          longitude: coords.longitude //!!! need to add date and radius
+        };
+
+        return Twitter.getTweets(tweetParams)
+          .then(function(tweetData) {
+            $scope.data.tweets = tweetData;
+            return $scope.data.tweets;
+          })
+          .catch(function(error){
+            console.error(error);
+          })
+      })
+
+      //finish it when get info about Insta API
+      //   var instaParams = {
+
+      //   }
+      //   Instagram.getPhotos()
+      //     .then(function(photoData) {
+      //       $scope.data.photos = photoData;
+      //     })
+      // })
+      .catch(function(error){
+        console.error(error);
+      })
+  }
+
+  return {
+    getData: getData
+  }
+})
+
 .factory('Twitter', function($http) {
   var getTweets = function(request) {
     return $http({
