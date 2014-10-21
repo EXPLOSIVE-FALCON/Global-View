@@ -18,7 +18,7 @@ exports.google = function(req, res) {
   var query = req.query;
   query.amount = query.amount || 5;
   queryGoogle(query.query, query.location, query.amount, function(err, newsResults) {
-    if (!!err) { throw 'Erorr: ' + err; }
+    if (!!err) { throw 'Error: ' + err; }
 
     var sendBack = {
       result: 'Request Received!',
@@ -68,5 +68,5 @@ exports.instagram = function(req, res) {
       data: photos
     };
     res.json(response);
-  }
+  });
 };
