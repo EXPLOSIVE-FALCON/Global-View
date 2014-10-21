@@ -9,5 +9,4 @@ angular.module('photos', [])
         $scope.data = data;
       })
   };
-  $scope.getPhotos({});
 });

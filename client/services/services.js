@@ -1,18 +1,14 @@
 angular.module('services', [])
 
-.factory('Query', function($http){
-
-})
-
 .factory('Twitter', function($http) {
 
   var getTweets = function(request) {
     return $http({
       method: 'GET',
-      url: 'api/twitter'
+      url: 'api/twitter',
+      params: request
     })
     .then(function(response) {
-      console.log('response.data');
       return response.data;
     })
     .catch(function(error){
@@ -53,7 +49,7 @@ angular.module('services', [])
   var getNews = function(request) {
     //creating the object with request for this service
     params = {
-      query: request.event,
+      query: request.query,
       location: request.city, //!!! need to add logic of inserting the location field depending on user input (if there is only state, put state, if there is no location, search for all US,  etc.)
       amount: 5
     };
@@ -77,7 +73,7 @@ angular.module('services', [])
 })
 
 // converts a street address into geo coordinates, needed for instagram & twitter apis
-.factory('GetLocation', function($http) {
+.factory('Location', function($http) {
   var getLocation = function(request) {
     var params = {
       street: request.street,
@@ -91,11 +87,19 @@ angular.module('services', [])
       params: params
     })
     .then(function(response) {
-      var lattitude = response.results[0].geometry.location.lat;
+      console.log('response', response);
+      var latitude = response.results[0].geometry.location.lat;
       var longitude = response.results[0].geometry.location.lng;
       var coords = [lattitude, longitude];
-      console.log(coords);
+      var coords = {
+        latitude: latitude,
+        longitude: longitude
+      };
+      console.log('coords', coords);
       return coords;
+    })
+    .catch(function(error){
+      console.error(error);
     });
   };
 
