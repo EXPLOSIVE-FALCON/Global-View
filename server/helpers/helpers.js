@@ -58,9 +58,15 @@ exports.twitter = function(req, res) {
 */
 exports.instagram = function(req, res) {
   var query = req.query;
-  var response = {
-    result: 'Request Received!',
-    data: query
-  };
-  res.json(response);
+  console.log(query);
+  queryInstagram(query.lat,query.lng,query.minDate,query.maxDate,distance,function(error,photos) {
+    if(!!error) {
+      throw 'Error: ' + error;
+    }
+    var response = {
+      result: 'Request Received!',
+      data: photos
+    };
+    res.json(response);
+  }
 };
