@@ -88,7 +88,7 @@ var trimResponse = function(body) {
   });
 
   return results;
-}
+};
 
 /**
 * Calculate distance from lat/lng inputs in instaLocations
@@ -105,7 +105,7 @@ var sortByDistance = function(results,lat,lng) {
 
   results.data = _.sortBy(results.data, 'distance');
   return results.data;
-}
+};
 
 /**
 * Calculations from: http://stackoverflow.com/questions/7672759/how-to-calculate-distance-from-lat-long-in-php
@@ -123,7 +123,7 @@ var distanceBetween = function(lat1, lat2, lng1, lng2) {
   var distanceMiles = distance * 60 * 1.1515;
 
   return distance;
-}
+};
 
 /**
 * Calculations from: https://github.com/kvz/phpjs/blob/master/functions/math/deg2rad.js
@@ -133,4 +133,4 @@ var distanceBetween = function(lat1, lat2, lng1, lng2) {
 */
 var deg2radCalc = function(number) {
   return (number / 180) * Math.PI;
-}
+};
