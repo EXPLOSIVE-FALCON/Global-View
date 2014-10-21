@@ -1055,16 +1055,16 @@ GET /api/instagram
 
 #### Query Parameters
 
-| Name      | Type   | Description                                                                  |
-|-----------|--------|------------------------------------------------------------------------------|
-| latitude  | Number | Latitude for Location *                                                      |
-| longitude | Number | Longitude for Location *                                                     |
-| minDate   | Number | Unix Timestamp for beginning of requested Date/Time range *                  |
-| maxDate   | Number | Unix Timestamp for ending of requested Date/Time range *                     |
-| distance  | Number | Distance (in meters) from center of lat, lng inputs (default = 1000)         |
-| query     | String | Search Term for Instagram                                                    |
-| amount    | Number | Number of Results                                                            |
-| * = required                                                                                      |
+| Name           | Type   | Description                                                                  |
+|----------------|--------|------------------------------------------------------------------------------|
+| lat            | Number | Latitude for Location *                                                      |
+| lng            | Number | Longitude for Location *                                                     |
+| min_timestamp  | Number | Unix Timestamp for beginning of requested Date/Time range *                  |
+| max_timestamp  | Number | Unix Timestamp for ending of requested Date/Time range *                     |
+| distance       | Number | Distance (in meters) from center of lat, lng inputs (default = 1000) *       |
+| query          | String | Search Term for Instagram                                                    |
+| amount         | Number | Number of Results                                                            |
+| * = required                                                                                           |
 
 
 #### Response
@@ -1072,7 +1072,7 @@ GET /api/instagram
 Status-Code: 200 OK
 
 ```sh
-GET /api/instagram?query=hr&latitude=34&longitude=-118&minDate=1413747713000&maxDate=1413834152000&amount=20
+GET /api/instagram?lat=34&lng=-118&min_timestamp=1413747713000&max_timestamp=1413834152000&distance=1000
 ```
 
 ```
