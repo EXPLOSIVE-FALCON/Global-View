@@ -56,16 +56,15 @@ exports.twitter = function(req, res) {
 * @param {object} res Response Parameter from GET Request
 * @returns {json} Sends Client a JSON Object containing an Array of Instagram Photos
 */
+
 exports.instagram = function(req, res) {
   var query = req.query;
-  queryInstagram(query.lat,query.lng,query.minDate,query.maxDate,query.distance,function(err,photos) {
+  queryInstagram(query.lat,query.lng,query.min_timestamp,query.max_timestamp,query.distance,function(err,photos) {
     if(!!err) { throw 'Error: ' + err; }
-
     var response = {
       result: 'Request Received!',
       data: photos
     };
     res.json(response);
-
   });
 };

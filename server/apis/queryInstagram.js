@@ -48,24 +48,12 @@ var dayInMilliSeconds = function() {
 * @param {function} callback Callback function invoked on response results
 */
 module.exports = function(lat, lng, minDate, maxDate, distance, callback) {
-/**
-* converting minDate and maxDate from milliseconds to seconds to conform to Instagram API format
-*/
-
-  minDate = minDate/1000;
-  maxDate = maxDate/1000;
-
-/**
-* locationURL constructs the request to Instagram's Media API endpoint using the access token associated with the Vantage app and user input
-*/
+  minDate = Math.floor(minDate/1000);
+  maxDate = Math.floor(maxDate/1000);
 
   var locationURL = [instaSettings.mediaGET,'?','access_token=',instaSettings.headers.instaToken,'&lat=',lat,'&lng=',lng,'&max_timestamp=',maxDate,'&min_timestamp=',minDate,'&distance=',distance].join('').trim();
 
   request(locationURL,function(error,res,body) {
-/**
-* callback cleans up the response data and then sorts by proximity to user input latitude, longitude (in ascending order)
-*/
-
     callback(error,sortByDistance(trimResponse(body),lat,lng));
   });
 };
@@ -78,15 +66,8 @@ module.exports = function(lat, lng, minDate, maxDate, distance, callback) {
 * @param {object} body Object containing response from Instagram API call
 */
 var trimResponse = function(body) {
-/**
-* parse response object
-*/
-
   var results = JSON.parse(body);
 
-/**
-* Remove non-essential key/value pairs from each object in results.data array
-*/
   _(results.data).forEach(function(item,index,collection) {
     delete item.attribution;
     delete item.comments;
@@ -107,7 +88,7 @@ var trimResponse = function(body) {
   });
 
   return results;
-}
+};
 
 /**
 * Calculate distance from lat/lng inputs in instaLocations
@@ -118,20 +99,13 @@ var trimResponse = function(body) {
 */
 
 var sortByDistance = function(results,lat,lng) {
-  /**
-  * Calculates distance from user input lat, lng values to lat, lng values of each photo, adds distance key/value to each results.data element
-  */
-
   _(results.data).forEach(function(item,index,collection) {
     item.distance = distanceBetween(lat, item.location.latitude, lng, item.location.longitude);
   });
 
-  /**
-  * sort data by distance
-  */
   results.data = _.sortBy(results.data, 'distance');
   return results.data;
-}
+};
 
 /**
 * Calculations from: http://stackoverflow.com/questions/7672759/how-to-calculate-distance-from-lat-long-in-php
@@ -149,7 +123,7 @@ var distanceBetween = function(lat1, lat2, lng1, lng2) {
   var distanceMiles = distance * 60 * 1.1515;
 
   return distance;
-}
+};
 
 /**
 * Calculations from: https://github.com/kvz/phpjs/blob/master/functions/math/deg2rad.js
@@ -159,4 +133,4 @@ var distanceBetween = function(lat1, lat2, lng1, lng2) {
 */
 var deg2radCalc = function(number) {
   return (number / 180) * Math.PI;
-}
+};
