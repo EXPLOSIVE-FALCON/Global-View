@@ -11,6 +11,7 @@ var instaKeys = require('../instaKeys');
 * instaSettings contains the various API endpoint URLs
 * Currently using mediaGET for user requests that include latitude and longitude
 * Requests with a place descriptor and no latitude longitude will use locationGET and photoGET
+* @object
 */
 var instaSettings = {
   headers: instaKeys.keys,
@@ -28,14 +29,23 @@ var instaSettings = {
 */
 
 /**
-* helper function to calculate a single day in milliseconds
+* Helper function to calculate a single day in milliseconds
+* @function
 */
 var dayInMilliSeconds = function() {
   return 24*60*60*1000;
 };
 
 /**
-* direct query of instagram media using lat, lng co-ordinates
+* Direct query of instagram media using lat, lng co-ordinates and date/time range
+* @function
+* @memberof module:queryInstagram
+* @param {number} lat Latitude of user input location
+* @param {number} lng Longitude of user input location
+* @param {number} minDate Beginning of date/time range input by user (in milliseconds)
+* @param {number} maxDate End of date/time range input by user (in milliseconds)
+* @param {number} distance Distance (measured in meters) from center of lat, lng co-ordinates that can return photos (default is 1000, if nothing is specified)
+* @param {function} callback Callback function invoked on response results
 */
 module.exports = function(lat, lng, minDate, maxDate, distance, callback) {
 /**
@@ -64,10 +74,19 @@ module.exports = function(lat, lng, minDate, maxDate, distance, callback) {
 
 /**
 * trimResponse cleans up the response from Instagram's API and removes extraneous data
+* @function
+* @param {object} body Object containing response from Instagram API call
 */
 var trimResponse = function(body) {
+/**
+* parse response object
+*/
+
   var results = JSON.parse(body);
 
+/**
+* Remove non-essential key/value pairs from each object in results.data array
+*/
   _(results.data).forEach(function(item,index,collection) {
     delete item.attribution;
     delete item.comments;
@@ -92,21 +111,36 @@ var trimResponse = function(body) {
 
 /**
 * Calculate distance from lat/lng inputs in instaLocations
+* @function
+* @param {object} results Object containing response from Instagram API call (should already be pruned of non-essential key/value pairs
+* @param {number} lat Latitude of user input location
+* @param {number} lng Longitude of user input location
 */
-var sortByDistance = function(results,lat,lng) {
-    _(results.data).forEach(function(item,index,collection) {
-      item.distance = distanceBetween(lat, item.location.latitude, lng, item.location.longitude);
-    });
 
-    /**
-    * sort data by distance
-    */
-    results.data = _.sortBy(results.data, 'distance');
-    return results.data;
+var sortByDistance = function(results,lat,lng) {
+  /**
+  * Calculates distance from user input lat, lng values to lat, lng values of each photo, adds distance key/value to each results.data element
+  */
+
+  _(results.data).forEach(function(item,index,collection) {
+    item.distance = distanceBetween(lat, item.location.latitude, lng, item.location.longitude);
+  });
+
+  /**
+  * sort data by distance
+  */
+  results.data = _.sortBy(results.data, 'distance');
+  return results.data;
 }
 
 /**
 * Calculations from: http://stackoverflow.com/questions/7672759/how-to-calculate-distance-from-lat-long-in-php
+* Helper function that calculates distance between two sets of lat/lng co-ordinates
+* @function
+* @param {number} lat1 Latitude of first location
+* @param {number} lat2 Latitude of second location
+* @param {number} lng1 Longitude of first location
+* @param {number} lng2 Longitude of second location
 */
 var distanceBetween = function(lat1, lat2, lng1, lng2) {
   var lngDifference = lng1 - lng2;
@@ -119,6 +153,9 @@ var distanceBetween = function(lat1, lat2, lng1, lng2) {
 
 /**
 * Calculations from: https://github.com/kvz/phpjs/blob/master/functions/math/deg2rad.js
+* Helper function for distanceBetween function that converts degrees to randians
+* @function
+* @param {number} number
 */
 var deg2radCalc = function(number) {
   return (number / 180) * Math.PI;
