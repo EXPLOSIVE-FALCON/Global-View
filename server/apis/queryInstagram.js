@@ -37,8 +37,22 @@ module.exports = function(lat, lng, minDate, maxDate, distance, callback) {
 var trimResponse = function(body) {
   var results = JSON.parse(body);
   console.log(results);
+  for(var i=0;i<results.length;i++) {
+  /**
+  * remove extraneous response data
+  */
+  delete results[i].data.attribution;
+  delete results[i].data.comments;
+  delete results[i].data.filter;
+  delete results[i].data.likes.data;
+  delete results[i].data.likes.users_in_photo;
+  delete results[i].data.likes.user_has_liked;
+  delete results[i].data.likes.user;
+  delete results[i].data.caption.created_time;
+  delete results[i].data.caption.from;
+  delete results[i].data.caption.id;
+  }
 }
-
 
 var sortByDistance = function(error,results) {
 
@@ -60,12 +74,6 @@ var sortByDistance = function(error,results) {
 
 }
 
-
-/**
-* Sample invocation of instaMedia
-* instaMedia(37.77,-122.38,Date.now()-(5 * dayInMilliSeconds()),Date.now()-(5 * dayInMilliSeconds()),2000);
-*/
-
 /**
 * Calculations from: http://stackoverflow.com/questions/7672759/how-to-calculate-distance-from-lat-long-in-php
 */
@@ -85,4 +93,3 @@ var distanceBetween = function(lat1, lat2, lng1, lng2) {
 var deg2radCalc = function(number) {
   return (number / 180) * Math.PI;
 }
-
