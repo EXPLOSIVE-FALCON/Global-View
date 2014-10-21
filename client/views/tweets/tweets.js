@@ -2,12 +2,12 @@ angular.module('tweets', [])
 
 .controller('TweetsController', function ($scope, Twitter) {
   $scope.data = {};
-  console.log($scope.data);
   $scope.getTweets = function(request) {
+    console.log('inside getTweets contr')
     Twitter.getTweets(request)
       .then(function(data) {
         $scope.data = data;
+        console.log('scope Cntrl', $scope.data);
       })
   };
-  $scope.getTweets({});
 });

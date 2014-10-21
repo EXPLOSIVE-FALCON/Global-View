@@ -20,7 +20,7 @@
       <form ng-submit="getNews(request)">
         <div class="row">
           <div class="col-xs-2">
-            <input type="text" ng-model="request.event" class="form-control" placeholder="event">
+            <input type="text" ng-model="request.query" class="form-control" placeholder="query">
           </div>
           <div class="col-xs-2">
             <input type="text" class="form-control" ng-model="request.state" placeholder="state">
@@ -34,7 +34,33 @@
         <button class="btn btn-info">OK</button>
         </div>
 
+      <!-- using for testing twitter -->
+
+      <!-- <div ng-view></div> -->
+
       </form>
+
+        <!-- using for testing getLocation -->
+
+<!--       <form ng-submit="getLocation(request)">
+        <div class="row">
+          <div class="col-xs-2">
+            <input type="text" ng-model="request.query" class="form-control" placeholder="query">
+          </div>
+          <div class="col-xs-2">
+            <input type="text" class="form-control" ng-model="request.state" placeholder="state">
+          </div>
+          <div class="col-xs-2">
+            <input type="text" class="form-control" ng-model="request.city" placeholder="city">
+          </div>
+          <div class="col-xs-2">
+            <input type="text" class="form-control" ng-model="request.street" placeholder="street">
+          </div>
+        <button class="btn btn-info">OK</button>
+        </div>
+      </form> -->
+
+
       <!-- need to move it in new.html -->
       <ul class="list-group">
         <li class="list-group-item" ng-repeat="news in data">
@@ -42,10 +68,6 @@
         </li>
       </ul>
     </div>
-
-
-
-
 
   </body>
 </html>
