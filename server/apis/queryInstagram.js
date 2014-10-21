@@ -1,3 +1,6 @@
+/**
+* @module queryInstagram
+*/
 var request = require('request');
 var querystring = require('querystring');
 var util = require('util');
@@ -74,4 +77,4 @@ var deg2radCalc = function(number) {
 }
 
 // sample invocation of instagram API
-instaLocations(34,-118,1000);
+// instaLocations(34,-118,1000);

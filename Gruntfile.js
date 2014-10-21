@@ -4,7 +4,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     nodemon: {
       dev: {
-        script: 'server.js'
+        script: 'server/server.js'
       }
     },
     watch: {
@@ -17,11 +17,20 @@ module.exports = function(grunt) {
           livereload: true
         }
       } 
+    },
+    jsdoc : {
+      dist : {
+        src: ['server/**/*.js', 'server/*.js'], 
+        options: {
+          destination: 'docs'
+        }
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-nodemon');
+  grunt.loadNpmTasks('grunt-jsdoc');
 
   grunt.registerTask('server-dev', function (target) {
     var nodemon = grunt.util.spawn({
@@ -34,4 +43,8 @@ module.exports = function(grunt) {
 
     grunt.task.run([ 'watch' ]);
   });
+
+  grunt.registerTask('docs', [
+    'jsdoc'
+  ]);
 };
