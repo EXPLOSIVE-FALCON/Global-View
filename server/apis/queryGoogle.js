@@ -1,6 +1,4 @@
-/**
-* @module queryGoogle
-*/
+
 var request = require('request'); 
 var cheerio = require('cheerio');
 var querystring = require('querystring');
@@ -15,12 +13,18 @@ var removSel = 'div.s';
 var URL = 'http://www.google.com/search?hl=en&q=%s&start=0&sa=N&num=%s&ie=UTF-8&oe=UTF-8&tbm=nws';
 
 /**
+* @module queryGoogle
+*/
+
+/**
 * Scrapes news.google.com and returns an array of results;
 * @function queryGoogle
+* @memberof module:queryGoogle
+* @instance
 * @param {string} query Search Term on news.google.com
 * @param {string} location Search Location (City || State || Zip || Country) on news.google.com
 * @param {number} queryAmount Number of results to return - Max 50 
-* @param {function} callback callback function to invoke on results
+* @param {function} callback Callback function is invoked with results of query - callback(err, results)
 */
 module.exports = function(query, location, queryAmount, callback) {
   var search = query + ' location:' + location;
@@ -37,6 +41,7 @@ module.exports = function(query, location, queryAmount, callback) {
 * @function
 * @param {Object} element individual li.g element from DOM
 * @param {Object} $ jQuery like object containing entire DOM from results page
+* @returns {Object} Object containing title, link, source, description, & time for a single news result
 */
 var buildNewsStory = function(element, $) {
   var linkElem = $(element).find(linkSel);
@@ -62,6 +67,7 @@ var buildNewsStory = function(element, $) {
 * Takes Body of results page and invokes buildNewsStory over every news story in the DOM
 * @function
 * @param {Object} body blah
+* @returns {Array} Array of objects built from buildNewsStory
 */
 var getNews = function(body) {
   var $ = cheerio.load(body);
