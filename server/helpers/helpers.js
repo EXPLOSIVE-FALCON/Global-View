@@ -1,10 +1,9 @@
-var queryGoogle = require('../apis/queryGoogle');
-var queryInstagram = require('../apis/queryInstagram');
-var queryTwitter = require('../apis/queryTwitter');
-
 /**
 * @module helpers
 */
+var queryGoogle = require('../apis/queryGoogle');
+var queryInstagram = require('../apis/queryInstagram');
+var queryTwitter = require('../apis/queryTwitter');
 
 /**
 * Receives GET requests from /api/google
