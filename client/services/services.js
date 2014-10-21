@@ -1,7 +1,6 @@
 angular.module('services', [])
 
 .factory('Twitter', function($http) {
-
   var getTweets = function(request) {
     return $http({
       method: 'GET',
@@ -21,9 +20,7 @@ angular.module('services', [])
   };
 })
 
-
 .factory('Instagram', function($http) {
-
   var getPhotos = function(request) {
     return $http({
       method: 'GET',
@@ -43,12 +40,11 @@ angular.module('services', [])
   };
 })
 
-
 .factory('GoogleNews', function($http) {
   // search term, location, and amount of results to return
   var getNews = function(request) {
     //creating the object with request for this service
-    params = {
+    var params = {
       query: request.query,
       location: request.city, //!!! need to add logic of inserting the location field depending on user input (if there is only state, put state, if there is no location, search for all US,  etc.)
       amount: 5
@@ -76,9 +72,7 @@ angular.module('services', [])
 .factory('Location', function($http) {
   var getLocation = function(request) {
     var params = {
-      street: request.street,
-      city: request.city,
-      state: request.state
+      address: request.street + ',' + request.city + ',' +request.state
     };
 
     return $http({
@@ -87,16 +81,11 @@ angular.module('services', [])
       params: params
     })
     .then(function(response) {
-      console.log('response', response);
-      var latitude = response.results[0].geometry.location.lat;
-      var longitude = response.results[0].geometry.location.lng;
-      var coords = [lattitude, longitude];
-      var coords = {
-        latitude: latitude,
-        longitude: longitude
+      var result = response.data.results[0];
+      return {
+        latitude: result.geometry.location.lat,
+        longitude: result.geometry.location.lng
       };
-      console.log('coords', coords);
-      return coords;
     })
     .catch(function(error){
       console.error(error);
