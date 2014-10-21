@@ -21,20 +21,7 @@ var instaSettings = {
   photoGET2: '/media/recent'
 };
 
-/**
-* sample invocation of instamedia
-* instaMedia(37,-122,Date.now()-(4*dayInMilliSeconds()),Date.now()-(2*dayInMilliSeconds()),1000,function(error,media) {
-*  console.log('Response: ',media);
-* });
-*/
-
-/**
-* Helper function to calculate a single day in milliseconds
-* @function
-*/
-var dayInMilliSeconds = function() {
-  return 24*60*60*1000;
-};
+var dayInMilliSeconds = 24 * 60 * 60 * 1000;
 
 /**
 * Direct query of instagram media using lat, lng co-ordinates and date/time range
@@ -50,15 +37,13 @@ var dayInMilliSeconds = function() {
 module.exports = function(lat, lng, minDate, maxDate, distance, callback) {
   minDate = Math.floor(minDate/1000);
   maxDate = Math.floor(maxDate/1000);
-
-  var locationURL = [instaSettings.mediaGET,'?','access_token=',instaSettings.headers.instaToken,'&lat=',lat,'&lng=',lng,'&max_timestamp=',maxDate,'&min_timestamp=',minDate,'&distance=',distance].join('').trim();
+  var locationURL = instaSettings.mediaGET + '?access_token=%s&lat=%s&lng=%s&max_timestamp=%s&min_timestamp=%s&distance=%s';
+  locationURL = util.format(locationURL, instaSettings.headers.instaToken, lat, lng, maxDate, minDate, distance);
 
   request(locationURL,function(error,res,body) {
-    callback(error,sortByDistance(trimResponse(body),lat,lng));
+    callback(error, sortByDistance(trimResponse(body), lat, lng));
   });
 };
-
-
 
 /**
 * trimResponse cleans up the response from Instagram's API and removes extraneous data
@@ -67,8 +52,7 @@ module.exports = function(lat, lng, minDate, maxDate, distance, callback) {
 */
 var trimResponse = function(body) {
   var results = JSON.parse(body);
-
-  _(results.data).forEach(function(item,index,collection) {
+  return _.map(results.data, function(item, index, collection) {
     delete item.attribution;
     delete item.comments;
     delete item.filter;
@@ -79,15 +63,13 @@ var trimResponse = function(body) {
     delete item.users_in_photo;
     delete item.user_has_liked;
 
-    if(item.caption) {
-     delete item.caption.created_time;
-     delete item.caption.from;
-     delete item.caption.id;
+    if (item.caption) {
+      delete item.caption.created_time;
+      delete item.caption.from;
+      delete item.caption.id;
     }
-
+    return item;
   });
-
-  return results;
 };
 
 /**
@@ -96,41 +78,47 @@ var trimResponse = function(body) {
 * @param {object} results Object containing response from Instagram API call (should already be pruned of non-essential key/value pairs
 * @param {number} lat Latitude of user input location
 * @param {number} lng Longitude of user input location
+* @returns {array} Array containing a list of photos sorted by distance from query location
 */
+var sortByDistance = function(results, lat, lng) {
+  return _(results).map(function(item,index,collection) {
+    var firstLocation = {
+      lat: lat, 
+      lng: lng
+    };
+    var secondLocation = {
+      lat: item.location.latitude, 
+      lng: item.location.longitude
+    };
 
-var sortByDistance = function(results,lat,lng) {
-  _(results.data).forEach(function(item,index,collection) {
-    item.distance = distanceBetween(lat, item.location.latitude, lng, item.location.longitude);
-  });
-
-  results.data = _.sortBy(results.data, 'distance');
-  return results.data;
+    return _.extend(item, { distance: distance(firstLocation, secondLocation) });
+  }).sortBy('distance').valueOf();
 };
 
 /**
 * Calculations from: http://stackoverflow.com/questions/7672759/how-to-calculate-distance-from-lat-long-in-php
 * Helper function that calculates distance between two sets of lat/lng co-ordinates
 * @function
-* @param {number} lat1 Latitude of first location
-* @param {number} lat2 Latitude of second location
-* @param {number} lng1 Longitude of first location
-* @param {number} lng2 Longitude of second location
+* @param {object} loc1 Object containing lattitude, longitude of first location (lat, lng) 
+* @param {object} loc2 Object containing lattitude, longitude of second location (lat, lng) 
+* @returns {number} The distance between the first and second location
 */
-var distanceBetween = function(lat1, lat2, lng1, lng2) {
-  var lngDifference = lng1 - lng2;
-  var latDiffernce = (Math.sin(deg2radCalc(lat1)) * Math.sin(deg2radCalc(lat2))) + (Math.cos(deg2radCalc(lat1)) * Math.cos(deg2radCalc(lat2)));
-  var distance = deg2radCalc(Math.acos(lngDifference * Math.cos(deg2radCalc(latDiffernce))));
-  var distanceMiles = distance * 60 * 1.1515;
+var distance = function(loc1, loc2) {
+  var longitudeDiff = loc1.lng - loc2.lng;
+  var latitudeDiff = (Math.sin(degreeToRadian(loc1.lat)) * Math.sin(degreeToRadian(loc2.lat))) 
+                   + (Math.cos(degreeToRadian(loc1.lat)) * Math.cos(degreeToRadian(loc2.lat)));
 
+  var distance = degreeToRadian(Math.acos(longitudeDiff * Math.cos(degreeToRadian(latitudeDiff))));
+  var distanceMiles = distance * 60 * 1.1515;
   return distance;
 };
 
 /**
 * Calculations from: https://github.com/kvz/phpjs/blob/master/functions/math/deg2rad.js
-* Helper function for distanceBetween function that converts degrees to randians
+* Helper function for distance function that converts degrees to randians
 * @function
 * @param {number} number
 */
-var deg2radCalc = function(number) {
+var degreeToRadian = function(number) {
   return (number / 180) * Math.PI;
 };
