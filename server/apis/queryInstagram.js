@@ -2,7 +2,6 @@
 * @module queryInstagram
 */
 var request = require('request');
-var querystring = require('querystring');
 var util = require('util');
 var _ = require('lodash');
 var instaKeys = require('../instaKeys');
@@ -21,6 +20,7 @@ var instaSettings = {
   photoGET2: '/media/recent'
 };
 
+// amount of milliseconds in a day
 var dayInMilliSeconds = 24 * 60 * 60 * 1000;
 
 /**
@@ -40,7 +40,7 @@ module.exports = function(lat, lng, minDate, maxDate, distance, callback) {
   var locationURL = instaSettings.mediaGET + '?access_token=%s&lat=%s&lng=%s&max_timestamp=%s&min_timestamp=%s&distance=%s';
   locationURL = util.format(locationURL, instaSettings.headers.instaToken, lat, lng, maxDate, minDate, distance);
 
-  request(locationURL,function(error,res,body) {
+  request(locationURL,function(error, res, body) {
     callback(error, sortByDistance(trimResponse(body), lat, lng));
   });
 };
@@ -81,7 +81,7 @@ var trimResponse = function(body) {
 * @returns {array} Array containing a list of photos sorted by distance from query location
 */
 var sortByDistance = function(results, lat, lng) {
-  return _(results).map(function(item,index,collection) {
+  return _(results).map(function(item, index, collection) {
     var firstLocation = {
       lat: lat, 
       lng: lng
