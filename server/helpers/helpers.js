@@ -59,14 +59,14 @@ exports.twitter = function(req, res) {
 exports.instagram = function(req, res) {
   var query = req.query;
   console.log(query);
-  queryInstagram(query.lat,query.lng,query.minDate,query.maxDate,distance,function(error,photos) {
-    if(!!error) {
-      throw 'Error: ' + error;
-    }
+  queryInstagram(query.lat,query.lng,query.minDate,query.maxDate,distance,function(err,photos) {
+    if(!!err) { throw 'Error: ' + err; }
+
     var response = {
       result: 'Request Received!',
       data: photos
     };
     res.json(response);
+
   });
 };

@@ -7,15 +7,29 @@ var util = require('util');
 var _ = require('lodash');
 var instaKeys = require('../instaKeys');
 
+/**
+* instaSettings contains the various API endpoint URLs
+* Currently using mediaGET for user requests that include latitude and longitude
+* Requests with a place descriptor and no latitude longitude will use locationGET and photoGET
+*/
 var instaSettings = {
   headers: instaKeys.keys,
   mediaGET: 'https://api.instagram.com/v1/media/search',
   locationGET: 'https://api.instagram.com/v1/locations/search',
   photoGET: 'https://api.instagram.com/v1/locations/',
   photoGET2: '/media/recent'
-
 };
 
+/**
+* sample invocation of instamedia
+* instaMedia(37,-122,Date.now()-(4*dayInMilliSeconds()),Date.now()-(2*dayInMilliSeconds()),1000,function(error,media) {
+*  console.log('Response: ',media);
+* });
+*/
+
+/**
+* helper function to calculate a single day in milliseconds
+*/
 var dayInMilliSeconds = function() {
   return 24*60*60*1000;
 };
@@ -24,54 +38,71 @@ var dayInMilliSeconds = function() {
 * direct query of instagram media using lat, lng co-ordinates
 */
 module.exports = function(lat, lng, minDate, maxDate, distance, callback) {
+/**
+* converting minDate and maxDate from milliseconds to seconds to conform to Instagram API format
+*/
+
   minDate = minDate/1000;
   maxDate = maxDate/1000;
+
+/**
+* locationURL constructs the request to Instagram's Media API endpoint using the access token associated with the Vantage app and user input
+*/
 
   var locationURL = [instaSettings.mediaGET,'?','access_token=',instaSettings.headers.instaToken,'&lat=',lat,'&lng=',lng,'&max_timestamp=',maxDate,'&min_timestamp=',minDate,'&distance=',distance].join('').trim();
 
   request(locationURL,function(error,res,body) {
-    callback(error,sortByDistance(trimResponse(body)));
+/**
+* callback cleans up the response data and then sorts by proximity to user input latitude, longitude (in ascending order)
+*/
+
+    callback(error,sortByDistance(trimResponse(body),lat,lng));
   });
 };
 
+
+
+/**
+* trimResponse cleans up the response from Instagram's API and removes extraneous data
+*/
 var trimResponse = function(body) {
   var results = JSON.parse(body);
-  console.log(results);
-  for(var i=0;i<results.length;i++) {
-  /**
-  * remove extraneous response data
-  */
-  delete results[i].data.attribution;
-  delete results[i].data.comments;
-  delete results[i].data.filter;
-  delete results[i].data.likes.data;
-  delete results[i].data.likes.users_in_photo;
-  delete results[i].data.likes.user_has_liked;
-  delete results[i].data.likes.user;
-  delete results[i].data.caption.created_time;
-  delete results[i].data.caption.from;
-  delete results[i].data.caption.id;
-  }
+
+  _(results.data).forEach(function(item,index,collection) {
+    delete item.attribution;
+    delete item.comments;
+    delete item.filter;
+    delete item.likes.data;
+    delete item.likes.users_in_photo;
+    delete item.likes.user_has_liked;
+    delete item.likes.user;
+    delete item.users_in_photo;
+    delete item.user_has_liked;
+
+    if(item.caption) {
+     delete item.caption.created_time;
+     delete item.caption.from;
+     delete item.caption.id;
+    }
+
+  });
+
+  return results;
 }
 
-var sortByDistance = function(error,results) {
+/**
+* Calculate distance from lat/lng inputs in instaLocations
+*/
+var sortByDistance = function(results,lat,lng) {
+    _(results.data).forEach(function(item,index,collection) {
+      item.distance = distanceBetween(lat, item.location.latitude, lng, item.location.longitude);
+    });
 
-  if(!!error) {
-    throw 'Error: ' + error;
-  } else {
-    /**
-    * Calculate distance from lat/lng inputs in instaLocations
-    */
-    for(var i=0;i<results.data.length;i++) {
-      results.data[i].distance = distanceBetween(lat, results.data[i].location.latitude, lng, results.data[i].location.longitude);
-    }
     /**
     * sort data by distance
     */
     results.data = _.sortBy(results.data, 'distance');
     return results.data;
-  }
-
 }
 
 /**
@@ -84,7 +115,6 @@ var distanceBetween = function(lat1, lat2, lng1, lng2) {
   var distanceMiles = distance * 60 * 1.1515;
 
   return distance;
-
 }
 
 /**
