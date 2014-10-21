@@ -1,4 +1,6 @@
-
+/**
+* @module queryGoogle
+*/
 var request = require('request'); 
 var cheerio = require('cheerio');
 var querystring = require('querystring');
@@ -11,10 +13,6 @@ var linkSel = 'h3.r a';
 var removSel = 'div.s';
 
 var URL = 'http://www.google.com/search?hl=en&q=%s&start=0&sa=N&num=%s&ie=UTF-8&oe=UTF-8&tbm=nws';
-
-/**
-* @module queryGoogle
-*/
 
 /**
 * Scrapes news.google.com and returns an array of results;
