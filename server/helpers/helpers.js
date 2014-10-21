@@ -18,7 +18,7 @@ exports.google = function(req, res) {
   var query = req.query;
   query.amount = query.amount || 5;
   queryGoogle(query.query, query.location, query.amount, function(err, newsResults) {
-    if (!!err) { throw 'Erorr: ' + err; }
+    if (!!err) { throw 'Error: ' + err; }
 
     var sendBack = {
       result: 'Request Received!',
@@ -58,9 +58,14 @@ exports.twitter = function(req, res) {
 */
 exports.instagram = function(req, res) {
   var query = req.query;
-  var response = {
-    result: 'Request Received!',
-    data: query
-  };
-  res.json(response);
+  queryInstagram(query.lat,query.lng,query.minDate,query.maxDate,query.distance,function(err,photos) {
+    if(!!err) { throw 'Error: ' + err; }
+
+    var response = {
+      result: 'Request Received!',
+      data: photos
+    };
+    res.json(response);
+
+  });
 };
