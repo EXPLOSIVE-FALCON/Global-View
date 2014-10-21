@@ -1,3 +1,17 @@
 body {
   margin: 30px;
 }
+
+.logo {
+  font-family: 'Chango', cursive;
+  color: #5BC0DE;
+  margin-left: 30px;
+}
+
+.input_form {
+  /*border: 2px solid rgb(241, 241, 241);*/
+  border-radius: 8px;
+  padding: 35px;
+  /*background-image: url('pics/bg.png');*/
+  background-color: rgb(242, 242, 242);
+}
