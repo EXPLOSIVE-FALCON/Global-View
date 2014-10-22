@@ -5,8 +5,6 @@ angular.module('services', [])
   var getData = function(request){
     console.log('inside getData');
 
-    // $scope.loading = false;
-
     var params = {
       street: request.street,
       city: request.city,

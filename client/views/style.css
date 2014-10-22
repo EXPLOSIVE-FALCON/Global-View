@@ -51,5 +51,6 @@ ul {
 }
 
 .photo {
+  border: 10px solid white;
   padding: 10px;
 }
