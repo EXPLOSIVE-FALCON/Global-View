@@ -1,5 +1,61 @@
 angular.module('services', [])
 
+.factory('Query', function($q, $http, Location, Twitter, Instagram, GoogleNews){
+
+  var getData = function(request){
+    console.log('inside getData');
+
+    var params = {
+      street: request.street,
+      city: request.city,
+      state: request.state
+    };
+
+    //request to get info from all services. Need to get latitude and longitude before sending request to the Instagram and Twitter
+    return $q.all([
+      GoogleNews.getNews(request),
+      Location.getLocation(params)
+    ]).then(function(results) {
+      var instaParams = {
+          query: request.query,
+          lat: results[1].latitude,
+          lng: results[1].longitude,
+          min_timestamp: +request.date,
+          max_timestamp: moment(request.date).add(1, 'days').valueOf(),
+          distance: 1000,
+          amount: 8 //!!! need to change it when we get scrolling
+        };
+
+      // var tweetParams = {
+      //   query: request.query,
+      //   latitude: results[1].latitude,
+      //   longitude: results[1].longitude
+      // };
+
+      return $q.all([
+          Instagram.getPhotos(instaParams)
+          // Twitter.getTweets(tweetParams)
+        ]). then(function(data){
+          return {
+            news: results[0].data,
+            photos: data[0].data
+            // tweets: data[1]
+          };
+        })
+        .catch(function(error){
+          console.error(error);
+        })
+    })
+    .catch(function(error){
+      console.error(error);
+    })
+  }
+
+  return {
+    getData: getData
+  }
+})
+
 .factory('Twitter', function($http) {
   var getTweets = function(request) {
     return $http({
@@ -24,7 +80,8 @@ angular.module('services', [])
   var getPhotos = function(request) {
     return $http({
       method: 'GET',
-      url: 'api/instagram'
+      url: 'api/instagram',
+      params: request
     })
     .then(function(response){
       console.log('response.data');

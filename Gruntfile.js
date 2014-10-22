@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-  // 1. All configuration goes here 
+  // 1. All configuration goes here
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     nodemon: {
@@ -16,7 +16,7 @@ module.exports = function(grunt) {
         options: {
           livereload: true
         }
-      } 
+      }
     },
     // watch: {
     //   scripts: {
@@ -28,11 +28,11 @@ module.exports = function(grunt) {
     //     options: {
     //       livereload: true
     //     }
-    //   } 
+    //   }
     // },
     jsdoc : {
       dist : {
-        src: ['server/**/*.js', 'server/*.js'], 
+        src: ['server/**/*.js', 'server/*.js'],
         options: {
           destination: 'docs'
         }
