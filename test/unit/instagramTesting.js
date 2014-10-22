@@ -13,8 +13,9 @@ var assert = require("assert");
 6. expect certain fields to exist for each element
 7. expect minDate and maxDate to be numbers
 8. expect minDate and maxDate to be expressed in seconds when building location URL
-9. expect dayInMilliSeconds() to equal 86,400,000
-10. expect minDate and maxDate to not be greater than 2 days apart (86400000 * 2)
+9. expect minDate and maxDate to not be greater than 2 days apart (86400000 * 2)
+10. expect minDate to always be less than or equal to maxDate
+11. expect Instagram response results to be within <distance input> of <lat input> and <lng input>
 
 */
 
@@ -42,12 +43,12 @@ expect(typeof results.data[0].attribution).to.equal('undefined');
 expect(minDate < (Date.now()/1000)).to.equal(true);
 expect(maxDate < (Date.now()/1000)).to.equal(true);
 
-
 // 9
-expect(dayInMilliSeconds()).to.equal.(86400000);
+expect(minDate + (86400000 * 2) <= maxDate).to.equal(true);
 
 // 10
 expect(maxDate - minDate < (dayInMilliSeconds() * 2)/1000).to.equal(true);
+
 
 
 
