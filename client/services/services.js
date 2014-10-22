@@ -1,6 +1,6 @@
 angular.module('services', [])
 
-.factory('Query', function($q, $http, Location, Twitter, Instagram){
+.factory('Query', function($q, $http, Location, Twitter, Instagram, GoogleNews){
 
   var getData = function(request){
     console.log('inside getData');
@@ -13,35 +13,54 @@ angular.module('services', [])
       state: request.state
     };
 
-    // return $q.all([
-    //   GoogleNews.getNews(request);
-    // ]).then(function(values) {
-    //   return values
-    // })
-
-
-    return Location.getLocation(params)
-      .then(function(coords){
-
-        //building an object for instagram API
-        var instaParams = {
+    //request to get info from all services. Need to get latitude and longitude before sending request to the Instagram and Twitter
+    return $q.all([
+      GoogleNews.getNews(request),
+      Location.getLocation(params)
+    ]).then(function(results) {
+      var instaParams = {
           query: request.query,
-          lat: coords.latitude,
-          lng: coords.longitude,
+          lat: results[1].latitude,
+          lng: results[1].longitude,
           min_timestamp: +request.date,
           max_timestamp: moment(request.date).add(1, 'days').valueOf(),
           distance: 1000,
-          amount: 7 //!!! need to change it later
+          amount: 8 //!!! need to change it when we get scrolling
         };
 
-        return Instagram.getPhotos(instaParams)
-          .then(function(photoData) {
-            console.log('photoData', photoData);
-            return photoData;
-          })
-          .catch(function(error){
-            console.error(error);
-          })
+      return $q.all([
+          Instagram.getPhotos(instaParams)
+        ]). then(function(data){
+          return {
+            news: results[0].data,
+            photos: data[0].data
+          };
+        })
+    })
+
+
+    // return Location.getLocation(params)
+    //   .then(function(coords){
+
+    //     //building an object for instagram API
+    //     var instaParams = {
+    //       query: request.query,
+    //       lat: coords.latitude,
+    //       lng: coords.longitude,
+    //       min_timestamp: +request.date,
+    //       max_timestamp: moment(request.date).add(1, 'days').valueOf(),
+    //       distance: 1000,
+    //       amount: 7 //!!! need to change it later
+    //     };
+
+    //     return Instagram.getPhotos(instaParams)
+    //       .then(function(photoData) {
+    //         console.log('photoData', photoData);
+    //         return photoData;
+    //       })
+    //       .catch(function(error){
+    //         console.error(error);
+    //       })
 
         // var tweetParams = {
         //   query: request.query,
@@ -57,10 +76,10 @@ angular.module('services', [])
         //   .catch(function(error){
         //     console.error(error);
         //   })
-      })
-      .catch(function(error){
-        console.error(error);
-      })
+      // })
+      // .catch(function(error){
+      //   console.error(error);
+      // })
   }
 
   return {

@@ -15,8 +15,8 @@ angular.module('news', [])
     console.log('inside getData cntrl, request:', request);
     Query.getData(request)
       .then(function(result) {
-        $scope.data.photos = result.data;
-        console.log('$scope.data', $scope.data.photos);
+        $scope.data = result;
+        console.log('$scope.data', $scope.data);
       })
   };
 
