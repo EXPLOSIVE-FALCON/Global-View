@@ -1,13 +1,14 @@
 var assert = require("assert");
 
-/*
-1. expect inputs to instagram API call to be the right type (and exist)
-2. expect response from instagram API call to include keys with values of a certain type
-3. expect response from instagram API call to not include keys removed in trimResponse()
-4. expect min_timestamp and max_timestamp to be expressed in seconds when building location URL
-5. expect min_timestamp and max_timestamp to not be greater than 2 days apart (86400000 * 2) and min_timestamp to be less than max_timestamp
-6. expect value of data[i].distance to calculate properly, sort in ascending order and to be within <distance input> of <lat input> and <lng input>
-*/
+// 1. expect inputs to instagram API call to be the right type (and exist)
+// 2. expect response from instagram API call to include keys with values of a certain type
+// 3. expect response from instagram API call to not include keys removed in trimResponse()
+// 4. expect min_timestamp and max_timestamp to be expressed in seconds when building location URL
+// 5. expect min_timestamp and max_timestamp to not be greater than 2 days apart (86400000 * 2) and min_timestamp to be less than max_timestamp
+// 6. expect value of data[i].distance to calculate properly, sort in ascending order and to be within <distance input> of <lat input> and <lng input>
+
+// need to call instagram API and use results
+// ?? use curl http://127.0.0.1:5000/api/instagram?lat=34&lng=-118&min_timestamp=1413747713000&max_timestamp=1413834152000&distance=1000
 
 // 1
 describe('Instagram API inputs', function() {
@@ -19,7 +20,6 @@ describe('Instagram API inputs', function() {
     expect(typeof distance).to.equal('number');
   });
 });
-
 
 // 2
 describe('Instagram API response', function() {
@@ -38,7 +38,6 @@ describe('Instagram API response', function() {
     expect(typeof results.data[0].distance).to.equal('number');
   });
 });
-
 
 // 3
 describe('trimResponse function', function() {
