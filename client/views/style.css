@@ -16,12 +16,20 @@ a:hover {
   font-family: 'Chango', cursive;
   color: #5BC0DE;
   margin-left: 30px;
+  display: inline;
+}
+
+.logo-text {
+  font-size: 1.3em;
+  color: #e67e22;
+  padding: 0.5em;
 }
 
 .input_form {
   border-radius: 8px;
   padding: 35px;
   background-color: rgb(242, 242, 242);
+  margin-top: 1em;
 }
 
 ul {

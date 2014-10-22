@@ -18,9 +18,10 @@
 
   </head>
   <body>
-    <h1 class="logo">Vantage</h1>
+    <h1 class="logo">Vantage</h1> 
+    <span class="logo-text">event dashboard</span>
     <div id="container" ng-controller="NewsController" >
- <!--      <form ng-submit="getNews(request)">
+      <form ng-submit="getData(request)">
         <div class="input_form">
           <div class="row">
             <div class="col-xs-2 col-xs-offset-1">
@@ -43,45 +44,14 @@
             </div>
           </div>
         </div>
- -->
-      <!-- using for testing twitter -->
 
-      <!-- <div ng-view></div> -->
-
-      <!-- </form> -->
-
-        <!-- using for testing getLocation -->
-
-      <form ng-submit="getData(request)">
-        <div class="row">
-          <div class="col-xs-2">
-            <input type="text" ng-model="request.query" class="form-control" placeholder="query">
-          </div>
-          <div class="col-xs-2">
-            <input type="text" class="form-control" ng-model="request.state" placeholder="state">
-          </div>
-          <div class="col-xs-2">
-            <input type="text" class="form-control" ng-model="request.city" placeholder="city">
-          </div>
-          <div class="col-xs-2">
-            <input type="text" class="form-control" ng-model="request.street" placeholder="street">
-          </div>
-          <div class="col-xs-2">
-            <input class="form-control" type="date" ng-model="request.date"></input>
-          </div>
-        <button class="btn btn-info">OK</button>
-        </div>
-      </form>
-
-
-      <!-- need to move it in news.html -->
-<!--       <div class="col-xs-8 news_block">
+      <div class="col-xs-8 news_block">
         <ul>
-          <li class="news" ng-repeat="news in data">
+          <li class="news" ng-repeat="news in data.news">
             <span class="news_time">{{news.time}}</span> - <a href="{{news.link}}" target="_blank">{{news.title}}</a>
           </li>
         </ul>
-      </div> -->
+      </div>
 
       <div class="col-xs-8 photo_block">
         <div ng-repeat="photo in data.photos">

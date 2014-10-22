@@ -28,58 +28,29 @@ angular.module('services', [])
           amount: 8 //!!! need to change it when we get scrolling
         };
 
+      // var tweetParams = {
+      //   query: request.query,
+      //   latitude: results[1].latitude,
+      //   longitude: results[1].longitude
+      // };
+
       return $q.all([
           Instagram.getPhotos(instaParams)
+          // Twitter.getTweets(tweetParams)
         ]). then(function(data){
           return {
             news: results[0].data,
             photos: data[0].data
+            // tweets: data[1]
           };
         })
+        .catch(function(error){
+          console.error(error);
+        })
     })
-
-
-    // return Location.getLocation(params)
-    //   .then(function(coords){
-
-    //     //building an object for instagram API
-    //     var instaParams = {
-    //       query: request.query,
-    //       lat: coords.latitude,
-    //       lng: coords.longitude,
-    //       min_timestamp: +request.date,
-    //       max_timestamp: moment(request.date).add(1, 'days').valueOf(),
-    //       distance: 1000,
-    //       amount: 7 //!!! need to change it later
-    //     };
-
-    //     return Instagram.getPhotos(instaParams)
-    //       .then(function(photoData) {
-    //         console.log('photoData', photoData);
-    //         return photoData;
-    //       })
-    //       .catch(function(error){
-    //         console.error(error);
-    //       })
-
-        // var tweetParams = {
-        //   query: request.query,
-        //   latitude: coords.latitude,
-        //   longitude: coords.longitude //!!! need to add date and radius
-        // };
-
-        // return Twitter.getTweets(tweetParams)
-        //   .then(function(tweetData) {
-        //     $scope.data.tweets = tweetData;
-        //     return $scope.data.tweets;
-        //   })
-        //   .catch(function(error){
-        //     console.error(error);
-        //   })
-      // })
-      // .catch(function(error){
-      //   console.error(error);
-      // })
+    .catch(function(error){
+      console.error(error);
+    })
   }
 
   return {
