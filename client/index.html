@@ -74,14 +74,24 @@
       </form>
 
 
-      <!-- need to move it in new.html -->
-      <div class="col-xs-8 news_block">
+      <!-- need to move it in news.html -->
+<!--       <div class="col-xs-8 news_block">
         <ul>
           <li class="news" ng-repeat="news in data">
             <span class="news_time">{{news.time}}</span> - <a href="{{news.link}}" target="_blank">{{news.title}}</a>
           </li>
         </ul>
+      </div> -->
+
+      <div class="col-xs-8 photo_block">
+        <div ng-repeat="photo in data.photos">
+          <div class="col-xs-2">
+            <img class="photo" src="{{photo.images.thumbnail.url}}">
+          </div>
+        </div>
       </div>
+
+
     </div>
 
   </body>

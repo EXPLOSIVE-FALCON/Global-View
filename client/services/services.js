@@ -1,6 +1,6 @@
 angular.module('services', [])
 
-.factory('Query', function($http, Location, Twitter, Instagram){
+.factory('Query', function($q, $http, Location, Twitter, Instagram){
 
   var getData = function(request){
     console.log('inside getData');
@@ -13,6 +13,13 @@ angular.module('services', [])
       state: request.state
     };
 
+    // return $q.all([
+    //   GoogleNews.getNews(request);
+    // ]).then(function(values) {
+    //   return values
+    // })
+
+
     return Location.getLocation(params)
       .then(function(coords){
 
@@ -23,14 +30,12 @@ angular.module('services', [])
           lng: coords.longitude,
           min_timestamp: +request.date,
           max_timestamp: moment(request.date).add(1, 'days').valueOf(),
-          distance: 1000
+          distance: 1000,
+          amount: 7 //!!! need to change it later
         };
-
-        console.log('instaParams', instaParams);
 
         return Instagram.getPhotos(instaParams)
           .then(function(photoData) {
-            // $scope.data.tweets = tweetData;
             console.log('photoData', photoData);
             return photoData;
           })
