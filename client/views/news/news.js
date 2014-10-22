@@ -1,6 +1,6 @@
 angular.module('news', [])
 
-.controller('NewsController', function ($scope, GoogleNews, Location) {
+.controller('NewsController', function ($scope, GoogleNews, Location, Query) {
   $scope.data = {};
   $scope.getNews = function(request) {
     console.log('request', request);
@@ -19,12 +19,13 @@ angular.module('news', [])
       })
   };
 
-  // $scope.getData = function(request) {
-  //   Query.getData(request)
-  //     .then(function(data) {
-  //       $scope.data = data;
-  //       console.log('$scope.data', $scope.data);
-  //     })
-  // };
+  $scope.getData = function(request) {
+    console.log('inside getData cntrl, request:', request);
+    Query.getData(request)
+      .then(function(result) {
+        // $scope.data = result.data;
+        console.log('result', result);
+      })
+  };
 
 });

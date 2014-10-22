@@ -5,6 +5,7 @@
     <title>Vantage</title>
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/moment/moment.js"></script>
     <script src="services/services.js"></script>
     <script src="views/tweets/tweets.js"></script>
     <script src="views/news/news.js"></script>
@@ -19,7 +20,7 @@
   <body>
     <h1 class="logo">Vantage</h1>
     <div id="container" ng-controller="NewsController" >
-      <form ng-submit="getNews(request)">
+ <!--      <form ng-submit="getNews(request)">
         <div class="input_form">
           <div class="row">
             <div class="col-xs-2 col-xs-offset-1">
@@ -42,16 +43,16 @@
             </div>
           </div>
         </div>
-
+ -->
       <!-- using for testing twitter -->
 
       <!-- <div ng-view></div> -->
 
-      </form>
+      <!-- </form> -->
 
         <!-- using for testing getLocation -->
 
-<!--       <form ng-submit="getLocation(request)">
+      <form ng-submit="getData(request)">
         <div class="row">
           <div class="col-xs-2">
             <input type="text" ng-model="request.query" class="form-control" placeholder="query">
@@ -65,9 +66,12 @@
           <div class="col-xs-2">
             <input type="text" class="form-control" ng-model="request.street" placeholder="street">
           </div>
+          <div class="col-xs-2">
+            <input class="form-control" type="date" ng-model="request.date"></input>
+          </div>
         <button class="btn btn-info">OK</button>
         </div>
-      </form> -->
+      </form>
 
 
       <!-- need to move it in new.html -->

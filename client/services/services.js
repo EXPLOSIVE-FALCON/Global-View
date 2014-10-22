@@ -1,10 +1,11 @@
 angular.module('services', [])
 
-.factory('Query', function($q, $http, Location, Twitter, Instagram){
+.factory('Query', function($http, Location, Twitter, Instagram){
 
   var getData = function(request){
+    console.log('inside getData');
 
-    $scope.loading = false;
+    // $scope.loading = false;
 
     var params = {
       street: request.street,
@@ -14,31 +15,44 @@ angular.module('services', [])
 
     return Location.getLocation(params)
       .then(function(coords){
-        var tweetParams = {
+
+        //building an object for instagram API
+        var instaParams = {
           query: request.query,
-          latitude: coords.latitude,
-          longitude: coords.longitude //!!! need to add date and radius
+          lat: coords.latitude,
+          lng: coords.longitude,
+          min_timestamp: +request.date,
+          max_timestamp: moment(request.date).add(1, 'days').valueOf(),
+          distance: 1000
         };
 
-        return Twitter.getTweets(tweetParams)
-          .then(function(tweetData) {
-            $scope.data.tweets = tweetData;
-            return $scope.data.tweets;
+        console.log('instaParams', instaParams);
+
+        return Instagram.getPhotos(instaParams)
+          .then(function(photoData) {
+            // $scope.data.tweets = tweetData;
+            console.log('photoData', photoData);
+            return photoData;
           })
           .catch(function(error){
             console.error(error);
           })
+
+        // var tweetParams = {
+        //   query: request.query,
+        //   latitude: coords.latitude,
+        //   longitude: coords.longitude //!!! need to add date and radius
+        // };
+
+        // return Twitter.getTweets(tweetParams)
+        //   .then(function(tweetData) {
+        //     $scope.data.tweets = tweetData;
+        //     return $scope.data.tweets;
+        //   })
+        //   .catch(function(error){
+        //     console.error(error);
+        //   })
       })
-
-      //finish it when get info about Insta API
-      //   var instaParams = {
-
-      //   }
-      //   Instagram.getPhotos()
-      //     .then(function(photoData) {
-      //       $scope.data.photos = photoData;
-      //     })
-      // })
       .catch(function(error){
         console.error(error);
       })
@@ -73,7 +87,8 @@ angular.module('services', [])
   var getPhotos = function(request) {
     return $http({
       method: 'GET',
-      url: 'api/instagram'
+      url: 'api/instagram',
+      params: request
     })
     .then(function(response){
       console.log('response.data');
