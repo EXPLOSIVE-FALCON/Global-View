@@ -6,6 +6,7 @@ var assert = require("assert");
 // 4. expect min_timestamp and max_timestamp to be expressed in seconds when building location URL
 // 5. expect min_timestamp and max_timestamp to not be greater than 2 days apart (86400000 * 2) and min_timestamp to be less than max_timestamp
 // 6. expect value of data[i].distance to calculate properly, sort in ascending order and to be within <distance input> of <lat input> and <lng input>
+// 7. expect value of data[i].created_time to be between <min_timestamp> and <max_timestamp>
 
 // need to call instagram API and use results
 // ?? use curl http://127.0.0.1:5000/api/instagram?lat=34&lng=-118&min_timestamp=1413747713000&max_timestamp=1413834152000&distance=1000
@@ -79,6 +80,13 @@ describe('distance between user lat/lng inputs and lat/lng of instagram photos',
 
   it('should sort correctly', function() {
     expect(results.data[0].distance < results.data[1].distance).to.equal(true);
+  });
+});
+
+// 7
+describe('timestamp of instagram photos', function() {
+  it('should be between min_timestamp and max_timestamp', function() {
+    expect(parseInt(results.data[0].created_time) <= max_timestamp && parseInt(results.data[0].created_time) >= min_timestamp).to.equal(true);
   });
 });
 
