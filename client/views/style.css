@@ -1,5 +1,14 @@
 body {
   margin: 30px;
+  font-family: 'Raleway', sans-serif;
+}
+
+a {
+  color: #53B0DB;
+}
+
+a:hover {
+  color: gray;
 }
 
 .logo {
@@ -9,9 +18,25 @@ body {
 }
 
 .input_form {
-  /*border: 2px solid rgb(241, 241, 241);*/
   border-radius: 8px;
   padding: 35px;
-  /*background-image: url('pics/bg.png');*/
   background-color: rgb(242, 242, 242);
+}
+
+ul {
+  list-style-type: none;
+}
+
+.news {
+  border-bottom: 1px solid rgb(221, 221, 221);
+  padding: 4px;
+}
+
+.news_time {
+  color: rgb(187, 187, 187);
+  /*size: 0.8em;*/
+}
+
+.news_block {
+  margin: 30px 0px 0 0px;
 }
