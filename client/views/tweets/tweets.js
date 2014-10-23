@@ -1,4 +1,4 @@
-angular.module('tweets', [])
+angular.module('tweets', ['service_twitter'])
 
 .controller('TweetsController', function ($scope, Twitter) {
   $scope.data = {};

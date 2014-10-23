@@ -1,7 +1,7 @@
 angular.module('vantage', [
-  'services',
   'tweets',
   'news',
+  'search',
   'photos',
   'ngRoute'
 ])
@@ -18,6 +18,10 @@ angular.module('vantage', [
     .when('/photos', {
       templateUrl: 'views/photos/photos.html',
       controller: 'PhotoController'
+    })
+    .when('/search', {
+      templateUrl: 'views/serach/search.html',
+      controller: 'SearchControler'
     })
     .otherwise({
       redirectTo: '/'

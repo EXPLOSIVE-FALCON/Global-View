@@ -1,4 +1,4 @@
-angular.module('news', [])
+angular.module('news', ['service_news'])
 
 .controller('NewsController', function ($scope, GoogleNews, Location, Query) {
   $scope.data = {};
@@ -10,14 +10,4 @@ angular.module('news', [])
         console.log('inside get', $scope.data);
       })
   };
-
-  $scope.getData = function(request) {
-    console.log('inside getData cntrl, request:', request);
-    Query.getData(request)
-      .then(function(result) {
-        $scope.data = result;
-        console.log('$scope.data', $scope.data);
-      })
-  };
-
 });

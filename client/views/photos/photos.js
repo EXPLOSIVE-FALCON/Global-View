@@ -1,4 +1,4 @@
-angular.module('photos', [])
+angular.module('photos', ['service_instagram'])
 
 .controller('PhotoController', function ($scope, Instagram) {
   $scope.data = {};
