@@ -30,4 +30,5 @@ dist/
 node_modules/
 client/lib
 server/instaKeys.js
+server/twitterKeys.js
 docs
