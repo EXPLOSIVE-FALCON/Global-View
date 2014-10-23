@@ -38,13 +38,20 @@ exports.google = function(req, res) {
 * @param {object} res Response Parameter from GET Request
 * @returns {json} Sends Client a JSON Object containing an Array of Tweets
 */
+
+
 exports.twitter = function(req, res) {
   var query = req.query;
-  var response = {
-    result: 'Request Received!',
-    data: query
-  };
-  res.json(response);
+  queryTwitter.getAvailableTrendingCities(function(tweetResults){
+    console.log(tweetResults,' #####tweetResults');
+    var response = {
+      result: 'Request Received!',
+      data: tweetResults
+    };
+    res.json(response);
+    
+  });
+  //queryTwitter.getTweet(queryObject, function(err, twitterResults){
 };
 
 /**
