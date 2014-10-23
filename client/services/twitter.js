@@ -1,5 +1,7 @@
+/*
+*  Returns Tweets
+*/
 angular.module('service_twitter', [])
-
 .factory('Twitter', function($http) {
   var getTweets = function(request) {
     return $http({
