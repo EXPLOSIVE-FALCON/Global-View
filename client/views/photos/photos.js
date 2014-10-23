@@ -1,12 +1,10 @@
-angular.module('photos', [])
-
-.controller('PhotoController', function ($scope, Instagram) {
-  $scope.data = {};
-  console.log($scope.data);
-  $scope.getPhotos = function(request) {
-    Instagram.getPhotos(request)
-      .then(function(data) {
-        $scope.data = data;
-      })
+/*
+*  Photo Controller can be used to pull photos from instagram
+*/
+angular.module('photos', ['globalMethods', 'globalData'])
+.controller('PhotoController', function ($scope, StoredData, GlobalMethods) {
+  $scope.data = {
+    photos: StoredData.data.photos
   };
+  $scope.getPhotos = GlobalMethods.getPhotos;
 });

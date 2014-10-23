@@ -6,10 +6,17 @@
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
     <script src="lib/moment/moment.js"></script>
-    <script src="services/services.js"></script>
+    <script src="lib/lodash/dist/lodash.min.js"></script>
+    <script src="services/twitter.js"></script>
+    <script src="services/instagram.js"></script>
+    <script src="services/news.js"></script>
+    <script src="services/location.js"></script>
+    <script src="services/global.js"></script>
+
     <script src="views/tweets/tweets.js"></script>
     <script src="views/news/news.js"></script>
     <script src="views/photos/photos.js"></script>
+    <script src="views/search/search.js"></script>
     <script src="app.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Chango' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:500,400' rel='stylesheet' type='text/css'>
@@ -20,54 +27,13 @@
   <body>
     <h1 class="logo">Vantage</h1> 
     <span class="logo-text">event dashboard</span>
-    <div id="container" ng-controller="NewsController" >
-      <form ng-submit="getData(request)">
-        <div class="input_form">
-          <div class="row">
-            <div class="col-xs-2 col-xs-offset-1">
-              <input type="text" ng-model="request.query" class="form-control" placeholder="search">
-            </div>
-            <div class="col-xs-1">
-              <input type="text" class="form-control" ng-model="request.state" placeholder="state">
-            </div>
-            <div class="col-xs-2">
-              <input type="text" class="form-control" ng-model="request.city" placeholder="city">
-            </div>
-            <div class="col-xs-2">
-              <input type="text" class="form-control" ng-model="request.street" placeholder="street">
-            </div>
-            <div class="col-xs-2">
-              <input class="form-control" type="date" ng-model="request.date"></input>
-            </div>
-            <div class="col-xs-1">
-              <button class="btn btn-info">ok</button>
-            </div>
-          </div>
-        </div>
-      </form>
-
 <!--       <div id="spinner">
           <img src="pics/spinner.gif" class="spinner"/>
       </div> -->
-
-      <div class="col-xs-8 news_block">
-        <ul>
-          <li class="news" ng-repeat="news in data.news">
-            <span class="news_time">{{news.time}}</span> - <a href="{{news.link}}" target="_blank">{{news.title}}</a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="col-xs-9 photo_block">
-        <div ng-repeat="photo in data.photos">
-          <div class="col-xs-3">
-            <img class="photo" src="{{photo.images.thumbnail.url}}">
-          </div>
-        </div>
-      </div>
-
-
+    <div id="container" ng-controller="SearchController" >
+      <ng-include src="'views/search/search.html'"></ng-include>
+      <ng-include src="'views/news/news.html'"></ng-include>
+      <ng-include src="'views/photos/photos.html'"></ng-include>
     </div>
-
   </body>
 </html>
