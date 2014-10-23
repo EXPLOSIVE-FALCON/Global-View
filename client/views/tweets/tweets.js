@@ -1,13 +1,9 @@
-angular.module('tweets', ['service_twitter'])
+angular.module('tweets', ['globalMethods', 'globalData'])
 
-.controller('TweetsController', function ($scope, Twitter) {
-  $scope.data = {};
-  $scope.getTweets = function(request) {
-    console.log('inside getTweets contr')
-    Twitter.getTweets(request)
-      .then(function(data) {
-        $scope.data = data;
-        console.log('scope Cntrl', $scope.data);
-      })
+.controller('TweetsController', function ($scope, StoredData, GlobalMethods) {
+  $scope.data = {
+    tweets: StoredData.data.tweets
   };
+
+  $scope.getTweets = GlobalMethods.getTweets;
 });
