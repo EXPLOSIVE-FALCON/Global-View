@@ -1,5 +1,7 @@
+/*
+*  Grabs Photos from instagram
+*/
 angular.module('service_instagram', [])
-
 .factory('Instagram', function($http) {
   var getPhotos = function(request) {
     return $http({

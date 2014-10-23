@@ -1,3 +1,6 @@
+/*
+*  Returns Google News Stories 
+*/
 angular.module('service_news', [])
 .factory('GoogleNews', function($http) {
   /* search term, location, and amount of results to return

@@ -1,6 +1,7 @@
+/*
+*  Converts a street address into geo coordinates, needed for instagram & twitter apis
+*/
 angular.module('service_location', [])
-
-// converts a street address into geo coordinates, needed for instagram & twitter apis
 .factory('Location', function($http) {
   var getLocation = function(request) {
     var params = {

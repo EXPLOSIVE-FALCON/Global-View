@@ -1,3 +1,6 @@
+/*
+*  Global Data Stores all Tweets, News, and Photos
+*/
 angular.module('globalData', [])
 .factory('StoredData', function() {
   var data = {
@@ -10,6 +13,9 @@ angular.module('globalData', [])
   };
 });
 
+/*
+*  GlobalMethods stores all functionality that can change global Data
+*/
 angular.module('globalMethods', [
   'service_twitter', 
   'service_news', 

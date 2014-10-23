@@ -1,3 +1,6 @@
+/*
+*  Search Controller Access's all search functionality
+*/
 angular.module('search', ['globalData', 'globalMethods'])
 .controller('SearchController', function ($scope, StoredData, GlobalMethods) {
   $scope.data = {
