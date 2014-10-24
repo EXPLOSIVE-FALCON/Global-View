@@ -1,20 +1,64 @@
+/*.a_splashHome::-webkit-scrollbar {
+ display: none;
+}*/
 .a_splashHome {
   background-color: #1C1F28;
-  height: 100vh;
-  width: 100vw;
+  height: auto;
+  width: 170vw;
   padding: 0px;
+/*  overflow-x: scroll;
+  overflow-y: scroll;*/
 }
 
 .splashBox, .boxSize {
-  width: 33vw;
-  height: 33vh;
+  height: 33.3vh;
+  width: 34vw;
   background-color: black;
+}
+.splashBoxCity {
+  width: 34vw;
+  margin: 0 auto 0 auto;
+  text-align: center;
+}
+.splashBoxCity {
+  line-height: 33.3vh;
+  overflow: hidden;
+}
+
+.splashBoxCity:hover {
+  font-size: 40px;
 }
 
 .boxSize {
   margin: 0px;
   padding: 0px;
   display: inline-block;
-  border: 1px #201F24 solid;
+  border-left: 1px #201F24 solid;
+  border-left: 1px #201F24 solid;
   border-radius: 2px;
 }
+
+.splashBoxCity {
+  font-family: 'Oswald', sans-serif;
+  color: white;
+  font-color: white;
+}
+
+/*.element, .outer-container {
+ width: 200px;
+ height: 200px;
+}
+ 
+.outer-container {
+ border: 5px solid purple;
+ position: relative;
+ overflow: hidden;
+}*/
+ /*
+.inner-container {
+ position: absolute;
+ left: 0;
+ overflow-x: hidden;
+ overflow-y: scroll;
+}*/
+ 
