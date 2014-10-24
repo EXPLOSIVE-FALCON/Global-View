@@ -1,32 +1,46 @@
-angular.module('splashMain', [])
-.controller('SplashController', function ($scope) {
+angular.module('splashMain', ['service_twitter', 'service_instagram'])
+.controller('SplashController', function ($scope, Twitter, Instagram) {
+  initiateMovement();
+  $('body').on('mousemove', '.a_splashHome', function(event) {
+    checkMovement([event.pageX, event.pageY]);
+  });
+  /*
+  *  test data until twitter is done
+  *  will need to build out functions to data on non 'dummy' object
+  */
   $scope.data = {
     boxes: test
   };
+
+  // $scope.data = {
+  //   boxes: {
+  //     trends: Twitter.getTrending(cities),
+  //     tweets: Twitter.getTwendingTweets(cities),
+  //     photos: Instagram.getLocationPhoto(cities)
+  // };
   $scope.populate = function() {
 
   };
 });
 
-$(document).ready(function() {
-  setInterval(function() {
-    console.log('scrolling');
-    var max = $('.a_splashHome')[0].scrollWidth;
-    var min = $(window).width();
-    var diff = max - min;
-
-    var max2 = $('.a_splashHome')[0].scrollHeight;
-    // var min2 = $('.a_splashHome')[0].offsetHeight;
-    var min2 = $(window).height();
-    var diff2 = max2 - min2;
-
-    console.log(diff, 'and', diff2);
-    $('html, body').animate({
-      scrollLeft: Math.floor(Math.random() * diff),
-      scrollTop: Math.floor(Math.random() * diff2)
-    }, 3000)
-  }, 2500);
-});
+var cities = [
+  'San Francisco',
+  'New York City',
+  'Los Angeles',
+  'Minneapolis',
+  'Washington D.C.',
+  'Seattle',
+  'San Antonio',
+  'Chicago',
+  'Miami',
+  'Saint Paul',
+  'Austin',
+  'San Diego',
+  'St. Louis', 
+  'Las Vegas',
+  'Phoenix ',
+  'Tampa Bay'
+];
 
 var test = [
   {
@@ -77,7 +91,7 @@ var test = [
   {
     title: 'Tampa Bay'
   },
-    {
+  {
     title: 'San Francisco'
   },
   {
