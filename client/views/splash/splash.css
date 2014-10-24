@@ -1,13 +1,27 @@
-/*.a_splashHome::-webkit-scrollbar {
- display: none;
-}*/
 .a_splashHome {
   background-color: #1C1F28;
   height: auto;
   width: 170vw;
   padding: 0px;
-/*  overflow-x: scroll;
-  overflow-y: scroll;*/
+}
+
+.splashTitle {
+  position: fixed;
+  left: 40vw;
+  top: 10vh;
+  width: 20vw;
+  height: 50px;
+  color: white;
+  border: 1px white solid;
+  border-radius: 5px;
+  background-color: black;
+}
+
+.splashTitle > h2 {
+  text-align: center;
+  line-height: 50px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .splashBox, .boxSize {
@@ -43,22 +57,4 @@
   color: white;
   font-color: white;
 }
-
-/*.element, .outer-container {
- width: 200px;
- height: 200px;
-}
- 
-.outer-container {
- border: 5px solid purple;
- position: relative;
- overflow: hidden;
-}*/
- /*
-.inner-container {
- position: absolute;
- left: 0;
- overflow-x: hidden;
- overflow-y: scroll;
-}*/
  
