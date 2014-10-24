@@ -17,6 +17,7 @@ angular.module('service_twitter', [])
     });
   };
   var getTrending = function(request) {
+    
 
   };
   return {
