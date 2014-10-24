@@ -1,31 +1,16 @@
 angular.module('splashMain', [])
 .controller('SplashController', function ($scope) {
+  initiateMovement();
+  $('body').on('mousemove', '.a_splashHome', function(event) {
+    checkMovement([event.pageX, event.pageY]);
+  });
+
   $scope.data = {
     boxes: test
   };
   $scope.populate = function() {
 
   };
-});
-
-$(document).ready(function() {
-  setInterval(function() {
-    console.log('scrolling');
-    var max = $('.a_splashHome')[0].scrollWidth;
-    var min = $(window).width();
-    var diff = max - min;
-
-    var max2 = $('.a_splashHome')[0].scrollHeight;
-    // var min2 = $('.a_splashHome')[0].offsetHeight;
-    var min2 = $(window).height();
-    var diff2 = max2 - min2;
-
-    console.log(diff, 'and', diff2);
-    $('html, body').animate({
-      scrollLeft: Math.floor(Math.random() * diff),
-      scrollTop: Math.floor(Math.random() * diff2)
-    }, 3000)
-  }, 2500);
 });
 
 var test = [

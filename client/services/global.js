@@ -23,13 +23,10 @@ angular.module('globalMethods', [
   'service_location'
   ])
 .factory('GlobalMethods', function(GoogleNews, Instagram, Twitter, Location, StoredData) {
-  var data = StoredData.data;
   var getNews = function(request) {
     GoogleNews.getNews(request)
       .then(function(result) {
-        result.data.forEach(function(val, i) {
-          data.news[i] = val;
-        });
+        StoredData.data.news = result;
       });
   };
   var getPhotos = function(request) {
@@ -51,9 +48,7 @@ angular.module('globalMethods', [
         };
         Instagram.getPhotos(instaParams)
           .then(function(result) {
-            result.data.forEach(function(val, i) {
-              data.photos[i] = val;
-            })
+            StoredData.data.photos = result;
           });
       });
   };
