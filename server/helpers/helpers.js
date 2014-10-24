@@ -49,13 +49,13 @@ exports.twitter = function(req, res) {
     var woeid = queryTwitter.getCityId(query.location,trendingCities);
     queryTwitter.getTrendingTopics(woeid,function(err,trendingTopics){
       if(!!err){ throw 'Error: '+err;}
-      queryTwitter.getTweetsForTrendObjects(trendingTopics,function(err,tweets){        
+      queryTwitter.getTweetsForTrendObjects(trendingTopics,function(err,tweets){
         var response = {
           status:200,
           result: 'Request Received!',
           data: tweets
         };
-        res.end(JSON.stringify(response));      
+        res.end(JSON.stringify(response));
       })
     });
   });
@@ -74,7 +74,18 @@ exports.twitter = function(req, res) {
 
 exports.instagram = function(req, res) {
   var query = req.query;
-  queryInstagram(query.lat,query.lng,query.min_timestamp,query.max_timestamp,query.distance,function(err,photos) {
+  var qParams = {
+    lat: query.lat,
+    lng: query.lng,
+    minDate: query.min_timestamp,
+    maxDate: query.max_timestamp,
+    distance: query.distance,
+    query: query.query,
+    callType: 'query' // 'query' OR 'location'
+  };
+
+     queryInstagram(qParams,function(err,photos) {
+//   queryInstagram(query.lat,query.lng,query.min_timestamp,query.max_timestamp,query.distance,query.query,function(err,photos) {
     if(!!err) { throw 'Error: ' + err; }
     var response = {
       result: 'Request Received!',
