@@ -38,13 +38,28 @@ exports.google = function(req, res) {
 * @param {object} res Response Parameter from GET Request
 * @returns {json} Sends Client a JSON Object containing an Array of Tweets
 */
+
+
 exports.twitter = function(req, res) {
-  var query = req.query;
-  var response = {
-    result: 'Request Received!',
-    data: query
-  };
-  res.json(response);
+  var query = {};
+  //var query = req.query;
+  query['location'] = 'San Francisco';
+  queryTwitter.getAvailableTrendingCities(function(err,trendingCities){
+    if(!!err){ throw 'Error: '+ err;}
+    var woeid = queryTwitter.getCityId(query.location,trendingCities);
+    queryTwitter.getTrendingTopics(woeid,function(err,trendingTopics){
+      if(!!err){ throw 'Error: '+err;}
+      queryTwitter.getTweetsForTrendObjects(trendingTopics,function(err,tweets){        
+        var response = {
+          status:200,
+          result: 'Request Received!',
+          data: tweets
+        };
+        res.end(JSON.stringify(response));      
+      })
+    });
+  });
+  //queryTwitter.getTweet(queryObject, function(err, twitterResults){
 };
 
 /**
