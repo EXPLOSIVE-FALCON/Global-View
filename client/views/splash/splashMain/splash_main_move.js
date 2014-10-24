@@ -29,7 +29,7 @@ var initiateMovement = function() {
 var checkMovement = function(to) {
   var from = movement.from;
   var dist = distance(to, from);
-  movement.moving = dist > 25 ? true : false;
+  movement.moving = dist > 30 ? true : false;
   if (movement.moving && !!to.length && !!from.length) { 
     var moveX = from[0] - to[0];
     var moveY = from[1] - to[1];

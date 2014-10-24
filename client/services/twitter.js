@@ -16,8 +16,11 @@ angular.module('service_twitter', [])
       console.error(error);
     });
   };
+  var getTrending = function(request) {
 
+  };
   return {
-    getTweets: getTweets
+    getTweets: getTweets,
+    getTrending: getTrending
   };
 });
