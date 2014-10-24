@@ -3,10 +3,17 @@ angular.module('vantage', [
   'news',
   'search',
   'photos',
+  'dashboard',
+  'splashMain',
+  'splashBox',
   'ngRoute'
 ])
 .config(function($routeProvider, $httpProvider) {
   $routeProvider
+    .when('/', {
+      templateUrl: 'views/dashboard/dashboard.html',
+      controller: 'DashboardController'
+    })
     .when('/tweets', {
       templateUrl: 'views/tweets/tweets.html',
       controller: 'TweetsController'
@@ -22,6 +29,10 @@ angular.module('vantage', [
     .when('/search', {
       templateUrl: 'views/serach/search.html',
       controller: 'SearchControler'
+    })
+    .when('/splash', {
+      templateUrl: 'views/splash/splashMain/splash_main.html',
+      controller: 'SplashController'
     })
     .otherwise({
       redirectTo: '/'

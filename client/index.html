@@ -7,33 +7,31 @@
     <script src="lib/angular-route/angular-route.js"></script>
     <script src="lib/moment/moment.js"></script>
     <script src="lib/lodash/dist/lodash.min.js"></script>
+    <script src="//localhost:35729/livereload.js"></script>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="views/style.css">
+    <link rel="stylesheet" href="views/splash/splash.css">
+
+  </head>
+  <body>
+    <ng-view></ng-view>
     <script src="services/twitter.js"></script>
     <script src="services/instagram.js"></script>
     <script src="services/news.js"></script>
     <script src="services/location.js"></script>
     <script src="services/global.js"></script>
+    <!--<script src="services/twitter.js"></script>
+    <script src="services/twitter.js"></script>-->
 
+    <script src="views/dashboard/dashboard.js"></script>
     <script src="views/tweets/tweets.js"></script>
     <script src="views/news/news.js"></script>
     <script src="views/photos/photos.js"></script>
     <script src="views/search/search.js"></script>
+    <script src="views/splash/splashBox/splash_box.js"></script>
+    <script src="views/splash/splashMain/splash_main.js"></script>
     <script src="app.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Chango' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:500,400' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="views/style.css">
-
-  </head>
-  <body>
-    <h1 class="logo">Vantage</h1> 
-    <span class="logo-text">event dashboard</span>
-<!--       <div id="spinner">
-          <img src="pics/spinner.gif" class="spinner"/>
-      </div> -->
-    <div id="container" ng-controller="SearchController" >
-      <ng-include src="'views/search/search.html'"></ng-include>
-      <ng-include src="'views/news/news.html'"></ng-include>
-      <ng-include src="'views/photos/photos.html'"></ng-include>
-    </div>
   </body>
 </html>

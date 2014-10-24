@@ -1,1 +1,0 @@
-splash_main.js
