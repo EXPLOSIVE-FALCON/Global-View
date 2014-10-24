@@ -29,6 +29,7 @@ dist/
 */.DS_Store
 node_modules/
 client/lib
+client/views/splash/splash-help.css
 server/instaKeys.js
 server/twitterKeys.js
 docs
