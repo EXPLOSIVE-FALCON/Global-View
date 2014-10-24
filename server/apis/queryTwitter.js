@@ -8,7 +8,6 @@ var util = require('util');
 var _ = require('lodash');
 var path = require('path');
 var twitterKeys = require('../twitterKeys');	
-var twitterAPI = require('node-twitter-api');
 var Twit = require('twit');
 
 var trendingPlaces ={
