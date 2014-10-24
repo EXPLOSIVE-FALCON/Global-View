@@ -1,4 +1,13 @@
-body {
+* {
+  box-sizing: border-box;
+}
+
+/*body {
+  margin: 30px;
+  font-family: 'Raleway', sans-serif;
+}*/
+
+.boxed {
   margin: 30px;
   font-family: 'Raleway', sans-serif;
 }

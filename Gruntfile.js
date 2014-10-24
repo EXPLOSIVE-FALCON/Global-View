@@ -10,8 +10,14 @@ module.exports = function(grunt) {
     watch: {
       scripts: {
         files: [
-          'public/*.js',
-          'public/*.html'
+          'client/views/**/*.js',
+          'client/views/**/*.html',
+          'client/views/*.css',
+          'client/views/**/**/*.js',
+          'client/views/**/**/*.html',
+          'client/views/**/*.css',
+          'client/*.js',
+          'client/*.html'
         ],
         options: {
           livereload: true
