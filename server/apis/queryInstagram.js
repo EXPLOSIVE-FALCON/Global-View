@@ -14,6 +14,8 @@ var instaKeys = require('../instaKeys');
 */
 var instaSettings = {
   headers: instaKeys.keys,
+  queryGET: 'https://api.instagram.com/v1/tags/',
+  queryGET2: '/media/recent',
   mediaGET: 'https://api.instagram.com/v1/media/search',
   locationGET: 'https://api.instagram.com/v1/locations/search',
   photoGET: 'https://api.instagram.com/v1/locations/',
@@ -37,6 +39,7 @@ var dayInMilliSeconds = 24 * 60 * 60 * 1000;
 module.exports = function(lat, lng, minDate, maxDate, distance, callback) {
   minDate = Math.floor(minDate/1000);
   maxDate = Math.floor(maxDate/1000);
+
   var locationURL = instaSettings.mediaGET + '?access_token=%s&lat=%s&lng=%s&max_timestamp=%s&min_timestamp=%s&distance=%s';
   locationURL = util.format(locationURL, instaSettings.headers.instaToken, lat, lng, maxDate, minDate, distance);
 
@@ -83,11 +86,11 @@ var trimResponse = function(body) {
 var sortByDistance = function(results, lat, lng) {
   return _(results).map(function(item, index, collection) {
     var firstLocation = {
-      lat: lat, 
+      lat: lat,
       lng: lng
     };
     var secondLocation = {
-      lat: item.location.latitude, 
+      lat: item.location.latitude,
       lng: item.location.longitude
     };
 
@@ -99,18 +102,23 @@ var sortByDistance = function(results, lat, lng) {
 * Calculations from: http://stackoverflow.com/questions/7672759/how-to-calculate-distance-from-lat-long-in-php
 * Helper function that calculates distance between two sets of lat/lng co-ordinates
 * @function
-* @param {object} loc1 Object containing lattitude, longitude of first location (lat, lng) 
-* @param {object} loc2 Object containing lattitude, longitude of second location (lat, lng) 
+* @param {object} loc1 Object containing lattitude, longitude of first location (lat, lng)
+* @param {object} loc2 Object containing lattitude, longitude of second location (lat, lng) - if loc2 is set to null, return value of 100,000 in order to sort it last
 * @returns {number} The distance between the first and second location
 */
 var distance = function(loc1, loc2) {
+  if(loc2 !== "null") {
+
   var longitudeDiff = loc1.lng - loc2.lng;
-  var latitudeDiff = (Math.sin(degreeToRadian(loc1.lat)) * Math.sin(degreeToRadian(loc2.lat))) 
+  var latitudeDiff = (Math.sin(degreeToRadian(loc1.lat)) * Math.sin(degreeToRadian(loc2.lat)))
                    + (Math.cos(degreeToRadian(loc1.lat)) * Math.cos(degreeToRadian(loc2.lat)));
 
   var distance = degreeToRadian(Math.acos(longitudeDiff * Math.cos(degreeToRadian(latitudeDiff))));
   var distanceMiles = distance * 60 * 1.1515;
   return distance;
+  } else {
+    return 100000;
+  }
 };
 
 /**
