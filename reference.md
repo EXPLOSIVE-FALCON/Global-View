@@ -1186,17 +1186,26 @@ queryTwitter('ebola', 5, function(err, results) {
 });
 ```
 
-### queryInstagram(query, queryAmount, callback)
+### queryInstagram(lat, lng, minDate, maxDate, distance, callback)
 
-Returns Pictures from Instagram
+Returns Photos from Instagram
 
 ```js
 var queryInstagram = require('/apis/instagram');
 
-queryInstagram('ebola', 5, function(err, results) {
-  results.forEach(function(story, index) {
-    //
-    //
-  });
+queryInstagram(34, -118, 1413747713000, 1413834152000, 1000, function(err, photos) {
+
+  // function returns an array of objects, each containing:
+    //  "created_time" {number}: the time the photo was uploaded to Instagram
+    //  "location" {object}: the latitude and longitude of where the photo was taken (also may contain a place ID and place name)
+    //  "type" {string}: media type (image or video)
+    //  "link" {string}: link to the dedicated Instagram page for this photo
+    //  "images" {object}: URLs to images of different sizes (low-res, thumbnails, standard-res)
+    //  "likes" {object}: count of likes for photo
+    //  "caption" {object}: caption of photo
+    //  "tags" {array}: hashtags attached to photo
+    //  "user" {object}: user id associated with photo
+    //  "distance" {number}: distance between lat/lng input by user and lat/lng of photo
+   
 });
 ```
