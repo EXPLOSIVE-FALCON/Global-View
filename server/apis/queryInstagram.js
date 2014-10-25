@@ -127,7 +127,7 @@ var applyTagFilter = function(photoObj) {
 * Calculate distance from lat/lng inputs in instaLocations
 * @function
 * @param {object} photoObj Object containing photo data from Instagram API call
-* @returns {object} photoObj Object containing photo data with distance attribute appended
+* @returns {object} photoObj Object containing photo data with distance attribute appended - if photoObj.location is set to null, return value of 100,000 in order to sort it last
 */
 var calculateDistance = function(photoObj) {
 
@@ -162,19 +162,21 @@ var sortResults = function(results, parameters) {
 };
 
 /**
-* Calculations from: http://stackoverflow.com/questions/7672759/how-to-calculate-distance-from-lat-long-in-php
+* Derived from: http://stackoverflow.com/questions/27928/how-do-i-calculate-distance-between-two-latitude-longitude-points
 * Helper function that calculates distance between two sets of lat/lng co-ordinates
 * @function
 * @param {object} loc1 Object containing lattitude, longitude of first location (lat, lng)
-* @param {object} loc2 Object containing lattitude, longitude of second location (lat, lng) - if loc2 is set to null, return value of 100,000 in order to sort it last
+* @param {object} loc2 Object containing lattitude, longitude of second location (lat, lng)
 * @returns {number} The distance between the first and second location
 */
 var distance = function(loc1, loc2) {
-  var longitudeDiff = loc1.lng - loc2.lng;
-  var distance = (Math.sin(degreeToRadian(loc1.lat)) * Math.sin(degreeToRadian(loc2.lat)))
-                   + (Math.cos(degreeToRadian(loc1.lat)) * Math.cos(degreeToRadian(loc2.lat)) * Math.cos(longitudeDiff));
-  distance = Math.acos(distance);
-  distance = degreeToRadian(distance);
+  var RADIUS = 6371;
+  var lngDiff = degreeToRadian(loc1.lng - loc2.lng);
+  var latDiff = degreeToRadian(loc1.lat - loc2.lat);
+  var dist = Math.pow(Math.sin(latDiff/2),2) + (Math.cos(degreeToRadian(loc1.lat)) * Math.cos(degreeToRadian(loc2.lat))) * Math.pow(Math.sin(lngDiff/2),2);
+
+  var distance = Math.atan(Math.sqrt(dist), Math.sqrt(1-dist)) * 2 * RADIUS;
+
   return distance;
 };
 
