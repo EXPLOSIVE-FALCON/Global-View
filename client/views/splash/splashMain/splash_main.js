@@ -1,15 +1,12 @@
 angular.module('splashMain', ['service_twitter', 'service_instagram'])
 .controller('SplashController', function ($scope, Twitter, Instagram) {
   initiateMovement();
-  $('body').on('mousemove', '.a_splashHome', function(event) {
-    checkMovement([event.pageX, event.pageY]);
-  });
   /*
   *  test data until twitter is done
   *  will need to build out functions to data on non 'dummy' object
   */
   $scope.data = {
-    boxes: test
+    boxes: cities
   };
 
   // $scope.data = {
@@ -23,114 +20,142 @@ angular.module('splashMain', ['service_twitter', 'service_instagram'])
   };
 });
 
+// var cities = [
+//   'San Francisco',
+//   'New York City',
+//   'Los Angeles',
+//   'Minneapolis',
+//   'Washington D.C.',
+//   'Seattle',
+//   'San Antonio',
+//   'Chicago',
+//   'Miami',
+//   'Saint Paul',
+//   'Austin',
+//   'San Diego',
+//   'St. Louis', 
+//   'Las Vegas',
+//   'Denver',
+// ];
 var cities = [
-  'San Francisco',
-  'New York City',
-  'Los Angeles',
-  'Minneapolis',
-  'Washington D.C.',
-  'Seattle',
-  'San Antonio',
-  'Chicago',
-  'Miami',
-  'Saint Paul',
-  'Austin',
-  'San Diego',
-  'St. Louis', 
-  'Las Vegas',
-  'Phoenix ',
-  'Tampa Bay'
-];
-
-var test = [
   {
-    title: 'San Francisco'
+    city: 'New Orleans',
+    img: 'new-orleans.png'
   },
   {
-    title: 'New York City'
+    city: 'San Francisco',
+    img: 'san-francisco.png'
   },
   {
-    title: 'Los Angeles'
+    city: 'New York City',
+    img: 'new-york-city.png'
   },
   {
-    title: 'Minneapolis'
+    city: 'Los Angeles',
+    img: 'los-angeles.png'
   },
   {
-    title: 'Washington D.C.'
+    city: 'Minneapolis',
+    img: 'minneapolis.png'
   },
   {
-    title: 'Seattle'
+    city: 'Washington D.C.',
+    img: 'washington-dc.png'
   },
   {
-    title: 'San Antonio'
+    city: 'Seattle',
+    img: 'seattle.png' 
   },
   {
-    title: 'Chicago'
+    city: 'San Antonio',
+    img: 'san-antonio.png'
   },
   {
-    title: 'Miami'
+    city: 'Chicago',
+    img: 'chicago.png'
   },
   {
-    title: 'Saint Paul'
+    city: 'Miami',
+    img: 'miami.png'
   },
   {
-    title: 'Austin'
+    city: 'Portland',
+    img: 'portland.png'
   },
   {
-    title: 'San Diego'
+    city: 'Austin',
+    img: 'austin.png'
   },
   {
-    title: 'St. Louis'
+    city: 'San Diego',
+    img: 'san-diego.png'
   },
   {
-    title: 'Las Vegas'
+    city: 'St. Louis', 
+    img: 'st-louis.png'
   },
   {
-    title: 'Phoenix '
+    city: 'Las Vegas',
+    img: 'las-vegas.png'
   },
   {
-    title: 'Tampa Bay'
+    city: 'Denver',
+    img: 'denver.png'
   },
   {
-    title: 'San Francisco'
+    city: 'New Orleans',
+    img: 'new-orleans.png'
   },
   {
-    title: 'New York City'
+    city: 'San Francisco',
+    img: 'san-francisco.png'
   },
   {
-    title: 'Los Angeles'
+    city: 'New York City',
+    img: 'new-york-city.png'
   },
   {
-    title: 'Minneapolis'
+    city: 'Los Angeles',
+    img: 'los-angeles.png'
   },
   {
-    title: 'Washington D.C.'
+    city: 'Minneapolis',
+    img: 'minneapolis.png'
   },
   {
-    title: 'Seattle'
+    city: 'Washington D.C.',
+    img: 'washington-dc.png'
   },
   {
-    title: 'San Antonio'
+    city: 'Seattle',
+    img: 'seattle.png' 
   },
   {
-    title: 'Chicago'
+    city: 'San Antonio',
+    img: 'san-antonio.png'
   },
   {
-    title: 'Miami'
+    city: 'Chicago',
+    img: 'chicago.png'
   },
   {
-    title: 'Saint Paul'
+    city: 'Miami',
+    img: 'miami.png'
   },
   {
-    title: 'Austin'
+    city: 'Portland',
+    img: 'portland.png'
   },
   {
-    title: 'San Diego'
+    city: 'Austin',
+    img: 'austin.png'
   },
   {
-    title: 'St. Louis'
+    city: 'San Diego',
+    img: 'san-diego.png'
   },
   {
-    title: 'Las Vegas'
+    city: 'St. Louis', 
+    img: 'st-louis.png'
   }
 ];
