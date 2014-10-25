@@ -3,14 +3,19 @@
 */
 angular.module('globalData', [])
 .factory('StoredData', function() {
-  var data = {
+  // var data = {
+  //   news: [],
+  //   photos: [],
+  //   tweets: []
+  // };
+  return {
     news: [],
     photos: [],
     tweets: []
   };
-  return {
-    data: data
-  };
+  // return {
+  //   data: data
+  // };
 });
 
 /*
@@ -21,12 +26,12 @@ angular.module('globalMethods', [
   'service_news', 
   'service_instagram', 
   'service_location'
-  ])
+])
 .factory('GlobalMethods', function(GoogleNews, Instagram, Twitter, Location, StoredData) {
   var getNews = function(request) {
     GoogleNews.getNews(request)
       .then(function(result) {
-        StoredData.data.news = result;
+        StoredData.news = result.data;
       });
   };
   var getPhotos = function(request) {
@@ -48,7 +53,7 @@ angular.module('globalMethods', [
         };
         Instagram.getPhotos(instaParams)
           .then(function(result) {
-            StoredData.data.photos = result;
+            StoredData.photos = result.data;
           });
       });
   };

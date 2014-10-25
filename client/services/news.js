@@ -19,10 +19,10 @@ angular.module('service_news', [])
       url: '/api/googlenews',
       params: params
     })
-    .then(function(response){
+    .then(function(response) {
       return response.data;
     })
-    .catch(function(error){
+    .catch(function(error) {
       console.error(error);
     });
   };

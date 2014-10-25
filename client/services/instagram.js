@@ -9,11 +9,10 @@ angular.module('service_instagram', [])
       url: 'api/instagram',
       params: request
     })
-    .then(function(response){
-      console.log('response.data');
+    .then(function(response) {
       return response.data;
     })
-    .catch(function(error){
+    .catch(function(error) {
       console.error(error);
     })
   };
