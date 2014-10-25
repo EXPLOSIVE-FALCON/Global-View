@@ -1,6 +1,6 @@
 angular.module('splashMain', ['service_twitter', 'service_instagram'])
 .controller('SplashController', function ($scope, Twitter, Instagram) {
-  // initiateMovement();
+  initiateMovement();
   /*
   *  test data until twitter is done
   *  will need to build out functions to data on non 'dummy' object
