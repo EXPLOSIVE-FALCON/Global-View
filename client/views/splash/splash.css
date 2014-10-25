@@ -1,6 +1,92 @@
 .a_splashHome {
   background-color: #1C1F28;
   height: auto;
+  /*width: 170vw;*/
+  width: 3000px;
+  padding: 0px;
+}
+
+.splashTitle {
+  z-index: 2;
+  position: fixed;
+  left: 40vw;
+  top: 10vh;
+  width: 20vw;
+  height: 50px;
+  color: white;
+  border: 2px white solid;
+  border-radius: 5px;
+  /*background-color: black;*/
+}
+
+.splashTitle > h2 {
+  text-align: center;
+  line-height: 50px;
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Special Elite', cursive;
+}
+
+.cityImage {
+  z-index: 0;
+  position: absolute;
+  height: 300px;
+  width: 500px;
+  opacity: 0.25;
+  border-radius: 2px;
+}
+
+.splashBox:hover .cityImage {
+  opacity: 0.7;
+  transition: opacity 0.3s ease, -webkit-transform 0.3s ease, -webkit-filter 0.3s ease;
+}
+.splashBox:hover .splashBoxCity {
+  font-size: 40px;
+}
+.splashBox, .boxSize {
+  height: 300px;
+  width: 500px;
+  background-color: black;
+}
+
+.imageShadow {
+  z-index: 2;
+  position: absolute;
+  height: 300px;
+  width: 500px;
+  box-shadow: inset 0px 0px 200px black;
+}
+.splashBoxCity {
+  position: relative;
+  width: 500px;
+  margin: 0 auto 0 auto;
+  text-align: center;
+  line-height: 200px;
+  overflow: hidden;
+}
+
+
+.boxSize {
+  margin: 0px;
+  padding: 0px;
+  display: inline-block;
+  border: 2px #201F24 solid;
+  /*border: 2px #whit solid;*/
+  /*border-left: 1px #201F24 solid;*/
+  /*border-left: 1px #201F24 solid;*/
+  border-radius: 2px;
+}
+
+.splashBoxCity {
+  font-family: 'Oswald', sans-serif;
+  color: white;
+  font-color: white;
+}
+
+
+/*.a_splashHome {
+  background-color: #1C1F28;
+  height: auto;
   width: 170vw;
   padding: 0px;
 }
@@ -57,5 +143,4 @@
   font-family: 'Oswald', sans-serif;
   color: white;
   font-color: white;
-}
- 
+}*/
