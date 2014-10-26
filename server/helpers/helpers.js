@@ -39,25 +39,53 @@ exports.google = function(req, res) {
 * @returns {json} Sends Client a JSON Object containing an Array of Tweets
 */
 
+exports.twitterTrendingCities = function(req,res){
+  queryTwitter.getAvailableTrendingCities(function(err,trendingCities){
+     if(!!err){ throw 'Error: '+ err;}
+    var response = {
+      status:200,
+      result: 'Request Received!',
+      data: trendingCities
+    };  
+    res.end(JSON.stringify(response));  
+  });
+};
+
 
 exports.twitter = function(req, res) {
-  var query = {};
-  //var query = req.query;
-  query['location'] = 'San Francisco';
+  var query = req.query;
   queryTwitter.getAvailableTrendingCities(function(err,trendingCities){
     if(!!err){ throw 'Error: '+ err;}
-    var woeid = queryTwitter.getCityId(query.location,trendingCities);
-    queryTwitter.getTrendingTopics(woeid,function(err,trendingTopics){
-      if(!!err){ throw 'Error: '+err;}
-      queryTwitter.getTweetsForTrendObjects(trendingTopics,function(err,tweets){
-        var response = {
-          status:200,
-          result: 'Request Received!',
-          data: tweets
-        };
-        res.end(JSON.stringify(response));
-      })
-    });
+    var woeid = queryTwitter.getCityId(query,trendingCities);
+    if(Array.isArray(woeid)){
+      queryTwitter.getClosestTrendingCity(query,function(err,data){
+        if(!!err){ 'Error: ' + err;}
+        queryTwitter.getTrendingTopics(data[0]['woeid'],function(err,trendingTopics){
+          if(!!err){ throw 'Error: '+err;}
+          queryTwitter.getTweetsForTrendObjects(trendingTopics,function(err,tweets){        
+            console.log(tweets);
+            var response = {
+              status:200,
+              result: 'Request Received!',
+              data: tweets
+            };
+            res.end(JSON.stringify(response));      
+          })
+        }); 
+      });
+    }else{
+        queryTwitter.getTrendingTopics(woeid,function(err,trendingTopics){
+          if(!!err){ throw 'Error: '+err;}
+          queryTwitter.getTweetsForTrendObjects(trendingTopics,function(err,tweets){        
+            var response = {
+              status:200,
+              result: 'Request Received!',
+              data: tweets
+            };
+            res.end(JSON.stringify(response));      
+          })
+        });      
+    }
   });
   //queryTwitter.getTweet(queryObject, function(err, twitterResults){
 };

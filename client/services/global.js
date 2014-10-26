@@ -58,11 +58,17 @@ angular.module('globalMethods', [
       });
   };
   var getTweets = function(request) {
-    // Twitter.getTweets(request)
-    //   .then(function(data) {
-    //     $scope.data = data;
-    //     console.log('scope Cntrl', $scope.data);
-    //   })
+    Location.getLocation(request)
+    .then(function(results){
+      if(results){
+        request.latitude = results.latitude;
+        request.longitude = results.longitude;        
+      }
+      Twitter.getTweets(request)
+      .then(function(data) {
+        StoredData.data.tweets = data;
+      });
+    })
   };
 
   return {
