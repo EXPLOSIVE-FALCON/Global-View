@@ -1,7 +1,9 @@
-angular.module('dashboard', [])
-.controller('DashboardController', function ($scope) {
-  // $scope.data = {
-  //   news: StoredData.data.news
-  // };
-  // $scope.getNews = GlobalMethods.getNews;
+angular.module('dashboard', ['globalData', 'globalMethods'])
+.controller('DashboardController', function ($scope, StoredData, GlobalMethods) {
+  $scope.data = StoredData;
+  $scope.GlobalMethods = GlobalMethods;
+
+  var populate = function(city, trendingTopic) {
+    
+  };
 });
