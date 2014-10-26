@@ -1,4 +1,4 @@
-<div id="container" ng-controller="TweetsController">
+<div id="tweetContainer">
   <h2>Tweets</h2>
   <form ng-submit="getTweets(request)">
     <div class="input_form">
@@ -24,8 +24,7 @@
   </form>
   <ul>
     <li ng-repeat="tweet in data.tweets">
-      <span>{{tweet}}</span>
+      <span>{{tweet.text}}</span>
     </li>  
   </ul>
-  
 </div>

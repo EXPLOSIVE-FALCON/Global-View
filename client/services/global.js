@@ -61,6 +61,7 @@ angular.module('globalMethods', [
   };
 
   var getTweets = function(request) {
+    console.log('got a request');
     Location.getLocation(request)
     .then(function(results){
       if(results){
@@ -69,6 +70,7 @@ angular.module('globalMethods', [
       }
       Twitter.getTweets(request)
       .then(function(data) {
+        console.log(data.data);
         StoredData.tweets = data.data;
       });
     })
