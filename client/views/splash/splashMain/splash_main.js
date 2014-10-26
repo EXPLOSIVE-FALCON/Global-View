@@ -9,9 +9,9 @@ angular.module('splashMain', ['globalData', 'globalMethods'])
   *  will need to build out functions to data on non 'dummy' object
   */
   $scope.data = {
-    boxes: StoredData.cities 
+    boxes: StoredData.cities
   };
-  
+
   $scope.populate = function() {
 
   };
