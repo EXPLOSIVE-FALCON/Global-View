@@ -10,15 +10,22 @@ angular.module('service_twitter', [])
       params: request
     })
     .then(function(response) {
-      return response.data;
+      console.log(response);  
+      return response.data
     })
     .catch(function(error){
       console.error(error);
     });
   };
   var getTrending = function(request) {
-    
-
+    return $http({
+      method:'GET',
+      url: '/api/twitterTrendingCities'
+    })
+    .then(function(response){
+      console.dir(response);
+      return response.data
+    });
   };
   return {
     getTweets: getTweets,

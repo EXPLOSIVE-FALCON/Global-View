@@ -13,7 +13,7 @@ angular.module('vantage', [
     .when('/', {
       templateUrl: 'views/dashboard/dashboard.html',
       controller: 'DashboardController'
-    })
+    })    
     .when('/tweets', {
       templateUrl: 'views/tweets/tweets.html',
       controller: 'TweetsController'
