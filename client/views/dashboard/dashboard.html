@@ -1,9 +1,20 @@
 <div class="boxed">
   <h1 class="logo">Vantage</h1> 
   <span class="logo-text">event dashboard</span>
-  <div id="container" ng-controller="SearchController" >
-      <ng-include src="'views/search/search.html'"></ng-include>
-      <ng-include src="'views/news/news.html'"></ng-include>
-      <ng-include src="'views/photos/photos.html'"></ng-include>
+  <div id="container" ng-controller="DashboardController" >
+    <ng-include src="'views/news/news.html'"></ng-include>
+    <ng-include src="'views/photos/photos.html'"></ng-include>
+    <ng-include src="'views/tweets/tweets.html'"></ng-include>
   </div>
 </div>
+
+
+<!-- <div class="boxed">
+  <h1 class="logo">Vantage</h1> 
+  <span class="logo-text">event dashboard</span>
+  <div id="container" ng-controller="SearchController" >
+    <ng-include src="'views/search/search.html'"></ng-include>
+    <ng-include src="'views/news/news.html'"></ng-include>
+    <ng-include src="'views/photos/photos.html'"></ng-include>
+  </div>
+</div> -->

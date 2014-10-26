@@ -11,6 +11,7 @@ angular.module('globalData', [])
   return {
     news: [],
     photos: [],
+    cities: cityList,
     tweets: []
   };
   // return {
@@ -34,6 +35,7 @@ angular.module('globalMethods', [
         StoredData.news = result.data;
       });
   };
+
   var getPhotos = function(request) {
     var params = {
       street: request.street,
@@ -57,6 +59,7 @@ angular.module('globalMethods', [
           });
       });
   };
+
   var getTweets = function(request) {
     Location.getLocation(request)
     .then(function(results){
@@ -71,9 +74,166 @@ angular.module('globalMethods', [
     })
   };
 
+  var getTrending = function(request) {
+
+  };
+
   return {
     getPhotos: getPhotos,
     getTweets: getTweets,
+    getTrending: getTrending,
     getNews: getNews
   };
 });
+
+var cityList = [
+  {
+    city: 'New Orleans',
+    img: 'new-orleans.png',
+    trending: []
+  },
+  {
+    city: 'San Francisco',
+    img: 'san-francisco.png',
+    trending: []
+  },
+  {
+    city: 'New York City',
+    img: 'new-york-city.png',
+    trending: []
+  },
+  {
+    city: 'Los Angeles',
+    img: 'los-angeles.png',
+    trending: []
+  },
+  {
+    city: 'Minneapolis',
+    img: 'minneapolis.png',
+    trending: []
+  },
+  {
+    city: 'Washington D.C.',
+    img: 'washington-dc.png',
+    trending: []
+  },
+  {
+    city: 'Seattle',
+    img: 'seattle.png',
+    trending: []
+  },
+  {
+    city: 'San Antonio',
+    img: 'san-antonio.png',
+    trending: []
+  },
+  {
+    city: 'Chicago',
+    img: 'chicago.png',
+    trending: []
+  },
+  {
+    city: 'Miami',
+    img: 'miami.png',
+    trending: []
+  },
+  {
+    city: 'Portland',
+    img: 'portland.png',
+    trending: []
+  },
+  {
+    city: 'Austin',
+    img: 'austin.png',
+    trending: []
+  },
+  {
+    city: 'San Diego',
+    img: 'san-diego.png',
+    trending: []
+  },
+  {
+    city: 'St. Louis', 
+    img: 'st-louis.png'
+  },
+  {
+    city: 'Las Vegas',
+    img: 'las-vegas.png',
+    trending: []
+  },
+  {
+    city: 'Denver',
+    img: 'denver.png',
+    trending: []
+  },
+  {
+    city: 'New Orleans',
+    img: 'new-orleans.png',
+    trending: []
+  },
+  {
+    city: 'San Francisco',
+    img: 'san-francisco.png',
+    trending: []
+  },
+  {
+    city: 'New York City',
+    img: 'new-york-city.png',
+    trending: []
+  },
+  {
+    city: 'Los Angeles',
+    img: 'los-angeles.png',
+    trending: []
+  },
+  {
+    city: 'Minneapolis',
+    img: 'minneapolis.png',
+    trending: []
+  },
+  {
+    city: 'Washington D.C.',
+    img: 'washington-dc.png',
+    trending: []
+  },
+  {
+    city: 'Seattle',
+    img: 'seattle.png',
+    trending: []
+  },
+  {
+    city: 'San Antonio',
+    img: 'san-antonio.png',
+    trending: []
+  },
+  {
+    city: 'Chicago',
+    img: 'chicago.png',
+    trending: []
+  },
+  {
+    city: 'Miami',
+    img: 'miami.png',
+    trending: []
+  },
+  {
+    city: 'Portland',
+    img: 'portland.png',
+    trending: []
+  },
+  {
+    city: 'Austin',
+    img: 'austin.png',
+    trending: []
+  },
+  {
+    city: 'San Diego',
+    img: 'san-diego.png',
+    trending: []
+  },
+  {
+    city: 'St. Louis', 
+    img: 'st-louis.png',
+    trending: []
+  }
+];

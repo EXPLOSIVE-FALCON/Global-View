@@ -3,6 +3,9 @@
   font-family: 'Raleway', sans-serif;
 }*/
 
+body {
+  background-color: #1C1F28;
+}
 .boxed {
   margin: 30px;
   font-family: 'Raleway', sans-serif;
