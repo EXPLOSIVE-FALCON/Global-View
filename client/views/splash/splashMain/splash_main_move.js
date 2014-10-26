@@ -48,7 +48,7 @@ var checkMovement = function(to) {
 };
 
 var smoothScroll = function(x, y) {
-  var sens = 1;
+  var sens = 5;
   while (Math.abs(x) > 0 || Math.abs(y) > 0) {
     if (x > 0) {
       var moveX = x > sens ? sens : x;
