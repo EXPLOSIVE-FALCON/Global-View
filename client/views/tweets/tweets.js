@@ -4,7 +4,7 @@
 angular.module('tweets', ['globalMethods', 'globalData','service_twitter'])
 .controller('TweetsController', function ($scope, StoredData, GlobalMethods,Twitter) {
   $scope.data = {
-    tweets: StoredData.data.tweets
+    tweets: StoredData.tweets
   };
   $scope.getTweets = Twitter.getTweets;
   $scope.getTrendingCities = Twitter.getTrending; 

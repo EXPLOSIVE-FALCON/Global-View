@@ -8,7 +8,7 @@ angular.module('dashboard', ['globalData', 'globalMethods'])
   */
   GlobalMethods.getNews(fakeRequest);
   // GlobalMethods.getTweets(fakeRequest);
-  // GlobalMethods.getPhotos(fakeRequest); 
+  GlobalMethods.getPhotos(fakeRequest); 
   /* 
   *  end fake requests
   */
@@ -20,7 +20,7 @@ angular.module('dashboard', ['globalData', 'globalMethods'])
 var fakeRequest = {
   city: "san francisco",
   date: new Date(),
-  query: "ebola",
+  query: "baseball",
   state: "ca",
   street: "944 market st"
 };
