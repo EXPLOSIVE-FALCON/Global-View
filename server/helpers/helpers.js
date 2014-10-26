@@ -86,7 +86,6 @@ exports.twitter = function(req, res) {
           })
         });      
     }
->>>>>>> Able to get tweets to client from server. Need to fix amount of tweets returned.
   });
   //queryTwitter.getTweet(queryObject, function(err, twitterResults){
 };
