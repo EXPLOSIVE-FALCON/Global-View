@@ -2,7 +2,6 @@ var movement = {
   moving: true,
   from: [],
   left: 0,
-  movingNow: false,
   top: 0
 };
 
@@ -32,7 +31,6 @@ var checkMovement = function(to) {
   if (!movement.moving) {
     movement.moving = dist > 25 ? true : false;
   }
-  if (dist !== 0) { console.log(dist); }
   if (dist !== 0 && movement.moving && !!to.length && !!from.length) { 
     var moveX = from[0] - to[0];
     var moveY = from[1] - to[1];
@@ -51,8 +49,6 @@ var checkMovement = function(to) {
 
 var smoothScroll = function(x, y) {
   var sens = 1;
-  if (Math.abs(distance) > 1000 || movement.movingNow) { return; }
-  movement.movingNow = true;
   while (Math.abs(x) > 0 || Math.abs(y) > 0) {
     if (x > 0) {
       var moveX = x > sens ? sens : x;
@@ -75,7 +71,6 @@ var smoothScroll = function(x, y) {
     }
     window.scrollBy(moveX, moveY);
   }
-  movement.movingNow = false;
 };
 
 var distance = function(first, second) {
