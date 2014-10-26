@@ -30,7 +30,6 @@ angular.module('globalMethods', [
 ])
 .factory('GlobalMethods', function(GoogleNews, Instagram, Twitter, Location, StoredData) {
   var getNews = function(request) {
-    console.log('look rick:', request);
     GoogleNews.getNews(request)
       .then(function(result) {
         StoredData.news = result.data;
@@ -60,7 +59,7 @@ angular.module('globalMethods', [
           });
       });
   };
-  
+
   var getTweets = function(request) {
     Location.getLocation(request)
     .then(function(results){
