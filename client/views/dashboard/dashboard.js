@@ -6,9 +6,9 @@ angular.module('dashboard', ['globalData', 'globalMethods'])
   *  these are fake requests to populate the page
   *  photos and tweets are not working 
   */
-  // GlobalMethods.getNews(fakeRequest);
+  GlobalMethods.getNews(fakeRequest);
   // GlobalMethods.getTweets(fakeRequest);
-  // GlobalMethods.getPhotos(fakeRequest); 
+  GlobalMethods.getPhotos(fakeRequest); 
   /* 
   *  end fake requests
   */
