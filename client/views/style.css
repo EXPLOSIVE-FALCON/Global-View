@@ -1,5 +1,5 @@
 html {
-  background: url(pics/bg/chicago_bw.jpg) no-repeat center center fixed;
+  background: url(pics/bg/chicago.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -77,11 +77,18 @@ ul {
 }
 
 .title {
-  /*left: 40vw;*/
-  /*top: 10vh;*/
-  /*width: 20vw;*/
+  width: 20vw;
   height: 50px;
   color: white;
   border: 2px white solid;
   border-radius: 5px;
+  text-align: center;
+  line-height: 50px;
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Special Elite', cursive;
+}
+
+.dashboard_title {
+  margin-bottom: 30px;
 }
