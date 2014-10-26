@@ -12,9 +12,9 @@ angular.module('splashBox', ['globalMethods'])
       date: new Date(),
       street: "944 market st"
     }
-    
+    $('.a_splashHome').hide();
     GlobalMethods.getNews(requestObj);
-    GlobalMethods.getTweets(requestObj);
+    // GlobalMethods.getTweets(requestObj);
     GlobalMethods.getPhotos(requestObj); 
   };
 });
