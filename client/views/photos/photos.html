@@ -5,10 +5,8 @@
     <button>OK</button>
   </form>
 </div> -->
-<div class="col-xs-9 photo_block">
-  <div ng-repeat="photo in data.photos">
-    <div class="col-xs-3">
+<div class="col-xs-8 photo_block">
+    <span ng-repeat="photo in data.photos">
       <a href="{{photo.link}}" target="_blank"><img class="photo" src="{{photo.images.low_resolution.url}}"></a>
-    </div>
-  </div>
+    </span>
 </div>
