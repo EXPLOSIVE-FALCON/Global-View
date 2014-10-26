@@ -38,7 +38,7 @@ angular.module('globalMethods', [
 
   var getPhotos = function(request) {
     var params = {
-      street: request.street,
+      // street: request.street,
       city: request.city,
       state: request.state
     };
