@@ -37,6 +37,8 @@ angular.module('splashBox', ['globalMethods'])
       .find('li')
         .velocity({width: 100})
         .velocity({height: 0}, {display: 'none'});
+    console.log(shifter);
+    clearInterval(shifter);
     GlobalMethods.getNews(requestObj);
     // GlobalMethods.getTweets(requestObj);
     GlobalMethods.getPhotos(requestObj); 
