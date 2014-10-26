@@ -1,5 +1,5 @@
-angular.module('splashMain', ['service_twitter', 'service_instagram'])
-.controller('SplashController', function ($scope, Twitter, Instagram) {
+angular.module('splashMain', ['globalData', 'globalMethods'])
+.controller('SplashController', function ($scope, StoredData, GlobalMethods) {
   initiateMovement();
   $('body').on('mousemove', '.a_splashHome', function(event) {
     checkMovement([event.pageX, event.pageY]);
@@ -11,13 +11,6 @@ angular.module('splashMain', ['service_twitter', 'service_instagram'])
   $scope.data = {
     boxes: cities
   };
-
-  // $scope.data = {
-  //   boxes: {
-  //     trends: Twitter.getTrending(cities),
-  //     tweets: Twitter.getTwendingTweets(cities),
-  //     photos: Instagram.getLocationPhoto(cities)
-  // };
   $scope.populate = function() {
 
   };
