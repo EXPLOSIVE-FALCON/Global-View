@@ -1,27 +1,5 @@
 <div id="tweetContainer">
   <h2>Tweets</h2>
-  <form ng-submit="getTweets(request)">
-    <div class="input_form">
-      <div class="row">
-         <div class="col-xs-2 col-xs-offset-1">
-            <input type="text" ng-model="request.query" class="form-control" placeholder="search">
-          </div>
-          <div class="col-xs-1">
-            <input type="text" class="form-control" ng-model="request.state" placeholder="state">
-          </div>
-          <div class="col-xs-2">
-             <input type="text" class="form-control" ng-model="request.city" placeholder="city">
-          </div>
-          <div class="col-xs-2">
-            <input type="text" class="form-control" ng-model="request.street" placeholder="street">
-          </div>
-          <div class="col-xs-2">
-            <input class="form-control" type="date" ng-model="request.date"></input>
-          </div>
-        <button>OK</button>
-      </div>
-    </div>
-  </form>
   <ul>
     <li ng-repeat="tweet in data.tweets">
       <span>{{tweet.text}}</span>

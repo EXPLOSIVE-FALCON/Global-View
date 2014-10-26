@@ -1,11 +1,14 @@
 var movement = {
+  shifter: null,
   moving: true,
   from: [],
   left: 0,
   top: 0
 };
+var shifter;
 
 var initiateMovement = function() {
+  console.log('wtf');
   var shift = function() {
     movement.moving = false;
     var dimension = {
@@ -22,7 +25,7 @@ var initiateMovement = function() {
     }, 7000);
   };
   shift();
-  setInterval(shift, 6500);
+  shifter = setInterval(shift, 6500);
 };
 
 var checkMovement = function(to) {
