@@ -69,7 +69,7 @@ angular.module('globalMethods', [
       }
       Twitter.getTweets(request)
       .then(function(data) {
-        StoredData.data.tweets = data;
+        StoredData.tweets = data;
       });
     })
   };
