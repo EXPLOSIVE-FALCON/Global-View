@@ -89,151 +89,182 @@ angular.module('globalMethods', [
 var cityList = [
   {
     city: 'New Orleans',
+    state: 'LA',
     img: 'new-orleans.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'San Francisco',
+    state: 'CA',
     img: 'san-francisco.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'New York City',
+    state: 'NY',
     img: 'new-york-city.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'Los Angeles',
+    state: 'CA',
     img: 'los-angeles.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'Minneapolis',
+    state: 'MN',
     img: 'minneapolis.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'Washington D.C.',
+    state: 'WASHINGTON DC',
     img: 'washington-dc.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'Seattle',
+    state: 'WA',
     img: 'seattle.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'San Antonio',
+    state: 'TX',
     img: 'san-antonio.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'Chicago',
+    state: 'IL',
     img: 'chicago.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'Miami',
+    state: 'FL',
     img: 'miami.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'Portland',
+    state: 'OR',
     img: 'portland.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'Austin',
+    state: 'TX',
     img: 'austin.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'San Diego',
+    state: 'CA',
     img: 'san-diego.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
-    city: 'St. Louis', 
-    img: 'st-louis.png'
+    city: 'St. Louis',
+    state: 'MO',
+    img: 'st-louis.png',
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'Las Vegas',
+    state: 'NV',
     img: 'las-vegas.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'Denver',
+    state: 'CO',
     img: 'denver.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'New Orleans',
+    state: 'LA',
     img: 'new-orleans.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'San Francisco',
+    state: 'CA',
     img: 'san-francisco.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'New York City',
+    state: 'NY',
     img: 'new-york-city.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'Los Angeles',
+    state: 'CA',
     img: 'los-angeles.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'Minneapolis',
+    state: 'MN',
     img: 'minneapolis.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'Washington D.C.',
+    state: 'WASHINGTON DC',
     img: 'washington-dc.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'Seattle',
+    state: 'WA',
     img: 'seattle.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'San Antonio',
+    state: 'TX',
     img: 'san-antonio.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'Chicago',
+    state: 'IL',
     img: 'chicago.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'Miami',
+    state: 'FL',
     img: 'miami.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'Portland',
+    state: 'OR',
     img: 'portland.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'Austin',
+    state: 'TX',
     img: 'austin.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'San Diego',
+    state: 'CA',
     img: 'san-diego.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   },
   {
     city: 'St. Louis', 
+    state: 'MO',
     img: 'st-louis.png',
-    trending: []
+    trending: [{name: 'baseball'}, {name: 'ebola'}]
   }
 ];
