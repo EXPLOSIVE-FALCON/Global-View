@@ -23,23 +23,6 @@ angular.module('splashMain', ['service_twitter', 'service_instagram'])
   };
 });
 
-// var cities = [
-//   'San Francisco',
-//   'New York City',
-//   'Los Angeles',
-//   'Minneapolis',
-//   'Washington D.C.',
-//   'Seattle',
-//   'San Antonio',
-//   'Chicago',
-//   'Miami',
-//   'Saint Paul',
-//   'Austin',
-//   'San Diego',
-//   'St. Louis', 
-//   'Las Vegas',
-//   'Denver',
-// ];
 var cities = [
   {
     city: 'New Orleans',
