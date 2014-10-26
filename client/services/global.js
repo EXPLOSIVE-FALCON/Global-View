@@ -69,9 +69,18 @@ angular.module('globalMethods', [
       }
       Twitter.getTweets(request)
       .then(function(data) {
-        StoredData.tweets = data;
+        StoredData.tweets = data.data;
       });
     })
+  };
+  var getTrendingCities = function(){
+    console.log('just got called');
+    Twitter.getTrending()
+    .then(function(results){
+      console.log(results.data);
+      StoredData.trendingCities = results;
+
+    });
   };
 
   var getTrending = function(request) {
@@ -81,8 +90,8 @@ angular.module('globalMethods', [
   return {
     getPhotos: getPhotos,
     getTweets: getTweets,
-    getTrending: getTrending,
-    getNews: getNews
+    getNews: getNews,
+    getTrendingCities: getTrendingCities
   };
 });
 
