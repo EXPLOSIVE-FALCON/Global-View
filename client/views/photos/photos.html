@@ -8,7 +8,7 @@
 <div class="col-xs-9 photo_block">
   <div ng-repeat="photo in data.photos">
     <div class="col-xs-3">
-      <img class="photo" src="{{photo.images.thumbnail.url}}">
+      <a href="{{photo.link}}" target="_blank"><img class="photo" src="{{photo.images.low_resolution.url}}"></a>
     </div>
   </div>
 </div>
