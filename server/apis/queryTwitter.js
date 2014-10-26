@@ -35,7 +35,6 @@ var getClosestTrendingCity = function(query, callback){
 };
 
 var getCityId = function(query,trendingCities){
-  console.log(query);
   if(trendingCities === undefined || query === undefined){
     console.log('No results for city Id. In getCityId.');
   }else{

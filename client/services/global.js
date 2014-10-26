@@ -61,6 +61,7 @@ angular.module('globalMethods', [
   };
 
   var getTweets = function(request) {
+    console.log('got a request');
     Location.getLocation(request)
     .then(function(results){
       if(results){
@@ -69,9 +70,19 @@ angular.module('globalMethods', [
       }
       Twitter.getTweets(request)
       .then(function(data) {
-        StoredData.tweets = data;
+        console.log(data.data);
+        StoredData.tweets = data.data;
       });
     })
+  };
+  var getTrendingCities = function(){
+    console.log('just got called');
+    Twitter.getTrending()
+    .then(function(results){
+      console.log(results.data);
+      StoredData.trendingCities = results;
+
+    });
   };
 
   var getTrending = function(request) {
@@ -81,8 +92,8 @@ angular.module('globalMethods', [
   return {
     getPhotos: getPhotos,
     getTweets: getTweets,
-    getTrending: getTrending,
-    getNews: getNews
+    getNews: getNews,
+    getTrendingCities: getTrendingCities
   };
 });
 

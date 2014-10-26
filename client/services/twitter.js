@@ -10,7 +10,6 @@ angular.module('service_twitter', [])
       params: request
     })
     .then(function(response) {
-      console.log(response);  
       return response.data
     })
     .catch(function(error){
@@ -23,7 +22,6 @@ angular.module('service_twitter', [])
       url: '/api/twitterTrendingCities'
     })
     .then(function(response){
-      console.dir(response);
       return response.data
     });
   };

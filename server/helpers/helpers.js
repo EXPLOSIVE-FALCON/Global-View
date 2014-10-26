@@ -59,11 +59,11 @@ exports.twitter = function(req, res) {
     var woeid = queryTwitter.getCityId(query,trendingCities);
     if(Array.isArray(woeid)){
       queryTwitter.getClosestTrendingCity(query,function(err,data){
+        //console.log(data);
         if(!!err){ 'Error: ' + err;}
         queryTwitter.getTrendingTopics(data[0]['woeid'],function(err,trendingTopics){
           if(!!err){ throw 'Error: '+err;}
           queryTwitter.getTweetsForTrendObjects(trendingTopics,function(err,tweets){        
-            console.log(tweets);
             var response = {
               status:200,
               result: 'Request Received!',
