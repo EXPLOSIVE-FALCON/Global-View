@@ -19,10 +19,10 @@ var initiateMovement = function() {
     $('html, body').animate({
       scrollLeft: movement.left,
       scrollTop: movement.top
-    }, 5000);
+    }, 7000);
   };
   shift();
-  setInterval(shift, 4500);
+  setInterval(shift, 6500);
 };
 
 var checkMovement = function(to) {

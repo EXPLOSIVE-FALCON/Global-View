@@ -1,7 +1,8 @@
 <div class="col-xs-8 news_block">
   <ul>
     <li class="news" ng-repeat="news in data.news">
-      <span class="news_time">{{news.time}}</span> - <a href="{{news.link}}" target="_blank">{{news.title}}</a>
+      <a href="{{news.link}}" data-description="{{news.description}}">{{news.title}}</a>
+      <span class="news_time">{{news.source}}<small> - {{news.time}}</small></span>
     </li>
   </ul>
 </div>
