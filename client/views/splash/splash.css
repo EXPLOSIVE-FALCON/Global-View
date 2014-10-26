@@ -3,10 +3,13 @@
   height: auto;
   width: 3000px;
   padding: 0px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-.dash {
-  display: hidden;
+#dash {
+  z-index: -1;
 }
 .splashTitle {
   z-index: 2;

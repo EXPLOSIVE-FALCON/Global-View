@@ -10,7 +10,7 @@ angular.module('vantage', [
 ])
 .config(function($routeProvider, $httpProvider) {
   $routeProvider
-    .when('/', {
+    .when('/dashboard', {
       templateUrl: 'views/dashboard/dashboard.html',
       controller: 'DashboardController'
     })    
@@ -30,7 +30,7 @@ angular.module('vantage', [
       templateUrl: 'views/serach/search.html',
       controller: 'SearchControler'
     })
-    .when('/splash', {
+    .when('/', {
       templateUrl: 'views/splash/splashMain/splash_main.html',
       controller: 'SplashController'
     })
