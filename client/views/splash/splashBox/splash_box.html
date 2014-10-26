@@ -4,4 +4,9 @@
   <h3 class="splashBoxCity">
     <a>{{item.city}}</a>
   </h3>
+  <ul class="cityTopics" ng-controller="BoxController"> 
+    <li ng-repeat="story in item.trending" ng-click="populate(item.city, item.state, story.name);">
+    #{{story.name}}
+    </li>
+  </ul>
 </div>
