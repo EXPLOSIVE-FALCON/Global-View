@@ -1,6 +1,9 @@
 angular.module('splashMain', ['service_twitter', 'service_instagram'])
 .controller('SplashController', function ($scope, Twitter, Instagram) {
   initiateMovement();
+  $('body').on('mousemove', '.a_splashHome', function(event) {
+    checkMovement([event.pageX, event.pageY]);
+  });
   /*
   *  test data until twitter is done
   *  will need to build out functions to data on non 'dummy' object
@@ -20,23 +23,6 @@ angular.module('splashMain', ['service_twitter', 'service_instagram'])
   };
 });
 
-// var cities = [
-//   'San Francisco',
-//   'New York City',
-//   'Los Angeles',
-//   'Minneapolis',
-//   'Washington D.C.',
-//   'Seattle',
-//   'San Antonio',
-//   'Chicago',
-//   'Miami',
-//   'Saint Paul',
-//   'Austin',
-//   'San Diego',
-//   'St. Louis', 
-//   'Las Vegas',
-//   'Denver',
-// ];
 var cities = [
   {
     city: 'New Orleans',
