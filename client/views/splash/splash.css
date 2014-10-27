@@ -45,7 +45,7 @@
   transition: opacity 0.3s ease, -webkit-transform 0.3s ease, -webkit-filter 0.3s ease;
 }
 .splashBox:hover .splashBoxCity {
-  font-size: 40px;
+  font-size: 70px;
 }
 .splashBox, .boxSize {
   height: 300px;
@@ -61,15 +61,21 @@
   box-shadow: inset 0px 0px 200px black;
 }
 .splashBoxCity {
+  font-size: 40px;
   position: relative;
   width: 500px;
   margin: 0 auto 0 auto;
+  padding-top: 200px;
+  line-height: 80px;
   text-align: center;
-  line-height: 200px;
   overflow: hidden;
   font-family: 'Poiret One', cursive;
   color: white;
   font-color: white;
+}
+
+.splashBoxCity > a {
+  color: white;
 }
 
 .cityTopics {
