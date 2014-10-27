@@ -1,7 +1,7 @@
 /**
 * @class Angular_Modules.globalData 
 * @memberof Angular_Modules
-* @description Global Data Stores all Tweets, News, and Photos
+* @description Global Data Stores all Tweets, News, Photos, and City Data
 */
 angular.module('globalData', [])
 /**
@@ -9,16 +9,16 @@ angular.module('globalData', [])
 * @memberOf Angular_Modules.globalData
 * @description This module stores all data used accross the application.
 * @returns {Object} 
-* @see {@link StoredDataObject}
+* @see {@link StoredDataReturn}
 */
 .factory('StoredData', function() {
   /**
-  * @name StoredData
+  * @name StoredDataReturn
   * @property {array} news Contains a list of Objects containing news stories
   * @property {array} photos Contains a list of Objects containing instagram photos
   * @property {object} currentCity Contains information about selected city
   * @property {array} currentTrends Contains a list of objects containing trending topics
-  * @property {array} cities Cntains a list of city objects with trending topics
+  * @property {array} cities Contains a list of city objects with trending topics
   * @property {array} tweets Contains a list tweets objects from twitter api
   */
   var obj = {
@@ -32,8 +32,10 @@ angular.module('globalData', [])
   return obj;
 });
 
-/*
-*  GlobalMethods stores all functionality that can change global Data
+/**
+* @class Angular_Modules.globalMethods 
+* @memberof Angular_Modules
+* @description Stores all functionality that can change global Data
 */
 angular.module('globalMethods', [
   'service_twitter', 
@@ -41,14 +43,49 @@ angular.module('globalMethods', [
   'service_instagram', 
   'service_location'
 ])
+/**
+* @function GlobalMethods
+* @memberOf Angular_Modules.globalMethods
+* @description This module stores all data used accross the application.
+* @returns {Object} 
+* @see {@link GlobalMethodsReturn}
+*/
+
+// var fakeRequest = {
+//   city: "san francisco",
+//   date: new Date(),
+//   query: "baseball",
+//   state: "ca",
+//   street: "944 market st"
+// };
+
 .factory('GlobalMethods', function(GoogleNews, Instagram, Twitter, Location, StoredData) {
+  /**
+  * @function
+  * @memberOf Angular_Modules.globalMethods
+  * @description This function accesses the news angular modular to get news and stores the results in [StoredData]{@link GlobalDataReturn}
+  * @param request Request object for request
+  * @param request.city Name of City
+  * @param request.state Name of State
+  * @param request.date Current Time
+  * @param request.query Search Query for Services Name of City
+  */
   var getNews = function(request) {
     GoogleNews.getNews(request)
       .then(function(result) {
         StoredData.news = result.data;
       });
   };
-
+  /**
+  * @function
+  * @memberOf Angular_Modules.globalMethods
+  * @description This function accesses the photos angular modular to get instagram photos and stores the results in [StoredData]{@link GlobalDataReturn}
+  * @param request Request object for request
+  * @param request.city Name of City
+  * @param request.state Name of State
+  * @param request.date Current Time
+  * @param request.query Search Query for Services Name of City
+  */
   var getPhotos = function(request) {
     var params = {
       // street: request.street,
@@ -73,6 +110,16 @@ angular.module('globalMethods', [
       });
   };
 
+  /**
+  * @function
+  * @memberOf Angular_Modules.globalMethods
+  * @description This function accesses the tweets angular modular to get tweets on a specific trending topic and stores the results in [StoredData]{@link GlobalDataReturn}
+  * @param request Request object for request
+  * @param request.city Name of City
+  * @param request.state Name of State
+  * @param request.date Current Time
+  * @param request.query Search Query for Services Name of City
+  */
   var getTweets = function(request) {
     console.log('got a request');
     Location.getLocation(request)
@@ -88,15 +135,28 @@ angular.module('globalMethods', [
       });
     })
   };
-  var getTrendingCities = function(){
+  /**
+  * @function
+  * @memberOf Angular_Modules.globalMethods
+  * @description Note: No Arguments. Function Calls Server and retrieves a list of cities and trending topics for those cities. WIP. Stores the results in [StoredData]{@link GlobalDataReturn}
+  */
+  var getTrendingCities = function() {
     console.log('just got called');
     Twitter.getTrending()
     .then(function(results){
-      console.log(results.data);
       StoredData.trendingCities = results;
     });
   };
 
+  /**
+  * @function setCity
+  * @description This function calls accesses the news angular modular to get news and return the news to [StoredData]{@link GlobalDataReturn}
+  * @param request Request object for request
+  * @param request.city Name of City
+  * @param request.state Name of State
+  * @param request.date Current Time
+  * @param request.query Search Query for Services Name of City
+  */
   var setCity = function(request) {
     StoredData.currentCity = request;
     var trend = _.find(StoredData.cities, function(val, index) {
@@ -105,6 +165,14 @@ angular.module('globalMethods', [
     StoredData.currentTrends = trend.trending;
   };
 
+  /**
+  * @name GlobalMethodsReturn
+  * @property {function} getPhotos [Function]{@link setCity} Gets Photos for Selected City and returns result to [globalData]{@link StoredDataReturn}
+  * @property {function} getTweets Gets Tweets for Selected City and returns result to [globalData]{@link StoredDataReturn} 
+  * @property {function} getNews Gets News Results for Selected City and returns result to [globalData]{@link StoredDataReturn}
+  * @property {function} getTrendingCities Gets Trending Topics From list of Cities and returns result to [globalData]{@link StoredDataReturn}
+  * @property {function} setCity Cntains a list of city objects with trending topic and returns result to [globalData]{@link StoredDataReturn}
+  */
   return {
     getPhotos: getPhotos,
     getTweets: getTweets,
