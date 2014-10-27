@@ -1,14 +1,19 @@
-<div class="boxed">
+<div class="boxed" id="container" ng-controller="DashboardController" >
+
   <div class="row dashboard_header">
     <div class="col-xs-4">
       <a class="logo" href="/">Vantage View</a>
     </div>
     <div class="col-xs-offset-4 col-xs-4">
-      <span class="city">San Francisco</span>
+      <span class="city">{{data.currentCity.city}}</span>
     </div>
   </div>
-  <div class="row" id="container" ng-controller="DashboardController" >
+
+  <div class="row">
     <ng-include src="'views/topics/topics.html'"></ng-include>
+  </div>
+
+  <div class="row">
     <div class="col-xs-8">
       <ng-include src="'views/news/news.html'"></ng-include>
       <ng-include src="'views/photos/photos.html'"></ng-include>
@@ -17,4 +22,5 @@
       <ng-include src="'views/tweets/tweets.html'"></ng-include>
     </div>
   </div>
+
 </div>
