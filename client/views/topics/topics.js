@@ -11,4 +11,10 @@ angular.module('topics', ['globalData', 'globalMethods'])
     // GlobalMethods.getTweets(requestObj);
     GlobalMethods.getPhotos(requestObj);
   }
+
+  $scope.selected = 0;
+  $scope.select= function(index) {
+     $scope.selected = index;
+  };
+
 });
