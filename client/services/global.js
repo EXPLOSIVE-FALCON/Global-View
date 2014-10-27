@@ -6,6 +6,8 @@ angular.module('globalData', [])
   return {
     news: [],
     photos: [],
+    currentCity: {},
+    currentTrends: [],
     cities: cityList,
     tweets: []
   };
@@ -73,19 +75,23 @@ angular.module('globalMethods', [
     .then(function(results){
       console.log(results.data);
       StoredData.trendingCities = results;
-
     });
   };
 
-  var getTrending = function(request) {
-
+  var setCity = function(request) {
+    StoredData.currentCity = request;
+    var trend = _.find(StoredData.cities, function(val, index) {
+      return val.city === request.city;
+    });
+    StoredData.currentTrends = trend.trending;
   };
 
   return {
     getPhotos: getPhotos,
     getTweets: getTweets,
     getNews: getNews,
-    getTrendingCities: getTrendingCities
+    getTrendingCities: getTrendingCities,
+    setCity: setCity
   };
 });
 

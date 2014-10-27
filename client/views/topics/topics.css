@@ -1,0 +1,19 @@
+.trendingTopics {
+  color: white;
+  width: 1000px;
+}
+
+.trendingTopics > li {
+  margin: 5px;
+  width: 200px;
+  font-size: 16px;
+  text-align: center;
+  border: 2px white solid;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.trendingTopics > li:hover {
+  color: red;
+  border-color: red;
+}

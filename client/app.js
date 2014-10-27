@@ -6,6 +6,7 @@ angular.module('vantage', [
   'dashboard',
   'splashMain',
   'splashBox',
+  'topics',
   'ngRoute'
 ])
 .config(function($routeProvider, $httpProvider) {
