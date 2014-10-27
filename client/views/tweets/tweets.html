@@ -1,9 +1,7 @@
-<div id="tweetContainer" class="col-xs-offset-1 col-xs-3 photo_block">
-  <h2>Tweets</h2>
-  <ul>
-    <li class="tweet" ng-repeat="tweet in data.tweets">
-        <img src="{{tweet.user.profile_image_url}}"/>
-        <span class="tweet_span">{{tweet.text}}</span>
-    </li>
-  </ul>
+<div id="tweetContainer" class="twitter_block">
+  <div class="tweet" ng-repeat="tweet in data.tweets">
+      <img class="tweet_image" src="{{tweet.user.profile_image_url}}"/>
+      <span class="news_time">{{tweet.text}}</span>
+      <!-- <a ng-show="{{tweet.user.url}}" href="{{tweet.user.url}}" target="_blank">{{tweet.text}}</a> -->
+  </div>
 </div>

@@ -10,6 +10,10 @@ body {
   background: rgba(0, 0, 0, 0);
 }
 
+.dashboard_header {
+  margin-bottom: 30px;
+}
+
 .boxed {
   margin: 30px;
   font-family: 'Raleway', sans-serif;
@@ -35,14 +39,7 @@ ul {
   list-style-type: none;
 }
 
-.tweet{
-  padding: 5px;
-  border-bottom: 1px solid rgb(187, 187, 187);
-}
 
-.tweet_span {
-  color:#53B0DB;
-}
 .news {
   padding: 5px;
 }
@@ -52,20 +49,31 @@ ul {
 }
 
 .news_block {
-  margin: 0px 30px 30px 0px;
   background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  margin-bottom: 30px;
 }
 
 .photo {
-  padding: 10px;
+  padding: 6px;
   height: 145px;
   width: 145px;
-  margin: 12px;
+  margin: 11px;
+}
+
+.photos {
+  margin: 0 auto;
 }
 
 .photo_block {
   background: rgba(0, 0, 0, 0.8);
-  padding: 21px;
+  padding: 20px;
+}
+
+.twitter_block{
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  margin-left: 40px;
 }
 
 .logo {
@@ -87,6 +95,21 @@ ul {
   color: white;
 }
 
-.dashboard_header {
-  margin-bottom: 30px;
+.tweet{
+  padding: 5px 0px 10px 0px;
+  border-bottom: 1px solid rgb(45, 45, 45);
+}
+
+.tweet_text {
+  color: rgb(187, 187, 187);
+}
+
+.tweet_text:hover{
+  color: rgb(169, 161, 1);
+  text-decoration: none;
+}
+
+.tweet_image {
+  width: 30px;
+  height: 30px;
 }

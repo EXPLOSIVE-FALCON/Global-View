@@ -1,12 +1,7 @@
-<!-- <div id='container'>
-  <h2>Photos</h2>
-  <form ng-submit='getPhotos(request)'>
-    <input type='text' ng-model='request'>
-    <button>OK</button>
-  </form>
-</div> -->
-<div class="col-xs-8 photo_block">
+<div class="photo_block">
+  <div class="photos">
     <span ng-repeat="photo in data.photos">
       <a href="{{photo.link}}" target="_blank"><img class="photo" src="{{photo.images.low_resolution.url}}"></a>
     </span>
+  </div>
 </div>
