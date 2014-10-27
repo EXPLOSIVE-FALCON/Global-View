@@ -10,10 +10,13 @@ angular.module('service_twitter', [])
       params: request
     })
     .then(function(response) {
+      console.log('response', response);
       var results = [];
       angular.forEach(response.data.data,function(tweets,index){
         angular.forEach(tweets,function(tweet,index){
           results.push(tweet);
+          console.log('tweet', tweet);
+          console.log('url', tweet.user.url);
         })
       });
       return results;
