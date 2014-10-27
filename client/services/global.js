@@ -70,8 +70,8 @@ angular.module('globalMethods', [
       }
       Twitter.getTweets(request)
       .then(function(data) {
-        console.log(data.data);
-        StoredData.tweets = data.data;
+        console.log(data);
+        StoredData.tweets = data;
       });
     })
   };
@@ -233,7 +233,7 @@ var cityList = [
     ]
   },
   {
-    city: 'New York City',
+    city: 'New York',
     state: 'NY',
     img: 'new-york-city.png',
     trending: [

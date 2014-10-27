@@ -55,19 +55,47 @@ var getTrendingTopics = function(woeid, callback){
 };
 
 var getTweetsForTrendObjects = function(arrayOfTrends, callback){
-  var results =[];
-  _.map(arrayOfTrends,function(trend,index,arrayOfTrends){
-    T.get('search/tweets', { q: trend['query'], count : 10}, function(err, data, response) { 
-      if(!!err){throw 'Error: ' + err;}
-      _.map(data.statuses,function(tweet,index,tweets){
-       results.push(tweet); 
-      });
-     callback(err,results);
-    });
+  var queue = arrayOfTrends.slice(0),
+      elem,
+      results = [];
 
-  });
+      (function iterate(){
+        if(queue.length === 0){
+          callback(null,results);
+          return;
+        }
+        elem = queue.splice(0,1)[0];
+        T.get('search/tweets', {q: elem['query'], count: 10}, function(err,data){
+          if(!!err){throw 'Error: '+err;}
+          results.push(data.statuses);
+          process.nextTick(iterate);
+        })
+      })();
 }
 
+// var getTweetsPerTrendingItem = function(counter){
+//     var counter = counter || 0;
+//     //termination condition
+//     console.log("entered into getTweetsPerTrendingItem");
+//     if( counter === arrayOfTrends.length){
+//       console.log(results);
+//       return;
+//     }
+//     _.map(arrayOfTrends,function(trend,index,arrayOfTrends){
+//       console.log(trend, ":: is the trend");
+//       T.get('search/tweets', { q: trend['query'], count : 10}, function(err, data, response) { 
+//         console.log(data," :: should be twitter info ");
+//         if(!!err){throw 'Error: ' + err;}
+//         result.push(data.statuses);
+//         // _.map(data.statuses,function(tweet,index,tweets){
+//         //  results.push(tweet); 
+//         // });
+//       });
+//     });
+//     getTweetsPerTrendingItem(counter+1);
+//   }
+//   getTweetsPerTrendingItem(0);
+//   callback(results);
 module.exports.getAvailableTrendingCities = getAvailableTrendingCities;
 module.exports.getClosestTrendingCity = getClosestTrendingCity;
 module.exports.getCityId = getCityId;
