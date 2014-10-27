@@ -51,14 +51,6 @@ angular.module('globalMethods', [
 * @see {@link GlobalMethodsReturn}
 */
 
-// var fakeRequest = {
-//   city: "san francisco",
-//   date: new Date(),
-//   query: "baseball",
-//   state: "ca",
-//   street: "944 market st"
-// };
-
 .factory('GlobalMethods', function(GoogleNews, Instagram, Twitter, Location, StoredData) {
   /**
   * @function
