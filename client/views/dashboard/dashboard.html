@@ -7,13 +7,14 @@
       <span class="city">San Francisco</span>
     </div>
   </div>
-    <div class="row" id="container" ng-controller="DashboardController" >
-      <div class="col-xs-8">
-        <ng-include src="'views/news/news.html'"></ng-include>
-        <ng-include src="'views/photos/photos.html'"></ng-include>
-      </div>
-      <div class="col-xs-4">
-        <ng-include src="'views/tweets/tweets.html'"></ng-include>
-      </div>
+  <div class="row" id="container" ng-controller="DashboardController" >
+    <ng-include src="'views/topics/topics.html'"></ng-include>
+    <div class="col-xs-8">
+      <ng-include src="'views/news/news.html'"></ng-include>
+      <ng-include src="'views/photos/photos.html'"></ng-include>
     </div>
+    <div class="col-xs-4">
+      <ng-include src="'views/tweets/tweets.html'"></ng-include>
+    </div>
+  </div>
 </div>
