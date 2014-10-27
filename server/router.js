@@ -4,6 +4,8 @@ exports.apiRouter = function(app) {
 
   app.get('/twitter', helpers.twitter);
 
+  app.get('/tweetPerTrend',helpers.tweetsForTrend);
+
   app.get('/twitterTrendingCities', helpers.twitterTrendingCities);
 
   app.get('/googlenews', helpers.google);
