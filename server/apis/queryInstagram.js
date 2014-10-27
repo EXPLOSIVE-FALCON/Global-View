@@ -42,7 +42,7 @@ module.exports = function(allParameters, callback) {
   inputParams.lat = parseFloat(allParameters.lat) || null;
   inputParams.lng = parseFloat(allParameters.lng) || null;
   inputParams.query = allParameters.query || 'null';
-  inputParams.query = inputParams.query.split(' ').join('').toLowerCase();
+  inputParams.query = inputParams.query.replace(/#/g,'').split(' ').join('').toLowerCase();
   inputParams.distance = allParameters.distance || 1000;
 
   var requestURL;
@@ -59,10 +59,16 @@ module.exports = function(allParameters, callback) {
 
 
   request(requestURL,function(error, res, body) {
-    var results = JSON.parse(body);
-    callback(error, sortResults(resultsDecorator(results.data,[trimResponse,applyTagFilter,calculateDistance]),sortParams));
+    if(error) {
+      console.log(error);
+    } else {
+      var results = JSON.parse(body);
+      callback(error, sortResults(resultsDecorator(results.data,[trimResponse,applyTagFilter,calculateDistance]),sortParams));
+    }
   });
 };
+
+
 
 /**
 * Add new attributes to an object of photos
