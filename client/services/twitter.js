@@ -6,7 +6,7 @@ angular.module('service_twitter', [])
   var getTweets = function(request) {
     return $http({
       method: 'GET',
-      url: 'api/twitter',
+      url: 'api/tweetPerTrend',
       params: request
     })
     .then(function(response) {

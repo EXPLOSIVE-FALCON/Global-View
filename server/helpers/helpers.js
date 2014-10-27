@@ -51,6 +51,18 @@ exports.twitterTrendingCities = function(req,res){
   });
 };
 
+exports.tweetsForTrend = function(req,res){
+  var query = req.query;
+  queryTwitter.getTweetsForTrendObjects([query],function(err,tweets){
+    if(!!err){throw 'Error: '+err}
+    var response = {
+      status:200,
+      result: 'Request Received!',
+      data: tweets
+    };
+    res.end(JSON.stringify(response));   
+  });
+}
 
 exports.twitter = function(req, res) {
   var query = req.query;
