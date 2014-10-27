@@ -54,6 +54,7 @@ exports.twitterTrendingCities = function(req,res){
 
 exports.twitter = function(req, res) {
   var query = req.query;
+  console.log(query);
   queryTwitter.getAvailableTrendingCities(function(err,trendingCities){
     if(!!err){ throw 'Error: '+ err;}
     var woeid = queryTwitter.getCityId(query,trendingCities);
@@ -63,7 +64,7 @@ exports.twitter = function(req, res) {
         if(!!err){ 'Error: ' + err;}
         queryTwitter.getTrendingTopics(data[0]['woeid'],function(err,trendingTopics){
           if(!!err){ throw 'Error: '+err;}
-          queryTwitter.getTweetsForTrendObjects(trendingTopics,function(err,tweets){        
+          queryTwitter.getTweetsForTrendObjects(trendingTopics,0,function(err,tweets){        
             var response = {
               status:200,
               result: 'Request Received!',
