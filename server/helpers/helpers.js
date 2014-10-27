@@ -39,65 +39,66 @@ exports.google = function(req, res) {
 * @returns {json} Sends Client a JSON Object containing an Array of Tweets
 */
 
-exports.twitterTrendingCities = function(req,res){
-  queryTwitter.getAvailableTrendingCities(function(err,trendingCities){
-     if(!!err){ throw 'Error: '+ err;}
+exports.twitterTrendingCities = function(req, res){
+  queryTwitter.getAvailableTrendingCities(function(err, trendingCities){
+    if (!!err) { throw 'Error: '+ err;}
     var response = {
       status:200,
       result: 'Request Received!',
       data: trendingCities
-    };  
-    res.end(JSON.stringify(response));  
+    };
+    res.end(JSON.stringify(response));
   });
 };
 
-exports.tweetsForTrend = function(req,res){
+
+exports.tweetsForTrend = function(req, res){
   var query = req.query;
-  queryTwitter.getTweetsForTrendObjects([query],function(err,tweets){
+  queryTwitter.getTweetsForTrendObjects([query], function(err, tweets){
     if(!!err){throw 'Error: '+err}
     var response = {
       status:200,
       result: 'Request Received!',
       data: tweets
     };
-    res.end(JSON.stringify(response));   
+    res.end(JSON.stringify(response));
   });
-}
+};
 
 exports.twitter = function(req, res) {
   var query = req.query;
   console.log(query);
-  queryTwitter.getAvailableTrendingCities(function(err,trendingCities){
+  queryTwitter.getAvailableTrendingCities(function(err, trendingCities){
     if(!!err){ throw 'Error: '+ err;}
-    var woeid = queryTwitter.getCityId(query,trendingCities);
+    var woeid = queryTwitter.getCityId(query, trendingCities);
     if(Array.isArray(woeid)){
-      queryTwitter.getClosestTrendingCity(query,function(err,data){
+      queryTwitter.getClosestTrendingCity(query, function(err, data){
         //console.log(data);
         if(!!err){ 'Error: ' + err;}
-        queryTwitter.getTrendingTopics(data[0]['woeid'],function(err,trendingTopics){
+        queryTwitter.getTrendingTopics(data[0]['woeid'], function(err, trendingTopics){
           if(!!err){ throw 'Error: '+err;}
-          queryTwitter.getTweetsForTrendObjects(trendingTopics,0,function(err,tweets){        
+          queryTwitter.getTweetsForTrendObjects(trendingTopics, 0, function(err, tweets){
             var response = {
               status:200,
               result: 'Request Received!',
               data: tweets
             };
-            res.end(JSON.stringify(response));      
+            res.end(JSON.stringify(response));
           })
-        }); 
+        });
       });
-    }else{
-        queryTwitter.getTrendingTopics(woeid,function(err,trendingTopics){
+    } else{
+        queryTwitter.getTrendingTopics(woeid, function(err, trendingTopics){
           if(!!err){ throw 'Error: '+err;}
-          queryTwitter.getTweetsForTrendObjects(trendingTopics,function(err,tweets){        
+          queryTwitter.getTweetsForTrendObjects(trendingTopics, function(err, tweets){
             var response = {
               status:200,
               result: 'Request Received!',
               data: tweets
             };
-            res.end(JSON.stringify(response));      
+            res.end(JSON.stringify(response));
           })
-        });      
+        });
     }
   });
   //queryTwitter.getTweet(queryObject, function(err, twitterResults){
@@ -112,7 +113,6 @@ exports.twitter = function(req, res) {
 * @param {object} res Response Parameter from GET Request
 * @returns {json} Sends Client a JSON Object containing an Array of Instagram Photos
 */
-
 exports.instagram = function(req, res) {
   var query = req.query;
   var qParams = {
@@ -122,11 +122,10 @@ exports.instagram = function(req, res) {
     maxDate: query.max_timestamp,
     distance: query.distance,
     query: query.query,
-    callType: 'query' // 'query' OR 'location'
+    callType: query.callType || 'query'
   };
 
-     queryInstagram(qParams,function(err,photos) {
-//   queryInstagram(query.lat,query.lng,query.min_timestamp,query.max_timestamp,query.distance,query.query,function(err,photos) {
+  queryInstagram(qParams, function(err, photos) {
     if(!!err) { throw 'Error: ' + err; }
     var response = {
       result: 'Request Received!',
