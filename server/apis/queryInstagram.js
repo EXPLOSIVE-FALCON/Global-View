@@ -8,8 +8,10 @@ var instaKeys = require('../instaKeys');
 
 /**
 * instaSettings contains the various API endpoint URLs
-* Currently using mediaGET for user requests that include latitude and longitude
-* Requests with a place descriptor and no latitude longitude will use locationGET and photoGET
+* Requests in which allParameters.callType === 'query' use queryGET and queryGET2
+* All other requests use mediaGET
+* locationGET can be used to resolve a set of lat, lng coordinates to a placeID
+* photoGET and photoGET2 can be used to retrieve a set of pictures that are associated with a placeID
 * @object
 */
 var instaSettings = {
@@ -24,6 +26,11 @@ var instaSettings = {
 
 // amount of milliseconds in a day
 var dayInMilliSeconds = 24 * 60 * 60 * 1000;
+
+/**
+* initialized object outside of any function scope that will eventually be populated with parameters for instaGram API call
+* @object
+*/
 var inputParams = {};
 
 /**
@@ -33,16 +40,14 @@ var inputParams = {};
 * @param {object} allParameters Object of parameters passed in via query string.  May contain the following parameters (lat, lng, minDate, maxDate, query, distance, and callType)
 * @param {function} callback Callback function invoked on response results
 */
-
 module.exports = function(allParameters, callback) {
-
 // module.exports = function(lat, lng, minDate, maxDate, distance, query, callback) {
-  inputParams.minDate = Math.floor(allParameters.minDate/1000) || null;
-  inputParams.maxDate = Math.floor(allParameters.maxDate/1000) || null;
+  inputParams.minDate = Math.floor(allParameters.minDate/1000) || Date.now() - dayInMilliSeconds;
+  inputParams.maxDate = Math.floor(allParameters.maxDate/1000) || Date.now();
   inputParams.lat = parseFloat(allParameters.lat) || null;
   inputParams.lng = parseFloat(allParameters.lng) || null;
   inputParams.query = allParameters.query || 'null';
-  inputParams.query = inputParams.query.split(' ').join('').toLowerCase();
+  inputParams.query = inputParams.query.replace(/#/g,'').split(' ').join('').toLowerCase();
   inputParams.distance = allParameters.distance || 1000;
 
   var requestURL;
@@ -57,10 +62,13 @@ module.exports = function(allParameters, callback) {
     requestURL = util.format(requestURL, instaSettings.headers.instaToken, inputParams.lat, inputParams.lng, inputParams.maxDate, inputParams.minDate, inputParams.distance);
   }
 
-
   request(requestURL,function(error, res, body) {
-    var results = JSON.parse(body);
-    callback(error, sortResults(resultsDecorator(results.data,[trimResponse,applyTagFilter,calculateDistance]),sortParams));
+    if(error) {
+      console.log(error);
+    } else {
+      var results = JSON.parse(body);
+      callback(error, sortResults(resultsDecorator(results.data,[trimResponse,applyTagFilter,calculateDistance]),sortParams));
+    }
   });
 };
 
@@ -68,7 +76,7 @@ module.exports = function(allParameters, callback) {
 * Add new attributes to an object of photos
 * @function
 * @param {object} results Object containing data from Instagram response call
-* @param {array} Array of functions that will add attributes to photoObj
+* @param {array} funcArray Array of functions that will add attributes to photoObj
 * @returns {object} results Object containing data from Instagram response call and additional attributes appended
 */
 var resultsDecorator = function(results, funcArray) {
@@ -109,7 +117,6 @@ var trimResponse = function(photoObj) {
 * Flag all results that have instagram hash tags that match (or partially match) the user's query string
 * @function
 * @param {object} results Object containing photo data from Instagram API call
-* @param {string} tag String entered in query field of service
 * @returns {object} Object containing photo data with tagMatch attribute appended
 */
 var applyTagFilter = function(photoObj) {
@@ -142,8 +149,6 @@ var calculateDistance = function(photoObj) {
       lat: photoObj.location.latitude,
       lng: photoObj.location.longitude
     };
-    console.log('firstLocation: ',firstLocation);
-    console.log('secondLocation: ',secondLocation);
     _.extend(photoObj, { distance: distance(firstLocation, secondLocation) });
   }
 
@@ -154,7 +159,7 @@ var calculateDistance = function(photoObj) {
 * Calculate distance from lat/lng inputs in instaLocations
 * @function
 * @param {object} results Object containing response from Instagram API call with additional appended attributes (ex. tagMatch, distance)
-* @param {parameters} parameters Array of sorting parameters in order of priority
+* @param {array} parameters Array of sorting parameters in order of priority
 * @returns {array} Array of results sorted by parameters
 */
 var sortResults = function(results, parameters) {
@@ -167,7 +172,7 @@ var sortResults = function(results, parameters) {
 * @function
 * @param {object} loc1 Object containing lattitude, longitude of first location (lat, lng)
 * @param {object} loc2 Object containing lattitude, longitude of second location (lat, lng)
-* @returns {number} The distance between the first and second location
+* @returns {number} distance The distance between the first and second location
 */
 var distance = function(loc1, loc2) {
   var RADIUS = 6371;
@@ -185,6 +190,7 @@ var distance = function(loc1, loc2) {
 * Helper function for distance function that converts degrees to randians
 * @function
 * @param {number} number
+* @returns {number} The input number, which had been expressed in degrees, converted to radians
 */
 var degreeToRadian = function(number) {
   return (number / 180) * Math.PI;
