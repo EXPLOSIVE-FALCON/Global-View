@@ -39,7 +39,7 @@ angular.module('splashBox', ['globalMethods'])
     //     .velocity({height: 0}, {display: 'none'});
     GlobalMethods.getNews(requestObj);
     GlobalMethods.setCity(requestObj);
-    // GlobalMethods.getTweets(requestObj);
+    GlobalMethods.getTweets(requestObj);
     GlobalMethods.getPhotos(requestObj);
   };
 });
