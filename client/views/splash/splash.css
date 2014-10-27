@@ -67,6 +67,9 @@
   text-align: center;
   line-height: 200px;
   overflow: hidden;
+  font-family: 'Poiret One', cursive;
+  color: white;
+  font-color: white;
 }
 
 .cityTopics {
@@ -85,13 +88,6 @@
   border: 2px #201F24 solid;
   border-radius: 2px;
 }
-
-.splashBoxCity {
-  font-family: 'Oswald', sans-serif;
-  color: white;
-  font-color: white;
-}
-
 
 /*.a_splashHome {
   background-color: #1C1F28;

@@ -1,12 +1,7 @@
-<div class="splashBox">
+<div class="splashBox" ng-controller="BoxController" ng-click="populate(item.city, item.state, item.trending[0].name);">
   <div class="imageShadow"></div>
   <img class="cityImage" src="./pics/tiles/bw/{{item.img}}"/>
   <h3 class="splashBoxCity">
     <a>{{item.city}}</a>
   </h3>
-  <ul class="cityTopics" ng-controller="BoxController">
-    <li ng-repeat="story in item.trending" ng-click="populate(item.city, item.state, story.name);">
-    #{{story.name}}
-    </li>
-  </ul>
 </div>
