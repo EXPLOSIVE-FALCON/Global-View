@@ -1,5 +1,13 @@
-<ul class="trendingTopics" ng-controller="TopicController">
+<ul id="nav" class="topics_block" ng-controller="TopicController">
   <li ng-repeat="trend in data.currentTrends" ng-click="changeTopic(trend.name);">
     {{trend.name}}
    </li>
 </ul>
+
+
+
+<!-- <ul class="nav navbar-nav" ng-controller="TopicController">
+  <li ng-repeat="trend in data.currentTrends" ng-click="changeTopic(trend.name);">
+    {{trend.name}}
+   </li>
+</ul> -->
