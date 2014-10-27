@@ -53,16 +53,9 @@ GET /search/tweets.json
 
 #### Query Parameters
 
-| Name      | Type   | Description                                                                           |
-|-----------|--------|---------------------------------------------------------------------------------------|
-| query     | String | (Required) Search Query 500 char max                                                  |
-| latitude  | Number | (Optional) Latitude of location.                                                      |
-| longitude | Number | (Optional) Longitude of location.                                                     |
-| radius    | String | (Optional) radius used to complete geocode search for tweets. Example "1mi" or "1km". |
-| date      | Date   | (Optional) Format of Date YYYY-MM-DD                                                  |
-|           |        |                                                                                       |
-|           |        |                                                                                       |                                                                          |
-
+| Name  | Type   | Description                          |
+|-------|--------|--------------------------------------|
+| query | String | (Required) Search Query 500 char max |
 
 #### Response
 
