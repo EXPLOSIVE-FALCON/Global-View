@@ -7,9 +7,9 @@ var querystring = require('querystring');
 var util = require('util');
 
 var stories = 'li.g';
-var sourceSel = '.slp';
-var newsSel = 'div.st';
-var linkSel = 'h3.r a';
+var sourceSelector = '.slp';
+var descriptionSelector = 'div.st';
+var titleSelector = 'h3.r a';
 var removSel = 'div.s';
 
 var URL = 'http://www.google.com/search?hl=en&q=%s&start=0&sa=N&num=%s&ie=UTF-8&oe=UTF-8&tbm=nws';
@@ -42,16 +42,16 @@ module.exports = function(query, location, queryAmount, callback) {
 * @returns {Object} Object containing title, link, source, description, & time for a single news result
 */
 var buildNewsStory = function(element, $) {
-  var linkElem = $(element).find(linkSel);
-  var newsDescription = $(element).find(newsSel);
+  var titleEl = $(element).find(titleSelector);
+  var newsDescription = $(element).find(descriptionSelector);
   var removeElem = $(element).find(removSel);
-  var newsSource = $(element).find(sourceSel);
+  var newsSource = $(element).find(sourceSelector);
 
-  var href = querystring.parse($(linkElem).attr('href'));
+  var href = querystring.parse($(titleEl).attr('href'));
   var sourceTime = newsSource.text().split(' - ');
 
   var item = {};
-  item.title = $(linkElem).first().text() || null,
+  item.title = $(titleEl).first().text() || null,
   item.link = href['/url?q'] || null;
   item.source = sourceTime[0] || null;
   item.description = newsDescription.text() || null;
