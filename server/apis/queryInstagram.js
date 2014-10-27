@@ -41,7 +41,6 @@ var inputParams = {};
 * @param {function} callback Callback function invoked on response results
 */
 module.exports = function(allParameters, callback) {
-console.log(allParameters);
 // module.exports = function(lat, lng, minDate, maxDate, distance, query, callback) {
   inputParams.minDate = Math.floor(allParameters.minDate/1000) || Date.now() - dayInMilliSeconds;
   inputParams.maxDate = Math.floor(allParameters.maxDate/1000) || Date.now();
