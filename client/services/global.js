@@ -3,20 +3,12 @@
 */
 angular.module('globalData', [])
 .factory('StoredData', function() {
-  // var data = {
-  //   news: [],
-  //   photos: [],
-  //   tweets: []
-  // };
   return {
     news: [],
     photos: [],
     cities: cityList,
     tweets: []
   };
-  // return {
-  //   data: data
-  // };
 });
 
 /*
