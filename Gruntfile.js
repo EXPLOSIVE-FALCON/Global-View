@@ -2,6 +2,7 @@ module.exports = function(grunt) {
   // 1. All configuration goes here
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    distFolder: 'dist',
     nodemon: {
       dev: {
         script: 'server/server.js'
@@ -24,6 +25,20 @@ module.exports = function(grunt) {
         }
       }
     },
+    clean: {
+      build: [
+        'dist'
+      ]
+    },
+    // uglify:{
+
+    // },
+    // concat:{
+    //   dist: {
+    //     src:[],
+    //     dest:'dist/built.js'
+    //   }
+    // }
     // watch: {
     //   scripts: {
     //     files: [
@@ -49,7 +64,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-jsdoc');
-
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  // grunt.loadNpmTasks('grunt-contrib-uglify');
+  // grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.registerTask('server-dev', function (target) {
     var nodemon = grunt.util.spawn({
       cmd: 'grunt',
