@@ -1,5 +1,5 @@
 /**
-* @class Angular_Modules.globalData 
+* @class Angular_Modules.globalData
 * @memberof Angular_Modules
 * @description Global Data Stores all Tweets, News, Photos, and City Data
 */
@@ -8,7 +8,7 @@ angular.module('globalData', [])
 * @function StoredData
 * @memberOf Angular_Modules.globalData
 * @description This module stores all data used accross the application.
-* @returns {Object} 
+* @returns {Object}
 * @see {@link StoredDataReturn}
 */
 .factory('StoredData', function() {
@@ -33,21 +33,21 @@ angular.module('globalData', [])
 });
 
 /**
-* @class Angular_Modules.globalMethods 
+* @class Angular_Modules.globalMethods
 * @memberof Angular_Modules
 * @description Stores all functionality that can change global Data
 */
 angular.module('globalMethods', [
-  'service_twitter', 
-  'service_news', 
-  'service_instagram', 
+  'service_twitter',
+  'service_news',
+  'service_instagram',
   'service_location'
 ])
 /**
 * @function GlobalMethods
 * @memberOf Angular_Modules.globalMethods
 * @description This module stores all data used accross the application.
-* @returns {Object} 
+* @returns {Object}
 * @see {@link GlobalMethodsReturn}
 */
 
@@ -126,7 +126,7 @@ angular.module('globalMethods', [
     .then(function(results){
       if(results){
         request.latitude = results.latitude;
-        request.longitude = results.longitude;        
+        request.longitude = results.longitude;
       }
       Twitter.getTweets(request)
       .then(function(data) {
@@ -168,7 +168,7 @@ angular.module('globalMethods', [
   /**
   * @name GlobalMethodsReturn
   * @property {function} getPhotos [Function]{@link setCity} Gets Photos for Selected City and returns result to [globalData]{@link StoredDataReturn}
-  * @property {function} getTweets Gets Tweets for Selected City and returns result to [globalData]{@link StoredDataReturn} 
+  * @property {function} getTweets Gets Tweets for Selected City and returns result to [globalData]{@link StoredDataReturn}
   * @property {function} getNews Gets News Results for Selected City and returns result to [globalData]{@link StoredDataReturn}
   * @property {function} getTrendingCities Gets Trending Topics From list of Cities and returns result to [globalData]{@link StoredDataReturn}
   * @property {function} setCity Cntains a list of city objects with trending topic and returns result to [globalData]{@link StoredDataReturn}
@@ -188,6 +188,12 @@ var cityList = [
     state: 'LA',
     img: 'new-orleans.png',
     trending: [
+      {
+        "name": "Saints",
+        "query": "Saints",
+        "url": "http://twitter.com/search?q=Saints",
+        "promoted_content": null
+      },
       {
         "name": "Bo Wallace",
         "query": "%22Bo+Wallace%22",
@@ -237,12 +243,6 @@ var cityList = [
         "promoted_content": null
       },
       {
-        "name": "Saints",
-        "query": "Saints",
-        "url": "http://twitter.com/search?q=Saints",
-        "promoted_content": null
-      },
-      {
         "name": "Tom Brady",
         "query": "%22Tom+Brady%22",
         "url": "http://twitter.com/search?q=%22Tom+Brady%22",
@@ -256,15 +256,20 @@ var cityList = [
     img: 'san-francisco.png',
     trending: [
       {
+        "name": "#WorldSeries",
+        "query": "%23WorldSeries",
+        "url": "http://twitter.com/search?q=%23WorldSeries",
+        "promoted_content": null,
+        "lat": 37.77,
+        "lng": -122.38,
+        "min_timestamp": 1414364385197,
+        "max_timestamp": 1414407655556,
+        "callType": "location"
+      },
+      {
         "name": "#asklauren",
         "query": "%23asklauren",
         "url": "http://twitter.com/search?q=%23asklauren",
-        "promoted_content": null
-      },
-      {
-        "name": "#WorldSeriesGame4",
-        "query": "%23WorldSeriesGame4",
-        "url": "http://twitter.com/search?q=%23WorldSeriesGame4",
         "promoted_content": null
       },
       {
@@ -1194,10 +1199,15 @@ var cityList = [
     img: 'denver.png',
     trending: [
       {
-        "name": "Halloween",
-        "query": "Halloween",
-        "url": "http://twitter.com/search?q=Halloween",
-        "promoted_content": null
+        "name": "Pearl Jame",
+        "query": "Pearl+Jam",
+        "url": "http://twitter.com/search?q=Pearl+Jame",
+        "promoted_content": null,
+        "lat": 39.748,
+        "lng": -105.007,
+        "min_timestamp": 1413936000000,
+        "max_timestamp": 1414022399000,
+        "callType": "location"
       },
       {
         "name": "The Bears",
@@ -1261,6 +1271,12 @@ var cityList = [
     img: 'new-orleans.png',
     trending: [
       {
+        "name": "Saints",
+        "query": "Saints",
+        "url": "http://twitter.com/search?q=Saints",
+        "promoted_content": null
+      },
+      {
         "name": "Bo Wallace",
         "query": "%22Bo+Wallace%22",
         "url": "http://twitter.com/search?q=%22Bo+Wallace%22",
@@ -1313,12 +1329,6 @@ var cityList = [
         "query": "%22Tom+Brady%22",
         "url": "http://twitter.com/search?q=%22Tom+Brady%22",
         "promoted_content": null
-      },
-      {
-        "name": "Saints",
-        "query": "Saints",
-        "url": "http://twitter.com/search?q=Saints",
-        "promoted_content": null
       }
     ]
   },
@@ -1328,15 +1338,20 @@ var cityList = [
     img: 'san-francisco.png',
     trending: [
       {
+        "name": "#WorldSeries",
+        "query": "%23WorldSeries",
+        "url": "http://twitter.com/search?q=%23WorldSeries",
+        "promoted_content": null,
+        "lat": 37.77,
+        "lng": -122.38,
+        "min_timestamp": 1414364385197,
+        "max_timestamp": 1414407655556,
+        "callType": "location"
+      },
+      {
         "name": "#asklauren",
         "query": "%23asklauren",
         "url": "http://twitter.com/search?q=%23asklauren",
-        "promoted_content": null
-      },
-      {
-        "name": "#WorldSeriesGame4",
-        "query": "%23WorldSeriesGame4",
-        "url": "http://twitter.com/search?q=%23WorldSeriesGame4",
         "promoted_content": null
       },
       {
@@ -2127,7 +2142,7 @@ var cityList = [
     ]
   },
   {
-    city: 'St. Louis', 
+    city: 'St. Louis',
     state: 'MO',
     img: 'st-louis.png',
     trending: [
