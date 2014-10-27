@@ -38,22 +38,10 @@ module.exports = function(grunt) {
     //     src:[],
     //     dest:'dist/built.js'
     //   }
-    // }
-    // watch: {
-    //   scripts: {
-    //     files: [
-    //       'server/*.js',
-    //       'server/**/*.js'
-    //     ],
-    //     tasks: ['jsdoc'],
-    //     options: {
-    //       livereload: true
-    //     }
-    //   }
     // },
     jsdoc : {
       dist : {
-        src: ['server/**/*.js', 'server/*.js'],
+        src: ['server/**/*.js', 'server/*.js', 'client/services/*.js'],
         options: {
           destination: 'docs'
         }
@@ -81,9 +69,5 @@ module.exports = function(grunt) {
 
   grunt.registerTask('docs', [
     'jsdoc'
-  ]);
-  grunt.registerTask('docs-watch', [
-    'jsdoc',
-    'watch'
   ]);
 };

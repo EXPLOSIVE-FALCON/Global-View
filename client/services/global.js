@@ -1,9 +1,27 @@
-/*
-*  Global Data Stores all Tweets, News, and Photos
+/**
+* @class Angular_Modules.globalData 
+* @memberof Angular_Modules
+* @description Global Data Stores all Tweets, News, and Photos
 */
 angular.module('globalData', [])
+/**
+* @function StoredData
+* @memberOf Angular_Modules.globalData
+* @description This module stores all data used accross the application.
+* @returns {Object} 
+* @see {@link StoredDataObject}
+*/
 .factory('StoredData', function() {
-  return {
+  /**
+  * @name StoredData
+  * @property {array} news Contains a list of Objects containing news stories
+  * @property {array} photos Contains a list of Objects containing instagram photos
+  * @property {object} currentCity Contains information about selected city
+  * @property {array} currentTrends Contains a list of objects containing trending topics
+  * @property {array} cities Cntains a list of city objects with trending topics
+  * @property {array} tweets Contains a list tweets objects from twitter api
+  */
+  var obj = {
     news: [],
     photos: [],
     currentCity: {},
@@ -11,6 +29,7 @@ angular.module('globalData', [])
     cities: cityList,
     tweets: []
   };
+  return obj;
 });
 
 /*
