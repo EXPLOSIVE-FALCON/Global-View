@@ -306,14 +306,16 @@ queryTwitter('ebola', 5, function(err, results) {
 });
 ```
 
-### queryInstagram(lat, lng, minDate, maxDate, distance, callback)
+### queryInstagram(allParameters, callback)
 
 Returns Photos from Instagram
 
 ```js
 var queryInstagram = require('/apis/instagram');
 
-queryInstagram(34, -118, 1413747713000, 1413834152000, 1000, function(err, photos) {
+queryInstagram({lat: 37.77, lng: -122.38, minDate: 1413747713000, maxDate: 1413747713000, distance: 1000, query: '#worldseries', callType: 'query'} function(err, photos) {
+
+
 
   // function returns an array of objects, each containing:
     //  "created_time" {number}: the time the photo was uploaded to Instagram
