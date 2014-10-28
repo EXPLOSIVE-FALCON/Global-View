@@ -1,7 +1,7 @@
 /*
 *  Topic Controller can be used to control topics
 */
-angular.module('topics', ['globalData', 'globalMethods'])
+angular.module('topics', ['storedData', 'globalMethods'])
 .controller('TopicController', function ($scope, StoredData, GlobalMethods) {
   $scope.data = StoredData;
   $scope.changeTopic = function(topic) {

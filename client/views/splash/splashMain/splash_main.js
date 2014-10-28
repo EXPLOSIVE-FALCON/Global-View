@@ -1,4 +1,4 @@
-angular.module('splashMain', ['globalData', 'globalMethods'])
+angular.module('splashMain', ['storedData', 'globalMethods'])
 .controller('SplashController', function ($scope, StoredData, GlobalMethods) {
   // initiateMovement();
   $('body').on('mousemove', '.a_splashHome', function(event) {

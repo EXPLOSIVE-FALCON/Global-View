@@ -1,7 +1,7 @@
 /*
 *  Search Controller Access's all search functionality
 */
-angular.module('search', ['globalData', 'globalMethods'])
+angular.module('search', ['storedData', 'globalMethods'])
 .controller('SearchController', function ($scope, StoredData, GlobalMethods) {
   // $scope.data = {
   //   news: StoredData.data.news,

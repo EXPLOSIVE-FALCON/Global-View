@@ -1,8 +1,8 @@
 /*
 * Tweet Controller allows for gathering tweets directly
 */
-angular.module('tweets', ['globalMethods', 'globalData','service_twitter'])
-.controller('TweetsController', function ($scope, StoredData, GlobalMethods,Twitter) {
+angular.module('tweets', ['globalMethods', 'storedData','twitter'])
+.controller('TweetsController', function ($scope, StoredData, GlobalMethods, Twitter) {
   $scope.data = {
     tweets: StoredData.tweets,
     trendingCities: StoredData.trendingCities
