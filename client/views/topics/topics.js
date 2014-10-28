@@ -1,5 +1,5 @@
 /*
-*  Topic Controller can be used to control topics
+*  Topic Controller - Used to control topics on Dashboard
 */
 angular.module('topics', ['storedData', 'globalMethods'])
 .controller('TopicController', function ($scope, StoredData, GlobalMethods) {
@@ -8,7 +8,7 @@ angular.module('topics', ['storedData', 'globalMethods'])
     var requestObj = StoredData.currentCity;
     requestObj.query = topic;
     GlobalMethods.getNews(requestObj);
-    // GlobalMethods.getTweets(requestObj);
+    GlobalMethods.getTweets(requestObj);
     GlobalMethods.getPhotos(requestObj);
   }
 
@@ -16,5 +16,4 @@ angular.module('topics', ['storedData', 'globalMethods'])
   $scope.select= function(index) {
      $scope.selected = index;
   };
-
 });
