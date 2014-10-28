@@ -153,6 +153,8 @@ angular.module('globalMethods', [
   };
 });
 
+// list is currently hard coded because of rate limiting from twitter api
+// could be resolved by using a database to cache results
 var cityList = [
   {
     city: 'New Orleans',
