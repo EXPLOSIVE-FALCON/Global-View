@@ -59,7 +59,7 @@ module.exports.keys = {
 };
 
 Signup for an instagram API Developer Key.
-Make a file named instaKeys.jst and place in server/
+Make a file named instaKeys.js and place in server/
 Use the following format in file: 
 
 module.exports = {
