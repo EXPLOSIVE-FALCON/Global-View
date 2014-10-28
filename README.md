@@ -48,6 +48,27 @@ sudo npm install -g bower
 sudo npm install -g jsdoc@"<=3.3.0"
 npm install
 bower install
+
+Signup for a Twitter API Developer Key
+Make a file named twitterKeys.js and place in server/
+Use the following format:
+module.exports.keys = {
+  instaClientID: 'XXXXXXXXXXXXXXXXXXXXXXXXXXX',
+  instaClientKey: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+  instaToken: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+};
+
+Signup for an instagram API Developer Key.
+Make a file named instaKeys.jst and place in server/
+Use the following format in file: 
+
+module.exports = {
+  consumerKey: 'XXXXXXXXXXXXXXXXXXXXXXXXXXX',
+  consumerSecret: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+  accessToken: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+  accessTokenSecret: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+};
+
 ```
 
 To Utilize JSDocs:
@@ -55,6 +76,8 @@ To Utilize JSDocs:
 grunt docs
 ```
 Open docs/index.html to view JSDocs
+
+
 
 ### Reference 
 
