@@ -101,7 +101,7 @@ angular.module('globalMethods', [
       .then(function(data) {
         StoredData.tweets = data;
       });
-    })
+    });
   };
   /**
   * @function

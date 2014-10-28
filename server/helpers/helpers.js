@@ -25,7 +25,7 @@ exports.google = function(req, res) {
       data: newsResults
     };
 
-    res.json(sendBack)
+    res.json(sendBack);
   });
 };
 
@@ -55,7 +55,7 @@ exports.twitterTrendingCities = function(req, res){
 exports.tweetsForTrend = function(req, res){
   var query = req.query;
   queryTwitter.getTweetsForTrendObjects([query], function(err, tweets){
-    if(!!err){throw 'Error: '+err}
+    if(!!err){throw 'Error: '+err;}
     var response = {
       status:200,
       result: 'Request Received!',
@@ -69,13 +69,13 @@ exports.twitter = function(req, res) {
   var query = req.query;
   console.log(query);
   queryTwitter.getAvailableTrendingCities(function(err, trendingCities){
-    if(!!err){ throw 'Error: '+ err;}
+    if(!!err){ throw 'Error: ' + err;}
     var woeid = queryTwitter.getCityId(query, trendingCities);
     if(Array.isArray(woeid)){
       queryTwitter.getClosestTrendingCity(query, function(err, data){
         //console.log(data);
-        if(!!err){ 'Error: ' + err;}
-        queryTwitter.getTrendingTopics(data[0]['woeid'], function(err, trendingTopics){
+        if(!!err){ throw 'Error: ' + err;}
+        queryTwitter.getTrendingTopics(data[0].woeid, function(err, trendingTopics){
           if(!!err){ throw 'Error: '+err;}
           queryTwitter.getTweetsForTrendObjects(trendingTopics, 0, function(err, tweets){
             var response = {
@@ -84,7 +84,7 @@ exports.twitter = function(req, res) {
               data: tweets
             };
             res.end(JSON.stringify(response));
-          })
+          });
         });
       });
     } else{
@@ -97,7 +97,7 @@ exports.twitter = function(req, res) {
               data: tweets
             };
             res.end(JSON.stringify(response));
-          })
+          });
         });
     }
   });

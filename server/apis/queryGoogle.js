@@ -51,7 +51,7 @@ var buildNewsStory = function(element, $) {
   var sourceTime = newsSource.text().split(' - ');
 
   var item = {};
-  item.title = $(titleEl).first().text() || null,
+  item.title = $(titleEl).first().text() || null;
   item.link = href['/url?q'] || null;
   item.source = sourceTime[0] || null;
   item.description = newsDescription.text() || null;
