@@ -5,8 +5,8 @@ angular.module('twitter', [])
 .factory('Twitter', function($http) {
   /**
   * @function
-  * @memberof Angular_Modules.Twitter
-  * @description Contacts Server to grab list of tweets using trending topic (query) and stores the results in [StoredData.tweets]{@link Angular_Modules.StoredData}
+  * @memberof AngularModule_Factories.Twitter
+  * @description Contacts Server to grab list of tweets using trending topic (query) and stores the results in [StoredData.tweets]{@link AngularModule_Factories.StoredData}
   * @param {object} request Request object for request
   * @param {string} request.city Name of City
   * @param {string} request.state Abbreviation of State
@@ -37,8 +37,8 @@ angular.module('twitter', [])
   };
   /**
   * @function
-  * @memberof Angular_Modules.Twitter
-  * @description Contacts Server to grab list of cities and trending topics for those cities and stores the results in [StoredData.cities]{@link Angular_Modules.StoredData}
+  * @memberof AngularModule_Factories.Twitter
+  * @description Contacts Server to grab list of cities and trending topics for those cities and stores the results in [StoredData.cities]{@link AngularModule_Factories.StoredData}
   * @param {object} request Request object for request
   * @param {string} request.city Name of City
   * @param {string} request.state Abbreviation of State
@@ -56,8 +56,8 @@ angular.module('twitter', [])
   };
 
   /**
-  * @class Angular_Modules.Twitter
-  * @memberof Angular_Modules
+  * @class AngularModule_Factories.Twitter
+  * @memberof AngularModule_Factories
   * @description Angular Factory: This module contains all functionality to interact with Twitter
   * @property {function} getTrending Contacts Server to grab list of cities and trending topics for those cities
   * @property {function} getTweets Contacts Server to grab list of tweets using trending topic (query)

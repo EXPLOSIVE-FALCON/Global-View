@@ -5,7 +5,7 @@ angular.module('location', [])
 .factory('Location', function($http) {
   /**
   * @function
-  * @memberof Angular_Modules.Location
+  * @memberof AngularModule_Factories.Location
   * @description Location Contact google maps api to grab geo cooridinates for current location
   * @param {object} request Request object for request
   * @param {string} request.street (Optional) Street Address
@@ -34,8 +34,8 @@ angular.module('location', [])
   };
 
   /**
-  * @class Angular_Modules.Location
-  * @memberof Angular_Modules
+  * @class AngularModule_Factories.Location
+  * @memberof AngularModule_Factories
   * @description Angular Factory: This module can contact google to get Lattitude Longitude coordinates for selected city locations
   * @property {function} getLocation Contact google maps api to grab geo cooridinates for current location
   */

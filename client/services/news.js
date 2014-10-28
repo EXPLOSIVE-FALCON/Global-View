@@ -2,8 +2,8 @@ angular.module('googleNews', [])
 .factory('GoogleNews', function($http) {
   /**
   * @function
-  * @memberof Angular_Modules.GoogleNews
-  * @description Contact Server to Scrape news results for current topic & location and stores the results in [StoredData.news]{@link Angular_Modules.StoredData}
+  * @memberof AngularModule_Factories.GoogleNews
+  * @description Contact Server to Scrape news results for current topic & location and stores the results in [StoredData.news]{@link AngularModule_Factories.StoredData}
   * @param {object} request Request object for request
   * @param {string} request.city Name of City
   * @param {string} request.state Abbreviation of State
@@ -31,8 +31,8 @@ angular.module('googleNews', [])
   }; 
 
   /**
-  * @class Angular_Modules.GoogleNews
-  * @memberof Angular_Modules
+  * @class AngularModule_Factories.GoogleNews
+  * @memberof AngularModule_Factories
   * @description Angular Factory: This module contains all functionality to interact with server to scrape news from news.google.com
   * @property {function} getNews Contact Server to Scrape news results for current topic & location
   */

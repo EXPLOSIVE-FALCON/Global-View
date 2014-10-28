@@ -1,3 +1,0 @@
-/**
-* @namespace Angular_Modules
-*/
