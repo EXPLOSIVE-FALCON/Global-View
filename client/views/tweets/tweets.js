@@ -8,7 +8,5 @@ angular.module('tweets', ['globalMethods', 'storedData','twitter'])
     trendingCities: StoredData.trendingCities
   };
   $scope.getTweets = GlobalMethods.getTweets;
-  $scope.getTrendingCities = GlobalMethods.getTrendingCities; 
+  $scope.getTrendingCities = GlobalMethods.getTrendingCities;
 });
-
-

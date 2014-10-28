@@ -9,15 +9,11 @@ html {
 body {
   background: rgba(0, 0, 0, 0);
   color: rgb(187, 187, 187);
-}
-
-.dashboard_header {
-  margin-bottom: 30px;
-}
-
-.boxed {
-  margin: 30px;
   font-family: 'Raleway', sans-serif;
+}
+
+ul {
+  list-style-type: none;
 }
 
 a {
@@ -29,6 +25,31 @@ a:hover {
   text-decoration: none;
 }
 
+.dashboard_header {
+  margin-bottom: 30px;
+}
+
+.logo {
+  font-family: 'Special Elite', cursive;
+  padding: 0.4em;
+  font-size: 2em;
+  width: 20vw;
+  color: white;
+  border: 2px white solid;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 50px;
+}
+
+.logo:hover {
+  font-size: 2.05em;
+  color: white;
+}
+
+.boxed {
+  margin: 30px;
+}
+
 .city {
   font-size: 4.5em;
   font-family: 'Oswald', sans-serif;
@@ -36,10 +57,10 @@ a:hover {
   margin-left: 30px;
 }
 
-ul {
-  list-style-type: none;
+.block {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
 }
-
 
 .news {
   padding: 5px;
@@ -50,9 +71,11 @@ ul {
 }
 
 .news_block {
-  background: rgba(0, 0, 0, 0.8);
-  padding: 20px;
   margin-bottom: 30px;
+}
+
+.news_text {
+  font-size: 1.1em;
 }
 
 .photo {
@@ -62,41 +85,15 @@ ul {
   margin: 11px;
 }
 
-.photos {
+.photo_grid {
   margin: 0 auto;
 }
 
-.photo_block {
-  background: rgba(0, 0, 0, 0.8);
-  padding: 20px;
-}
-
-.twitter_block{
-  background: rgba(0, 0, 0, 0.8);
-  padding: 20px;
+.twitter_block {
   margin-left: 40px;
 }
 
-.logo {
-  padding: 0.4em;
-  font-size: 2em;
-  width: 20vw;
-  height: 50px;
-  color: white;
-  border: 2px white solid;
-  border-radius: 5px;
-  text-align: center;
-  line-height: 50px;
-  margin: 0px;
-  font-family: 'Special Elite', cursive;
-}
-
-.logo:hover {
-  font-size: 2.05em;
-  color: white;
-}
-
-.tweet{
+.tweet {
   padding: 5px 0px 10px 0px;
   border-bottom: 1px solid rgb(45, 45, 45);
 }
@@ -105,7 +102,7 @@ ul {
   color: rgb(187, 187, 187);
 }
 
-.tweet_text:hover{
+.tweet_text:hover {
   color: rgb(169, 161, 1);
   text-decoration: none;
 }

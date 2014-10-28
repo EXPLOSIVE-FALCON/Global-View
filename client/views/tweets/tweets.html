@@ -1,7 +1,6 @@
-<div id="tweetContainer" class="twitter_block">
+<div id="tweetContainer" class="block twitter_block">
   <div class="tweet" ng-repeat="tweet in data.tweets">
       <img class="tweet_image" src="{{tweet.user.profile_image_url}}"/>
       <span class="news_time">{{tweet.text}}</span>
-      <!-- <a ng-show="{{tweet.user.url}}" href="{{tweet.user.url}}" target="_blank">{{tweet.text}}</a> -->
   </div>
 </div>

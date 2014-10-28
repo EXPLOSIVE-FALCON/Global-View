@@ -1,3 +1,4 @@
+
 angular.module('storedData', [])
 .factory('StoredData', function() {
   /**
@@ -98,7 +99,6 @@ angular.module('globalMethods', [
       }
       Twitter.getTweets(request)
       .then(function(data) {
-        console.log(data);
         StoredData.tweets = data;
       });
     })
@@ -129,6 +129,7 @@ angular.module('globalMethods', [
   var setCity = function(request) {
     StoredData.currentCity = request;
     var trend = _.find(StoredData.cities, function(val, index) {
+      console.log(val.city);
       return val.city === request.city;
     });
     StoredData.currentTrends = trend.trending;
