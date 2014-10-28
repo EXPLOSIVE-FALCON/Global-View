@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
 * @class Angular_Modules.globalData
 * @memberof Angular_Modules
@@ -11,9 +12,14 @@ angular.module('globalData', [])
 * @returns {Object}
 * @see {@link StoredDataReturn}
 */
+=======
+angular.module('storedData', [])
+>>>>>>> added jsdocs for front end factories
 .factory('StoredData', function() {
   /**
-  * @name StoredDataReturn
+  * @class Angular_Modules.StoredData 
+  * @memberof Angular_Modules
+  * @description Angular Factory: This module stores all data used accross the application.
   * @property {array} news Contains a list of Objects containing news stories
   * @property {array} photos Contains a list of Objects containing instagram photos
   * @property {object} currentCity Contains information about selected city
@@ -21,7 +27,7 @@ angular.module('globalData', [])
   * @property {array} cities Contains a list of city objects with trending topics
   * @property {array} tweets Contains a list tweets objects from twitter api
   */
-  var obj = {
+  return {
     news: [],
     photos: [],
     currentCity: {},
@@ -29,9 +35,9 @@ angular.module('globalData', [])
     cities: cityList,
     tweets: []
   };
-  return obj;
 });
 
+<<<<<<< HEAD
 /**
 * @class Angular_Modules.globalMethods
 * @memberof Angular_Modules
@@ -51,16 +57,24 @@ angular.module('globalMethods', [
 * @see {@link GlobalMethodsReturn}
 */
 
+=======
+angular.module('globalMethods', [
+  'twitter', 
+  'googleNews', 
+  'instagram', 
+  'location'
+])
+>>>>>>> added jsdocs for front end factories
 .factory('GlobalMethods', function(GoogleNews, Instagram, Twitter, Location, StoredData) {
   /**
   * @function
-  * @memberOf Angular_Modules.globalMethods
-  * @description This function accesses the news angular modular to get news and stores the results in [StoredData]{@link GlobalDataReturn}
-  * @param request Request object for request
-  * @param request.city Name of City
-  * @param request.state Name of State
-  * @param request.date Current Time
-  * @param request.query Search Query for Services Name of City
+  * @memberof Angular_Modules.GlobalMethods
+  * @description This function accesses the news angular modular to get news and stores the results in [StoredData]{@link Angular_Modules.StoredData}
+  * @param {object} request Request object for request
+  * @param {string} request.city Name of City
+  * @param {string} request.state Abbreviation of State
+  * @param {date} request.date Current Time in UTC
+  * @param {string} request.query Search Query for Services
   */
   var getNews = function(request) {
     GoogleNews.getNews(request)
@@ -70,13 +84,13 @@ angular.module('globalMethods', [
   };
   /**
   * @function
-  * @memberOf Angular_Modules.globalMethods
-  * @description This function accesses the photos angular modular to get instagram photos and stores the results in [StoredData]{@link GlobalDataReturn}
-  * @param request Request object for request
-  * @param request.city Name of City
-  * @param request.state Name of State
-  * @param request.date Current Time
-  * @param request.query Search Query for Services Name of City
+  * @memberof Angular_Modules.GlobalMethods
+  * @description This function accesses the photos angular modular to get instagram photos and stores the results in [StoredData]{@link Angular_Modules.StoredData}
+  * @param {object} request Request object for request
+  * @param {string} request.city Name of City
+  * @param {string} request.state Abbreviation of State
+  * @param {date} request.date Current Time in UTC
+  * @param {string} request.query Search Query for Services
   */
   var getPhotos = function(request) {
     var params = {
@@ -104,13 +118,13 @@ angular.module('globalMethods', [
 
   /**
   * @function
-  * @memberOf Angular_Modules.globalMethods
-  * @description This function accesses the tweets angular modular to get tweets on a specific trending topic and stores the results in [StoredData]{@link GlobalDataReturn}
-  * @param request Request object for request
-  * @param request.city Name of City
-  * @param request.state Name of State
-  * @param request.date Current Time
-  * @param request.query Search Query for Services Name of City
+  * @memberof Angular_Modules.GlobalMethods
+  * @description This function accesses the tweets angular modular to get tweets on a specific trending topic and stores the results in [StoredData]{@link Angular_Modules.StoredData}
+  * @param {object} request Request object for request
+  * @param {string} request.city Name of City
+  * @param {string} request.state Abbreviation of State
+  * @param {date} request.date Current Time in UTC
+  * @param {string} request.query Search Query for Services
   */
   var getTweets = function(request) {
     console.log('got a request');
@@ -129,8 +143,8 @@ angular.module('globalMethods', [
   };
   /**
   * @function
-  * @memberOf Angular_Modules.globalMethods
-  * @description Note: No Arguments. Function Calls Server and retrieves a list of cities and trending topics for those cities. WIP. Stores the results in [StoredData]{@link GlobalDataReturn}
+  * @memberof Angular_Modules.GlobalMethods
+  * @description Note: No Arguments. Function Calls Server and retrieves a list of cities and trending topics for those cities. WIP. Stores the results in [StoredData]{@link Angular_Modules.StoredData}
   */
   var getTrendingCities = function() {
     console.log('just got called');
@@ -141,13 +155,14 @@ angular.module('globalMethods', [
   };
 
   /**
-  * @function setCity
-  * @description This function calls accesses the news angular modular to get news and return the news to [StoredData]{@link GlobalDataReturn}
-  * @param request Request object for request
-  * @param request.city Name of City
-  * @param request.state Name of State
-  * @param request.date Current Time
-  * @param request.query Search Query for Services Name of City
+  * @function
+  * @memberof Angular_Modules.GlobalMethods
+  * @description This function calls accesses the news angular modular to get news and return the news to [StoredData]{@link Angular_Modules.StoredData}
+  * @param {object} request Request object for request
+  * @param {string} request.city Name of City
+  * @param {string} request.state Abbreviation of State
+  * @param {date} request.date Current Time in UTC
+  * @param {string} request.query Search Query for Services
   */
   var setCity = function(request) {
     StoredData.currentCity = request;
@@ -156,14 +171,15 @@ angular.module('globalMethods', [
     });
     StoredData.currentTrends = trend.trending;
   };
-
   /**
-  * @name GlobalMethodsReturn
-  * @property {function} getPhotos [Function]{@link setCity} Gets Photos for Selected City and returns result to [globalData]{@link StoredDataReturn}
-  * @property {function} getTweets Gets Tweets for Selected City and returns result to [globalData]{@link StoredDataReturn}
-  * @property {function} getNews Gets News Results for Selected City and returns result to [globalData]{@link StoredDataReturn}
-  * @property {function} getTrendingCities Gets Trending Topics From list of Cities and returns result to [globalData]{@link StoredDataReturn}
-  * @property {function} setCity Cntains a list of city objects with trending topic and returns result to [globalData]{@link StoredDataReturn}
+  * @class Angular_Modules.GlobalMethods 
+  * @description Angular Factory: Stores all functionality that can change StoredData
+  * @memberof Angular_Modules
+  * @property {function} getPhotos Gets Photos for Selected City and Stores the result in [StoredData]{@link Angular_Modules.StoredData}
+  * @property {function} getTweets Gets Tweets for Selected City and Stores the result in [StoredData]{@link Angular_Modules.StoredData} 
+  * @property {function} getNews Gets News Results for Selected City and Stores the result in [StoredData]{@link Angular_Modules.StoredData}
+  * @property {function} getTrendingCities Gets Trending Topics From list of Cities and Stores the result in [StoredData]{@link Angular_Modules.StoredData}
+  * @property {function} setCity Contains a list of city objects with trending topic and Stores the result in [StoredData]{@link Angular_Modules.StoredData}
   */
   return {
     getPhotos: getPhotos,
