@@ -1,5 +1,5 @@
 /**
-* @class Angular_Modules.globalData 
+* @class Angular_Modules.globalData
 * @memberof Angular_Modules
 * @description Global Data Stores all Tweets, News, and Photos
 */
@@ -8,7 +8,7 @@ angular.module('globalData', [])
 * @function StoredData
 * @memberOf Angular_Modules.globalData
 * @description This module stores all data used accross the application.
-* @returns {Object} 
+* @returns {Object}
 * @see {@link StoredDataObject}
 */
 .factory('StoredData', function() {
@@ -29,6 +29,7 @@ angular.module('globalData', [])
     cities: cityList,
     tweets: []
   };
+  console.log("obj.news", obj.news);
   return obj;
 });
 
@@ -36,9 +37,9 @@ angular.module('globalData', [])
 *  GlobalMethods stores all functionality that can change global Data
 */
 angular.module('globalMethods', [
-  'service_twitter', 
-  'service_news', 
-  'service_instagram', 
+  'service_twitter',
+  'service_news',
+  'service_instagram',
   'service_location'
 ])
 .factory('GlobalMethods', function(GoogleNews, Instagram, Twitter, Location, StoredData) {
@@ -79,11 +80,10 @@ angular.module('globalMethods', [
     .then(function(results){
       if(results){
         request.latitude = results.latitude;
-        request.longitude = results.longitude;        
+        request.longitude = results.longitude;
       }
       Twitter.getTweets(request)
       .then(function(data) {
-        console.log(data);
         StoredData.tweets = data;
       });
     })
@@ -100,6 +100,7 @@ angular.module('globalMethods', [
   var setCity = function(request) {
     StoredData.currentCity = request;
     var trend = _.find(StoredData.cities, function(val, index) {
+      console.log(val.city);
       return val.city === request.city;
     });
     StoredData.currentTrends = trend.trending;
@@ -2059,7 +2060,7 @@ var cityList = [
     ]
   },
   {
-    city: 'St. Louis', 
+    city: 'St. Louis',
     state: 'MO',
     img: 'st-louis.png',
     trending: [
