@@ -1170,9 +1170,9 @@ var cityList = [
     img: 'denver.png',
     trending: [
       {
-        "name": "Pearl Jame",
+        "name": "Pearl Jam",
         "query": "Pearl+Jam",
-        "url": "http://twitter.com/search?q=Pearl+Jame",
+        "url": "http://twitter.com/search?q=Pearl+Jam",
         "promoted_content": null,
         "lat": 39.748,
         "lng": -105.007,
