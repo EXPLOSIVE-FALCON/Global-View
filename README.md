@@ -50,6 +50,12 @@ npm install
 bower install
 ```
 
+To Utilize JSDocs:
+```sh
+grunt docs
+```
+Open docs/index.html to view JSDocs
+
 ### Reference 
 
 See [Reference.md](https://github.com/EXPLOSIVE-FALCON/Global-View/blob/master/reference.md) for reference.
