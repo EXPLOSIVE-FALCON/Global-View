@@ -1,20 +1,4 @@
-<<<<<<< HEAD
-/**
-* @class Angular_Modules.globalData
-* @memberof Angular_Modules
-* @description Global Data Stores all Tweets, News, Photos, and City Data
-*/
-angular.module('globalData', [])
-/**
-* @function StoredData
-* @memberOf Angular_Modules.globalData
-* @description This module stores all data used accross the application.
-* @returns {Object}
-* @see {@link StoredDataReturn}
-*/
-=======
 angular.module('storedData', [])
->>>>>>> added jsdocs for front end factories
 .factory('StoredData', function() {
   /**
   * @class Angular_Modules.StoredData 
@@ -37,34 +21,12 @@ angular.module('storedData', [])
   };
 });
 
-<<<<<<< HEAD
-/**
-* @class Angular_Modules.globalMethods
-* @memberof Angular_Modules
-* @description Stores all functionality that can change global Data
-*/
-angular.module('globalMethods', [
-  'service_twitter',
-  'service_news',
-  'service_instagram',
-  'service_location'
-])
-/**
-* @function GlobalMethods
-* @memberOf Angular_Modules.globalMethods
-* @description This module stores all data used accross the application.
-* @returns {Object}
-* @see {@link GlobalMethodsReturn}
-*/
-
-=======
 angular.module('globalMethods', [
   'twitter', 
   'googleNews', 
   'instagram', 
   'location'
 ])
->>>>>>> added jsdocs for front end factories
 .factory('GlobalMethods', function(GoogleNews, Instagram, Twitter, Location, StoredData) {
   /**
   * @function
@@ -129,8 +91,8 @@ angular.module('globalMethods', [
   var getTweets = function(request) {
     console.log('got a request');
     Location.getLocation(request)
-    .then(function(results){
-      if(results){
+    .then(function(results) {
+      if (results){
         request.latitude = results.latitude;
         request.longitude = results.longitude;
       }
@@ -149,7 +111,7 @@ angular.module('globalMethods', [
   var getTrendingCities = function() {
     console.log('just got called');
     Twitter.getTrending()
-    .then(function(results){
+    .then(function(results) {
       StoredData.trendingCities = results;
     });
   };
