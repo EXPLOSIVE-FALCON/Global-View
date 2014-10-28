@@ -1,4 +1,4 @@
-<div class="boxed" id="container" ng-controller="DashboardController" >
+<div class="boxed" id="container" ng-controller="DashboardController">
 
   <div class="row dashboard_header">
     <div class="col-xs-4">
@@ -15,11 +15,11 @@
 
   <div class="row">
     <div class="col-xs-8">
-      <ng-include src="'views/news/news.html'"></ng-include>
-      <ng-include src="'views/photos/photos.html'"></ng-include>
+      <ng-include ng-show="data.news.length" src="'views/news/news.html'"></ng-include>
+      <ng-include ng-show="data.photos.length" src="'views/photos/photos.html'"></ng-include>
     </div>
     <div class="col-xs-4">
-      <ng-include src="'views/tweets/tweets.html'"></ng-include>
+      <ng-include ng-show="data.tweets.length" src="'views/tweets/tweets.html'"></ng-include>
     </div>
   </div>
 
