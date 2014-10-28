@@ -1,4 +1,4 @@
-<ul class="topics_block" ng-controller="TopicController">
+<ul class="block topics_block" ng-controller="TopicController">
   <li ng-repeat="trend in data.currentTrends" ng-click="changeTopic(trend.name); select($index);" ng-class="{active: $index == selected}">
     {{trend.name}}
    </li>

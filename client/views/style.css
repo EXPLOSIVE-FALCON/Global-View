@@ -66,10 +66,6 @@ a:hover {
   padding: 5px;
 }
 
-.news_time {
-  color: rgb(187, 187, 187);
-}
-
 .news_block {
   margin-bottom: 30px;
 }
@@ -93,21 +89,41 @@ a:hover {
   margin-left: 40px;
 }
 
+.tweet_image {
+  width: 30px;
+  height: 30px;
+}
+
 .tweet {
   padding: 5px 0px 10px 0px;
   border-bottom: 1px solid rgb(45, 45, 45);
 }
 
-.tweet_text {
-  color: rgb(187, 187, 187);
+.topics_block {
+  background: rgba(0, 0, 0, 0.85);
+  margin-bottom: 30px;
+  text-align: center;
+  color: rgb(132, 132, 132);
 }
 
-.tweet_text:hover {
+.topics_block li:not(:last-child){
+  border-right: 1px solid #3A3A3A;
+}
+
+.topics_block li {
+  font-size: 1.2em;
+  padding: 0 15px;
+  display: inline;
+}
+
+.topics_block li:hover {
   color: rgb(169, 161, 1);
-  text-decoration: none;
 }
 
-.tweet_image {
-  width: 30px;
-  height: 30px;
+.active {
+  color: white;
+}
+
+.active:hover {
+  color: white;
 }
