@@ -67,8 +67,8 @@ angular.module('globalMethods', [
           query: request.query,
           lat: result.latitude,
           lng: result.longitude,
-          min_timestamp: +request.date,
-          max_timestamp: moment(request.date).add(1, 'days').valueOf(),
+          min_timestamp: result.min_timestamp || +request.date,
+          max_timestamp: result.max_timestamp || moment(request.date).add(1, 'days').valueOf(),
           distance: 1000,
           amount: 8 //!!! need to change it when we get scrolling
         };

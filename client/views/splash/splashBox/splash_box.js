@@ -6,11 +6,15 @@ angular.module('splashBox', ['globalMethods'])
   $scope.data = {
     boxes: []
   };
-  $scope.populate = function(city, state, topic) {
+  $scope.populate = function(city, state, topic, lat, lng, mintime, maxtime) {
     var requestObj = {
       city: city,
+      latitude: lat,
+      longitude: lng,
       state: state,
       query: topic,
+      min_timestamp: mintime,
+      max_timestamp: maxtime,
       date: new Date(),
       street: "944 market st"
     }
@@ -21,3 +25,9 @@ angular.module('splashBox', ['globalMethods'])
     GlobalMethods.getPhotos(requestObj);
   };
 });
+
+
+// lat: result.latitude,
+//           lng: result.longitude,
+//           min_timestamp: +request.date,
+//           max_timestamp: moment(request.da

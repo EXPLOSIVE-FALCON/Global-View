@@ -4,8 +4,10 @@
 angular.module('topics', ['storedData', 'globalMethods'])
 .controller('TopicController', function ($scope, StoredData, GlobalMethods) {
   $scope.data = StoredData;
-  $scope.changeTopic = function(topic) {
+  $scope.changeTopic = function(topic, lat, lng) {
     var requestObj = StoredData.currentCity;
+    requestObj.lattitude = lat;
+    requestObj.longitude = lng;
     requestObj.query = topic;
     GlobalMethods.getNews(requestObj);
     GlobalMethods.getTweets(requestObj);
