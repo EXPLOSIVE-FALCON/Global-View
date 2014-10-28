@@ -6,8 +6,18 @@ var request = require('request');
 var querystring = require('querystring');
 var util = require('util');
 var _ = require('lodash');
-var twitterKeys = require('../twitterKeys');
 var Twit = require('twit');
+
+if (process.env.ENVIRONMENT === 'PROD' || 'CI') {
+  var twitterKeys = {
+    consumerKey : process.env.twitterConsumerKey,
+    consumerSecret: process.env.twitterConsumerSecret,
+    accessToken: process.env.twitterAccessToken,
+    accessTokenSecret: process.env.twitterAccessTokenSecret
+  };
+} else {
+  var twitterKeys = require('../twitterKeys');
+}
 
 var trendingPlaces ={
   obj:''

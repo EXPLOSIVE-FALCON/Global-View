@@ -1,4 +1,11 @@
 language: node_js
 node_js:
-  - '0.8'
-  - '0.10'
+- '0.8'
+- '0.10'
+deploy:
+  provider: heroku
+  api_key:
+    secure: pWx3dc2/9TZuIBUIJNH++261X5KBnwaQOv/QfiDceyDtPEqt+PaT6jMGhHxjWzNKkvmrENiblDKzhnXGwdgZibZFTHV7cRWxR+P4EeDp2+Ct1GEpVvcyFuHyzVM4xLsQLN5M61+l0fVJSxuOq+c9RnDS/lHhP9tuqsarSQQb2CY=
+  app: vantage-field-sun
+  on:
+    repo: field-sun/Global-View
