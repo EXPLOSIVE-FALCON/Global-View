@@ -62,7 +62,7 @@ var getCityId = function(query,trendingCities){
   }else{
     var result = _.where(trendingCities,{ 'name': query.city });
     if(result.length !== 0 ){
-      return result[0]['woeid'];
+      return result[0].woeid;
     }
     return result;
   }
@@ -99,13 +99,13 @@ var getTweetsForTrendObjects = function(arrayOfTrends, callback){
           return;
         }
         elem = queue.splice(0,1)[0];
-        T.get('search/tweets', {q: elem['query'], count: 10}, function(err,data){
+        T.get('search/tweets', {q: elem.query, count: 10}, function(err,data){
           if(!!err){throw 'Error: '+err;}
           results.push(data.statuses);
           process.nextTick(iterate);
-        })
+        });
       })();
-}
+};
 
 // var getTweetsPerTrendingItem = function(counter){
 //     var counter = counter || 0;
