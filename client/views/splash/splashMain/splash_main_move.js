@@ -8,7 +8,6 @@ var movement = {
 var shifter;
 
 var initiateMovement = function() {
-  console.log('wtf');
   var shift = function() {
     movement.moving = false;
     var dimension = {
