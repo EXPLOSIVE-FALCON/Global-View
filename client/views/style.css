@@ -29,53 +29,6 @@ a:hover {
   margin-bottom: 30px;
 }
 
-.boxed {
-  margin: 30px;
-}
-
-.city {
-  font-size: 4.5em;
-  font-family: 'Oswald', sans-serif;
-  color: #5BC0DE;
-  margin-left: 30px;
-}
-
-.news {
-  padding: 5px;
-}
-
-.news_time {
-  color: rgb(187, 187, 187);
-}
-
-.news_block {
-  background: rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  margin-bottom: 30px;
-}
-
-.photo {
-  padding: 6px;
-  height: 145px;
-  width: 145px;
-  margin: 11px;
-}
-
-.photos {
-  margin: 0 auto;
-}
-
-.photo_block {
-  background: rgba(0, 0, 0, 0.8);
-  padding: 20px;
-}
-
-.twitter_block{
-  background: rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  margin-left: 40px;
-}
-
 .logo {
   font-family: 'Special Elite', cursive;
   padding: 0.4em;
@@ -93,7 +46,54 @@ a:hover {
   color: white;
 }
 
-.tweet{
+.boxed {
+  margin: 30px;
+}
+
+.city {
+  font-size: 4.5em;
+  font-family: 'Oswald', sans-serif;
+  color: #5BC0DE;
+  margin-left: 30px;
+}
+
+.block {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+}
+
+.news {
+  padding: 5px;
+}
+
+.news_time {
+  color: rgb(187, 187, 187);
+}
+
+.news_block {
+  margin-bottom: 30px;
+}
+
+.news_text {
+  font-size: 1.1em;
+}
+
+.photo {
+  padding: 6px;
+  height: 145px;
+  width: 145px;
+  margin: 11px;
+}
+
+.photo_grid {
+  margin: 0 auto;
+}
+
+.twitter_block {
+  margin-left: 40px;
+}
+
+.tweet {
   padding: 5px 0px 10px 0px;
   border-bottom: 1px solid rgb(45, 45, 45);
 }
@@ -102,7 +102,7 @@ a:hover {
   color: rgb(187, 187, 187);
 }
 
-.tweet_text:hover{
+.tweet_text:hover {
   color: rgb(169, 161, 1);
   text-decoration: none;
 }
