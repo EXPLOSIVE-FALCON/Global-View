@@ -8,7 +8,7 @@ var util = require('util');
 var _ = require('lodash');
 var Twit = require('twit');
 
-if (process.env.ENVIRONMENT === 'PROD' || 'CI') {
+if (process.env.ENVIRONMENT === 'PROD' || process.env.ENVIRONMENT === 'CI') {
   var twitterKeys = {
     consumerKey : process.env.twitterConsumerKey,
     consumerSecret: process.env.twitterConsumerSecret,
