@@ -4,7 +4,7 @@ node_js:
 deploy:
   provider: heroku
   api_key:
-    secure: hNrmsfaQHZfy28nGCUfJWfpD+F88qEzh4EHKx6teYFJekudR5larMfOZkAlpSgM6js0qQzMvUdUWTurwnLQFso/P/0iLIKZJAGUq9HnJsv+cZ1sUETxPdDLkuX9OmaVxkDHWAd8Gp7gqbKSsKG2SXr0r0KExdsIR8Ad4o4PjzxY=
+    secure: PI+rRGC6KfYsoBQa5h3dakb9l4jBbiCkPNGgxsvIG7pQuR19F6ZRbQBH6h8nxgQWK6mAVZFdYq2yKvnnzXT5bmHUN87XP0sMoqr5wxg+8ybIqo0K2c0nBizU2qYPCe8xJW2iNKy2Uqa3bLpL/x2YDlamQJbo3TrA9DwMbOzS+sQ=
   app: vantage-field-sun
   strategy: git
   on:
