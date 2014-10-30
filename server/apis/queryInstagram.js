@@ -5,7 +5,8 @@ var request = require('request');
 var util = require('util');
 var _ = require('lodash');
 
-if (process.env.ENVIRONMENT === 'PROD' || 'CI') {
+
+if (process.env.ENVIRONMENT === 'PROD' || process.env.ENVIRONMENT === 'CI') {
   var instaKeys = {
     instaClientID: process.env.instaClientID,
     instaClientKey: process.env.instaClientKey,
