@@ -4,7 +4,9 @@
     <meta charset="utf-8" />
     <title>Vantage</title>
     <script src="lib/angular/angular.js"></script>
-    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="lib/famous/dist/famous-global.js"></script>
+    <script src="lib/famous-angular/dist/famous-angular.js"></script>
     <script src="lib/moment/moment.js"></script>
     <script src="lib/lodash/dist/lodash.min.js"></script>
     <script src="lib/jquery/dist/jquery.min.js"></script>
@@ -18,7 +20,7 @@
 
   </head>
   <body>
-    <ng-view></ng-view>
+    <ui-view></ui-view>
     <script src="services/twitter.js"></script>
     <script src="services/instagram.js"></script>
     <script src="services/news.js"></script>
@@ -34,8 +36,8 @@
     <script src="views/topics/topics.js"></script>
     <script src="views/splash/splashBox/splash_box.js"></script>
     <script src="views/splash/splashMain/splash_main.js"></script>
-    <script src="app.js"></script>
     <script src="views/splash/splashMain/splash_main_move.js"></script>
+    <script src="app.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Chango' rel='stylesheet' type='text/css'>
