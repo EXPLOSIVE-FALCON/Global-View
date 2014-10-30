@@ -4,6 +4,7 @@
 var queryGoogle = require('../apis/queryGoogle');
 var queryInstagram = require('../apis/queryInstagram');
 var queryTwitter = require('../apis/queryTwitter');
+var queryFlickr = require('../apis/queryFlickr');
 
 /**
 * Receives GET requests from /api/google
@@ -132,5 +133,23 @@ exports.instagram = function(req, res) {
       data: photos
     };
     res.json(response);
+  });
+};
+
+/**
+* Receives GET requests from /api/flickr
+*/
+exports.flickr = function(req, res){
+
+  queryFlickr(req.query.city, function(err, cityPhotos){
+    
+    if (!!err) { throw 'Error: '+ err; }
+    var response = {
+      status: 200,
+      result: 'Request Received!',
+      data: cityPhotos
+    };
+    res.end(JSON.stringify(response));
+
   });
 };

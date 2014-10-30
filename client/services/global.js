@@ -18,7 +18,8 @@ angular.module('storedData', [])
     currentCity: {},
     currentTrends: [],
     cities: cityList,
-    tweets: []
+    tweets: [], 
+    cityImages: []
   };
 });
 
@@ -26,9 +27,11 @@ angular.module('globalMethods', [
   'twitter', 
   'googleNews', 
   'instagram', 
-  'location'
+  'location',
+  'flickr'
 ])
-.factory('GlobalMethods', function(GoogleNews, Instagram, Twitter, Location, StoredData) {
+
+.factory('GlobalMethods', function(GoogleNews, Instagram, Twitter, Location, StoredData, Flickr) {
   /**
   * @function
   * @memberof AngularModule_Factories.GlobalMethods
@@ -39,12 +42,14 @@ angular.module('globalMethods', [
   * @param {date} request.date Current Time in UTC
   * @param {string} request.query Search Query for Services
   */
+  
   var getNews = function(request) {
     GoogleNews.getNews(request)
       .then(function(result) {
-        StoredData.news = result.data;
+        StoredData.news = result;
       });
   };
+
   /**
   * @function
   * @memberof AngularModule_Factories.GlobalMethods
@@ -74,7 +79,7 @@ angular.module('globalMethods', [
         };
         Instagram.getPhotos(instaParams)
           .then(function(result) {
-            StoredData.photos = result.data;
+            StoredData.photos = result;
           });
       });
   };
@@ -129,11 +134,36 @@ angular.module('globalMethods', [
   var setCity = function(request) {
     StoredData.currentCity = request;
     var trend = _.find(StoredData.cities, function(val, index) {
-      console.log(val.city);
       return val.city === request.city;
     });
+
     StoredData.currentTrends = trend.trending;
   };
+
+
+  var setCityImages = function(request) {
+    // console.log("1: GLOBAL REQUEST", request);
+
+    Flickr.setCityImages()
+    .then(function(results){
+      StoredData.cityImages.push(results);
+      var body = JSON.parse(results.data.data.body);
+      // console.log("5: STORED DATA", body.photos.photo[0]);
+
+
+      //farm-id: .farm
+      //server-id: .server
+      //id: .id
+      //secret: .secret
+
+      //https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
+
+
+    });
+
+  };
+
+
   /**
   * @class AngularModule_Factories.GlobalMethods 
   * @description Angular Factory: Stores all functionality that can change StoredData
@@ -149,7 +179,8 @@ angular.module('globalMethods', [
     getTweets: getTweets,
     getNews: getNews,
     getTrendingCities: getTrendingCities,
-    setCity: setCity
+    setCity: setCity,
+    setCityImages: setCityImages
   };
 });
 

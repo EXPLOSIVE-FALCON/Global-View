@@ -9,6 +9,7 @@ angular.module('vantage', [
   'topics',
   'ui.router',
   'famous.angular',
+  'background'
 ])
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
