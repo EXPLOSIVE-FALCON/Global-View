@@ -9,8 +9,5 @@ notifications:
 deploy:
   provider: heroku
   api_key:
-    secure: gRCMiijZBFjR6MIzUc1uqqFEDR+pp6u7YQRpbaaqhzgMvCnRzAgzeWOjQxHy7nehMKy81aHZVagZN2zmXzyt9JcyXzrJg1XAF3KgIatOOWiT7lZJMwRqA0ohAsN8bO/u58pNwIs4x8KTUb4kEQ8aGcVtjCbqWi+zW2M8SNwvQKY=
+    secure: DeVX7kOLRd5lje2vfNNa0gMYPeFUG61mq7fv6e+4pbaXZtFspxV79gN33+ZZaL2X4R9alGcw3QxYsZ14zlGqb2Jm+OtLEYOwrBdqrVGRJ/PZyFVZutKeJMw2EkIPTc9SQJJX+FDmJiHyC3YKgb88VMUKAX7scupvW8WtIAVdWsw=
   app: vantage-field-sun
-  strategy: git
-  on:
-    repo: field-sun/Global-View
