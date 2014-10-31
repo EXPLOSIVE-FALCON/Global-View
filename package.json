@@ -30,7 +30,7 @@
     "twit": "^1.1.18",
     "util": "^0.10.3"
   },
-  "script": {
+  "scripts": {
     "postinstall": "./node_modules/bower/bin/bower install"
   }
 }
