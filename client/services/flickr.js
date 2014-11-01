@@ -2,7 +2,7 @@
 *  Get city images from Flickr
 */
 
-// var flickrKeys = require('../flickrKeys');
+
 
 angular.module('flickr', [])
 .factory('Flickr', function($http) {
@@ -24,7 +24,7 @@ angular.module('flickr', [])
       return $http({
             method: 'GET',
             url: 'https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=' + 
-            '2960fd012df4bcc92af9841f04a913a4' + '&photo_id=' + getPhotoId +'&format=json&nojsoncallback=1'
+            api_key + '&photo_id=' + getPhotoId +'&format=json&nojsoncallback=1'
           })
           .then(function(response) {
             return response;
