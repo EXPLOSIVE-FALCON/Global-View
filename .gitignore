@@ -32,4 +32,5 @@ client/lib
 client/views/splash/splash-help.css
 server/instaKeys.js
 server/twitterKeys.js
+server/flickrKeys.js
 docs
