@@ -24,6 +24,9 @@ angular.module('splashBox', ['globalMethods'])
     GlobalMethods.getTweets(requestObj);
     GlobalMethods.getPhotos(requestObj);
   };
+  $scope.end = function() {
+    window.clearInterval(shifter);
+  }
 });
 
 

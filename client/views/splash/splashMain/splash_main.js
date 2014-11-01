@@ -3,7 +3,10 @@
 */
 angular.module('splashMain', ['storedData', 'globalMethods'])
 .controller('SplashController', function ($scope, StoredData, GlobalMethods) {
-  // initiateMovement(); 
+  $scope.movement = function() {
+    console.log('moving');
+    initiateMovement();
+  }; 
   $('body').on('mousemove', '.a_splashHome', function(event) {
     checkMovement([event.pageX, event.pageY]);
   });
