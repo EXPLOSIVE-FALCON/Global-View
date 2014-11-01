@@ -150,6 +150,9 @@ exports.flickr = function(req, res){
       data: cityPhotos
     };
     res.end(JSON.stringify(response));
-
   });
+
+
+
+
 };

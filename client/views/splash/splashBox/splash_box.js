@@ -6,7 +6,7 @@ angular.module('splashBox', ['globalMethods'])
   $scope.data = {
     boxes: []
   };
-  $scope.populate = function(city, state, topic, lat, lng, mintime, maxtime) {
+  $scope.populate = function(city, state, topic, lat, lng, mintime, maxtime, cityImage) {
 
     var requestObj = {
       city: city,
@@ -18,15 +18,20 @@ angular.module('splashBox', ['globalMethods'])
       max_timestamp: maxtime,
       date: new Date(),
       street: "944 market st", 
+      cityImage: cityImage
     }
     $('.a_splashHome').hide();
-
 
     GlobalMethods.getNews(requestObj);
     GlobalMethods.setCity(requestObj);
     GlobalMethods.getTweets(requestObj);
     GlobalMethods.getPhotos(requestObj);
     GlobalMethods.setCityImages(requestObj);
+
+
+
+
+
   };
 
 });

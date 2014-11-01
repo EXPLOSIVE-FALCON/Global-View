@@ -95,7 +95,7 @@ angular.module('globalMethods', [
   * @param {string} request.query Search Query for Services
   */
   var getTweets = function(request) {
-    console.log('got a request');
+    // console.log('got a request');
     Location.getLocation(request)
     .then(function(results) {
       if (results){
@@ -142,22 +142,41 @@ angular.module('globalMethods', [
 
 
   var setCityImages = function(request) {
-    // console.log("1: GLOBAL REQUEST", request);
 
-    Flickr.setCityImages()
+    Flickr.setCityImages(request)
+
     .then(function(results){
-      StoredData.cityImages.push(results);
-      var body = JSON.parse(results.data.data.body);
-      // console.log("5: STORED DATA", body.photos.photo[0]);
 
+      // var flickrData = JSON.parse(results.data.data.body);
 
-      //farm-id: .farm
-      //server-id: .server
-      //id: .id
-      //secret: .secret
+      var len = results.data.sizes.size.length;
 
-      //https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
+      if(len < 10) {
+        sizeLen = results.data.sizes.size.length-1;
+      } else {
+        sizeLen = results.data.sizes.size.length-3;
+      }
 
+      var imageURL = results.data.sizes.size[sizeLen].source;
+
+      console.log("flickrData", imageURL);
+
+      // var imageURL = 'https://farm' +
+      //                 flickrData.photos.photo[0].farm + 
+      //                 '.staticflickr.com/' + 
+      //                 flickrData.photos.photo[0].server+
+      //                 '/' +
+      //                 flickrData.photos.photo[0].id +
+      //                 '_' +
+      //                 flickrData.photos.photo[0].secret + 
+      //                 '.jpg';
+
+      StoredData.cityImages.push(imageURL);
+
+      var bgImg =  "url(" + StoredData.cityImages[0] + ") no-repeat center center fixed";
+      $('html').css("background", bgImg);
+
+       console.log('img: ', imageURL);
 
     });
 

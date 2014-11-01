@@ -6,11 +6,13 @@ angular.module('splashMain', ['storedData', 'globalMethods', 'famous.angular'])
 
   // initiateMovement(); 
 
->>>>>>> consoling data from flickr
-  $('body').on('mousemove', '.a_splashHome', function(event) {
-    checkMovement([event.pageX, event.pageY]);
-  });
   $scope.data = {
     boxes: StoredData.cities
   };
+
+  $('body').on('mousemove', '.a_splashHome', function(event) {
+    checkMovement([event.pageX, event.pageY]);
+  });
+
+
 });
