@@ -27,7 +27,6 @@ angular.module('flickr', [])
             '2960fd012df4bcc92af9841f04a913a4' + '&photo_id=' + getPhotoId +'&format=json&nojsoncallback=1'
           })
           .then(function(response) {
-      console.log("RESPONSE", response);
             return response;
           })
           .catch(function(error) {
