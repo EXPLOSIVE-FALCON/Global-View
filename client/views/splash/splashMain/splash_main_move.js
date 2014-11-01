@@ -6,7 +6,6 @@ var movement = {
   top: 0
 };
 var shifter;
-
 var initiateMovement = function() {
   var shift = function() {
     movement.moving = false;
@@ -21,10 +20,10 @@ var initiateMovement = function() {
     $('html, body').animate({
       scrollLeft: movement.left,
       scrollTop: movement.top
-    }, 7000);
+    }, 5000);
   };
   shift();
-  shifter = setInterval(shift, 6500);
+  shifter = setInterval(shift, 4500);
 };
 
 var checkMovement = function(to) {
