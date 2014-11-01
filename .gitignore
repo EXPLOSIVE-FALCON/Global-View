@@ -33,5 +33,5 @@ client/views/splash/splash-help.css
 server/instaKeys.js
 server/twitterKeys.js
 server/flickrKeys.js
-client/services/aliciaKeys.js
+#client/services/aliciaKeys.js
 docs
