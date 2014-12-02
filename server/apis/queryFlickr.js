@@ -15,11 +15,11 @@ module.exports = function(city, someCallback) {
 
   
 var requestURL = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' +
-flickrKeys.api_key + '&text=' + place + '&sort=interestingness-desc&per_page=1&format=json&nojsoncallback=1'
+flickrKeys.api_key + '&text=' + place + '&sort=interestingness-desc&per_page=1&format=json&nojsoncallback=1';
 
   
   request(requestURL, someCallback);
-} 
+};
 
 
 
