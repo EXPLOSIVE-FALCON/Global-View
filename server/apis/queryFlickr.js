@@ -4,9 +4,16 @@
 var request = require('request');
 var util = require('util');
 var _ = require('lodash');
-var flickrKeys = require('../flickrKeys');
 var Flickr = require("flickrapi");
 
+if (process.env.ENVIRONMENT === 'PROD' || process.env.ENVIRONMENT === 'CI') {
+  var flickrKeys = {
+    api_key: process.env.flickrApiKey,
+    secret: process.env.flickrSecret
+  };
+} else {
+  var flickrKeys = require('../flickrKeys');
+}
 
 module.exports = function(city, someCallback) {
 
