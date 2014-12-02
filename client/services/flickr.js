@@ -31,13 +31,13 @@ angular.module('flickr', [])
           })
           .catch(function(error) {
             console.error(error);
-          })
+          });
           
-      return response;
+      // return response;
     })
     .catch(function(error) {
       console.error(error);
-    })
+    });
   };
 
 
