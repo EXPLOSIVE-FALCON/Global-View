@@ -46,7 +46,7 @@ angular.module('globalMethods', [
   var getNews = function(request) {
     GoogleNews.getNews(request)
       .then(function(result) {
-        StoredData.news = result;
+        StoredData.news = result.data;
       });
   };
 
@@ -79,7 +79,7 @@ angular.module('globalMethods', [
         };
         Instagram.getPhotos(instaParams)
           .then(function(result) {
-            StoredData.photos = result;
+            StoredData.photos = result.data;
           });
       });
   };
