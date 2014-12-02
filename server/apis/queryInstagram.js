@@ -7,10 +7,12 @@ var _ = require('lodash');
 
 
 if (process.env.ENVIRONMENT === 'PROD' || process.env.ENVIRONMENT === 'CI') {
-  var instaKeys = {
-    instaClientID: process.env.instaClientID,
-    instaClientKey: process.env.instaClientKey,
-    instaToken: process.env.instaToken
+  var instaKeys = { 
+    keys: {
+      instaClientID: process.env.instaClientID,
+      instaClientKey: process.env.instaClientKey,
+      instaToken: process.env.instaToken
+    }
   };
 } else {
   var instaKeys = require('../instaKeys');
