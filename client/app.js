@@ -7,19 +7,24 @@ angular.module('vantage', [
   'splashMain',
   'splashBox',
   'topics',
-  'ngRoute'
+  'ui.router',
+  'famous.angular',
+  'background'
 ])
-.config(function($routeProvider, $httpProvider) {
-  $routeProvider
-    .when('/dashboard', {
+.config(function($stateProvider, $urlRouterProvider) {
+  $stateProvider
+    
+    .state('dashboard', {
+      url: '/dashboard',
       templateUrl: 'views/dashboard/dashboard.html',
       controller: 'DashboardController'
     })
-    .when('/', {
+
+    .state('entry', {
+      url: '/',
       templateUrl: 'views/splash/splashMain/splash_main.html',
       controller: 'SplashController'
-    })
-    .otherwise({
-      redirectTo: '/'
     });
+
+    $urlRouterProvider.otherwise('/');
 });

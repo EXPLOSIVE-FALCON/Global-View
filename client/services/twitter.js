@@ -24,7 +24,7 @@ angular.module('twitter', [])
       angular.forEach(response.data.data,function(tweets,index){
         angular.forEach(tweets,function(tweet,index){
           results.push(tweet);
-        })
+        });
       });
       return results;
     })
@@ -48,7 +48,7 @@ angular.module('twitter', [])
       url: '/api/twitterTrendingCities'
     })
     .then(function(response){
-      return response.data
+      return response.data;
     });
   };
 

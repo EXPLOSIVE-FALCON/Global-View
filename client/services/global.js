@@ -18,7 +18,8 @@ angular.module('storedData', [])
     currentCity: {},
     currentTrends: [],
     cities: cityList,
-    tweets: []
+    tweets: [], 
+    cityImages: []
   };
 });
 
@@ -26,9 +27,11 @@ angular.module('globalMethods', [
   'twitter', 
   'googleNews', 
   'instagram', 
-  'location'
+  'location',
+  'flickr'
 ])
-.factory('GlobalMethods', function(GoogleNews, Instagram, Twitter, Location, StoredData) {
+
+.factory('GlobalMethods', function(GoogleNews, Instagram, Twitter, Location, StoredData, Flickr) {
   /**
   * @function
   * @memberof AngularModule_Factories.GlobalMethods
@@ -39,12 +42,14 @@ angular.module('globalMethods', [
   * @param {date} request.date Current Time in UTC
   * @param {string} request.query Search Query for Services
   */
+  
   var getNews = function(request) {
     GoogleNews.getNews(request)
       .then(function(result) {
         StoredData.news = result.data;
       });
   };
+
   /**
   * @function
   * @memberof AngularModule_Factories.GlobalMethods
@@ -90,7 +95,7 @@ angular.module('globalMethods', [
   * @param {string} request.query Search Query for Services
   */
   var getTweets = function(request) {
-    console.log('got a request');
+    // console.log('got a request');
     Location.getLocation(request)
     .then(function(results) {
       if (results){
@@ -101,7 +106,7 @@ angular.module('globalMethods', [
       .then(function(data) {
         StoredData.tweets = data;
       });
-    })
+    });
   };
   /**
   * @function
@@ -129,11 +134,55 @@ angular.module('globalMethods', [
   var setCity = function(request) {
     StoredData.currentCity = request;
     var trend = _.find(StoredData.cities, function(val, index) {
-      console.log(val.city);
       return val.city === request.city;
     });
+
     StoredData.currentTrends = trend.trending;
   };
+
+
+  var setCityImages = function(request) {
+
+    Flickr.setCityImages(request)
+
+    .then(function(results){
+
+      // var flickrData = JSON.parse(results.data.data.body);
+
+      var len = results.data.sizes.size.length;
+
+      if(len < 10) {
+        sizeLen = results.data.sizes.size.length-1;
+      } else {
+        sizeLen = results.data.sizes.size.length-3;
+      }
+
+      var imageURL = results.data.sizes.size[sizeLen].source;
+
+      console.log("flickrData", imageURL);
+
+      // var imageURL = 'https://farm' +
+      //                 flickrData.photos.photo[0].farm + 
+      //                 '.staticflickr.com/' + 
+      //                 flickrData.photos.photo[0].server+
+      //                 '/' +
+      //                 flickrData.photos.photo[0].id +
+      //                 '_' +
+      //                 flickrData.photos.photo[0].secret + 
+      //                 '.jpg';
+
+      StoredData.cityImages.push(imageURL);
+
+      var bgImg =  "url(" + StoredData.cityImages[0] + ") no-repeat center center fixed";
+      $('html').css("background", bgImg);
+
+       console.log('img: ', imageURL);
+
+    });
+
+  };
+
+
   /**
   * @class AngularModule_Factories.GlobalMethods 
   * @description Angular Factory: Stores all functionality that can change StoredData
@@ -149,7 +198,8 @@ angular.module('globalMethods', [
     getTweets: getTweets,
     getNews: getNews,
     getTrendingCities: getTrendingCities,
-    setCity: setCity
+    setCity: setCity,
+    setCityImages: setCityImages
   };
 });
 

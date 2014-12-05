@@ -4,7 +4,7 @@
 var request = require('request');
 var util = require('util');
 var _ = require('lodash');
-var instaKeys = require('../instaKeys');
+var instaKeys = require('../config').instagram;
 
 /**
 * instaSettings contains the various API endpoint URLs
@@ -15,7 +15,7 @@ var instaKeys = require('../instaKeys');
 * @object
 */
 var instaSettings = {
-  headers: instaKeys.keys,
+  headers: instaKeys,
   queryGET: 'https://api.instagram.com/v1/tags/',
   queryGET2: '/media/recent',
   mediaGET: 'https://api.instagram.com/v1/media/search',

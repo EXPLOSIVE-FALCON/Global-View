@@ -1,5 +1,5 @@
-[![Stories in Ready](https://badge.waffle.io/EXPLOSIVE-FALCON/Global-View.png?label=ready&title=Ready)](https://waffle.io/EXPLOSIVE-FALCON/Global-View)
-[![Stories in Ready](https://badge.waffle.io/explosive-falcon/global-view.png?label=ready&title=Ready)](https://waffle.io/explosive-falcon/global-view)
+[![Stories in Ready](https://badge.waffle.io/field-sun/Global-View.png?label=ready&title=Ready)](http://waffle.io/field-sun/Global-View)
+[![Build Status](https://travis-ci.org/field-sun/Global-View.svg?branch=master)](https://travis-ci.org/field-sun/Global-View)
 # Project Name
 Vantage
 > Vantage aggregates social and traditional media using place and time to provide a panoramic view of interesting events.
@@ -8,7 +8,7 @@ Vantage
 
   - __Product Owner__: Jason Erpenbeck
   - __Scrum Master__: Richard Avendaño
-  - __Development Team Members__: Jamon Douglas, Kia Winslow, Richard Avendaño, Jason Erpenbeck
+  - __Development Team Members__: Jamon Douglas, Kia Winslow, Richard Avendaño, Jason Erpenbeck, Greg Ferrell, Josh Lankford, Urvashi Reddy
   
 ## Table of Contents
 
