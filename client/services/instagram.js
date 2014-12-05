@@ -24,7 +24,7 @@ angular.module('instagram', [])
     })
     .catch(function(error) {
       console.error(error);
-    })
+    });
   };
 
   /**

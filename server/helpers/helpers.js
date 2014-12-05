@@ -4,6 +4,7 @@
 var queryGoogle = require('../apis/queryGoogle');
 var queryInstagram = require('../apis/queryInstagram');
 var queryTwitter = require('../apis/queryTwitter');
+var queryFlickr = require('../apis/queryFlickr');
 
 /**
 * Receives GET requests from /api/google
@@ -25,7 +26,7 @@ exports.google = function(req, res) {
       data: newsResults
     };
 
-    res.json(sendBack)
+    res.json(sendBack);
   });
 };
 
@@ -55,7 +56,7 @@ exports.twitterTrendingCities = function(req, res){
 exports.tweetsForTrend = function(req, res){
   var query = req.query;
   queryTwitter.getTweetsForTrendObjects([query], function(err, tweets){
-    if(!!err){throw 'Error: '+err}
+    if(!!err){throw 'Error: '+err;}
     var response = {
       status:200,
       result: 'Request Received!',
@@ -69,13 +70,13 @@ exports.twitter = function(req, res) {
   var query = req.query;
   console.log(query);
   queryTwitter.getAvailableTrendingCities(function(err, trendingCities){
-    if(!!err){ throw 'Error: '+ err;}
+    if(!!err){ throw 'Error: ' + err;}
     var woeid = queryTwitter.getCityId(query, trendingCities);
     if(Array.isArray(woeid)){
       queryTwitter.getClosestTrendingCity(query, function(err, data){
         //console.log(data);
-        if(!!err){ 'Error: ' + err;}
-        queryTwitter.getTrendingTopics(data[0]['woeid'], function(err, trendingTopics){
+        if(!!err){ throw 'Error: ' + err;}
+        queryTwitter.getTrendingTopics(data[0].woeid, function(err, trendingTopics){
           if(!!err){ throw 'Error: '+err;}
           queryTwitter.getTweetsForTrendObjects(trendingTopics, 0, function(err, tweets){
             var response = {
@@ -84,7 +85,7 @@ exports.twitter = function(req, res) {
               data: tweets
             };
             res.end(JSON.stringify(response));
-          })
+          });
         });
       });
     } else{
@@ -97,7 +98,7 @@ exports.twitter = function(req, res) {
               data: tweets
             };
             res.end(JSON.stringify(response));
-          })
+          });
         });
     }
   });
@@ -133,4 +134,25 @@ exports.instagram = function(req, res) {
     };
     res.json(response);
   });
+};
+
+/**
+* Receives GET requests from /api/flickr
+*/
+exports.flickr = function(req, res){
+
+  queryFlickr(req.query.city, function(err, cityPhotos){
+    
+    if (!!err) { throw 'Error: '+ err; }
+    var response = {
+      status: 200,
+      result: 'Request Received!',
+      data: cityPhotos
+    };
+    res.end(JSON.stringify(response));
+  });
+
+
+
+
 };

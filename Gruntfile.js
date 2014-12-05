@@ -30,6 +30,9 @@ module.exports = function(grunt) {
         'dist'
       ]
     },
+    jshint: {
+      files: ['server/**/*.js', 'client/services/*.js', 'client/views/*.js']
+    },
     // uglify:{
 
     // },
@@ -53,6 +56,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-jsdoc');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   // grunt.loadNpmTasks('grunt-contrib-uglify');
   // grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.registerTask('server-dev', function (target) {
@@ -64,6 +68,7 @@ module.exports = function(grunt) {
     nodemon.stdout.pipe(process.stdout);
     nodemon.stderr.pipe(process.stderr);
 
+    grunt.task.run([ 'jshint' ]);
     grunt.task.run([ 'watch' ]);
   });
 
