@@ -6,8 +6,18 @@ var request = require('request');
 var querystring = require('querystring');
 var util = require('util');
 var _ = require('lodash');
-var twitterKeys = require('../twitterKeys');
 var Twit = require('twit');
+
+if (process.env.ENVIRONMENT === 'PROD' || process.env.ENVIRONMENT === 'CI') {
+  var twitterKeys = {
+    consumerKey : process.env.twitterConsumerKey,
+    consumerSecret: process.env.twitterConsumerSecret,
+    accessToken: process.env.twitterAccessToken,
+    accessTokenSecret: process.env.twitterAccessTokenSecret
+  };
+} else {
+  var twitterKeys = require('../twitterKeys');
+}
 
 var trendingPlaces ={
   obj:''
@@ -62,7 +72,7 @@ var getCityId = function(query,trendingCities){
   }else{
     var result = _.where(trendingCities,{ 'name': query.city });
     if(result.length !== 0 ){
-      return result[0]['woeid'];
+      return result[0].woeid;
     }
     return result;
   }
@@ -99,13 +109,13 @@ var getTweetsForTrendObjects = function(arrayOfTrends, callback){
           return;
         }
         elem = queue.splice(0,1)[0];
-        T.get('search/tweets', {q: elem['query'], count: 10}, function(err,data){
+        T.get('search/tweets', {q: elem.query, count: 10}, function(err,data){
           if(!!err){throw 'Error: '+err;}
           results.push(data.statuses);
           process.nextTick(iterate);
-        })
+        });
       })();
-}
+};
 
 // var getTweetsPerTrendingItem = function(counter){
 //     var counter = counter || 0;

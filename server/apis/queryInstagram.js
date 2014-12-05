@@ -4,7 +4,19 @@
 var request = require('request');
 var util = require('util');
 var _ = require('lodash');
-var instaKeys = require('../instaKeys');
+
+
+if (process.env.ENVIRONMENT === 'PROD' || process.env.ENVIRONMENT === 'CI') {
+  var instaKeys = { 
+    keys: {
+      instaClientID: process.env.instaClientID,
+      instaClientKey: process.env.instaClientKey,
+      instaToken: process.env.instaToken
+    }
+  };
+} else {
+  var instaKeys = require('../instaKeys');
+}
 
 /**
 * instaSettings contains the various API endpoint URLs

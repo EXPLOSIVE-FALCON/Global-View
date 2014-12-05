@@ -1,4 +1,13 @@
 language: node_js
 node_js:
-  - '0.8'
-  - '0.10'
+- '0.10'
+notifications:
+  email:
+  - gregerg@gmail.com
+  - lankford.josh@gmail.com
+  - urvashi.reddy@gmail.com
+deploy:
+  provider: heroku
+  api_key:
+    secure: Nisp9dcIQmzcVmL7hZo1UzrCFh9aCl3y05YOcGYOGG91Y160By71cUrZju6gySQBIG2db9IUhrvLqno3vLQH/boNz9E2FQBbKbmyXHujIqxr+ohn1AqRfZI6I++JXbtFoGSAe/YdEUcWXJT+MdJCGWjXO6mt6RiZDDyWAyR1/GQ=
+  app: vantage-field-sun

@@ -6,7 +6,11 @@ angular.module('splashBox', ['globalMethods'])
   $scope.data = {
     boxes: []
   };
-  $scope.populate = function(city, state, topic, lat, lng, mintime, maxtime) {
+  $scope.end = function() {
+    window.clearInterval(shifter);
+  };
+
+  $scope.populate = function(city, state, topic, lat, lng, mintime, maxtime, cityImage) {
     var requestObj = {
       city: city,
       latitude: lat,
@@ -16,21 +20,15 @@ angular.module('splashBox', ['globalMethods'])
       min_timestamp: mintime,
       max_timestamp: maxtime,
       date: new Date(),
-      street: "944 market st"
-    }
+      street: "944 market st", 
+      cityImage: cityImage
+    };
+
     $('.a_splashHome').hide();
     GlobalMethods.getNews(requestObj);
     GlobalMethods.setCity(requestObj);
     GlobalMethods.getTweets(requestObj);
     GlobalMethods.getPhotos(requestObj);
+    GlobalMethods.setCityImages(requestObj);
   };
-  $scope.end = function() {
-    window.clearInterval(shifter);
-  }
 });
-
-
-// lat: result.latitude,
-//           lng: result.longitude,
-//           min_timestamp: +request.date,
-//           max_timestamp: moment(request.da
