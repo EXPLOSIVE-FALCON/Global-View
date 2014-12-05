@@ -4,19 +4,7 @@
 var request = require('request');
 var util = require('util');
 var _ = require('lodash');
-
-
-if (process.env.ENVIRONMENT === 'PROD' || process.env.ENVIRONMENT === 'CI') {
-  var instaKeys = { 
-    keys: {
-      instaClientID: process.env.instaClientID,
-      instaClientKey: process.env.instaClientKey,
-      instaToken: process.env.instaToken
-    }
-  };
-} else {
-  var instaKeys = require('../instaKeys');
-}
+var instaKeys = require('../config').instagram;
 
 /**
 * instaSettings contains the various API endpoint URLs
@@ -27,7 +15,7 @@ if (process.env.ENVIRONMENT === 'PROD' || process.env.ENVIRONMENT === 'CI') {
 * @object
 */
 var instaSettings = {
-  headers: instaKeys.keys,
+  headers: instaKeys,
   queryGET: 'https://api.instagram.com/v1/tags/',
   queryGET2: '/media/recent',
   mediaGET: 'https://api.instagram.com/v1/media/search',

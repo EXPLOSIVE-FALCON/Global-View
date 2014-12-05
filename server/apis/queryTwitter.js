@@ -1,26 +1,15 @@
 /**
 * @module queryTwitter
 */
-
 var request = require('request');
 var querystring = require('querystring');
 var util = require('util');
 var _ = require('lodash');
 var Twit = require('twit');
+var twitterKeys = require('../config').twitter;
 
-if (process.env.ENVIRONMENT === 'PROD' || process.env.ENVIRONMENT === 'CI') {
-  var twitterKeys = {
-    consumerKey : process.env.twitterConsumerKey,
-    consumerSecret: process.env.twitterConsumerSecret,
-    accessToken: process.env.twitterAccessToken,
-    accessTokenSecret: process.env.twitterAccessTokenSecret
-  };
-} else {
-  var twitterKeys = require('../twitterKeys');
-}
-
-var trendingPlaces ={
-  obj:''
+var trendingPlaces = {
+  obj: ''
 };
 
 /**
@@ -40,9 +29,9 @@ var T = new Twit({
 * @param {function} callback Function called when data is returned
 * @function
 */
-var getAvailableTrendingCities = function(callback){
-  T.get('trends/available',function(err, data, response){
-    if(!!err){throw 'Error: ' + err;}
+var getAvailableTrendingCities = function(callback) {
+  T.get('trends/available',function(err, data, response) {
+    if (Boolean(err)) { throw 'Error: ' + err; }
       callback(err,data);
   });
 };
@@ -53,9 +42,9 @@ var getAvailableTrendingCities = function(callback){
 * @param {function} callback Function called when data is returned
 * @function
 */
-var getClosestTrendingCity = function(query, callback){
-  T.get('trends/closest',{lat: query.latitude, long: query.longitude },function(err,data,response){
-    if(!!err) { throw 'Error: ' +err;}
+var getClosestTrendingCity = function(query, callback) {
+  T.get('trends/closest',{lat: query.latitude, long: query.longitude },function(err,data,response) {
+    if (Boolean(err)) { throw 'Error: ' +err; }
     callback(err,data);
   });
 };
@@ -67,11 +56,11 @@ var getClosestTrendingCity = function(query, callback){
 * @function
 */
 var getCityId = function(query,trendingCities){
-  if(trendingCities === undefined || query === undefined){
+  if (trendingCities === undefined || query === undefined) {
     console.log('No results for city Id. In getCityId.');
   }else{
     var result = _.where(trendingCities,{ 'name': query.city });
-    if(result.length !== 0 ){
+    if (result.length !== 0) {
       return result[0].woeid;
     }
     return result;
@@ -85,8 +74,8 @@ var getCityId = function(query,trendingCities){
 * @function
 */
 var getTrendingTopics = function(woeid, callback){
-  T.get('trends/place',{id:woeid},function(err,data,response){
-    if(!!err){throw 'Error: ' + err;}
+  T.get('trends/place',{id:woeid},function(err,data,response) {
+    if(Boolean(err)) { throw 'Error: ' + err; }
     var arrayOfTrends = data[0].trends;
     callback(err,arrayOfTrends);
   });
@@ -98,7 +87,7 @@ var getTrendingTopics = function(woeid, callback){
 * @param {function} callback Function called when data is returned
 * @function
 */
-var getTweetsForTrendObjects = function(arrayOfTrends, callback){
+var getTweetsForTrendObjects = function(arrayOfTrends, callback) {
   var queue = arrayOfTrends.slice(0),
       elem,
       results = [];
@@ -109,8 +98,8 @@ var getTweetsForTrendObjects = function(arrayOfTrends, callback){
           return;
         }
         elem = queue.splice(0,1)[0];
-        T.get('search/tweets', {q: elem.query, count: 10}, function(err,data){
-          if(!!err){throw 'Error: '+err;}
+        T.get('search/tweets', {q: elem.query, count: 10}, function(err,data) {
+          if(Boolean(err)) { throw 'Error: '+err; }
           results.push(data.statuses);
           process.nextTick(iterate);
         });
@@ -140,8 +129,11 @@ var getTweetsForTrendObjects = function(arrayOfTrends, callback){
 //   }
 //   getTweetsPerTrendingItem(0);
 //   callback(results);
-module.exports.getAvailableTrendingCities = getAvailableTrendingCities;
-module.exports.getClosestTrendingCity = getClosestTrendingCity;
-module.exports.getCityId = getCityId;
-module.exports.getTrendingTopics = getTrendingTopics;
-module.exports.getTweetsForTrendObjects = getTweetsForTrendObjects;
+
+module.exports = {
+  getAvailableTrendingCities: getAvailableTrendingCities,
+  getClosestTrendingCity: getClosestTrendingCity,
+  getCityId: getCityId,
+  getTrendingTopics: getTrendingTopics,
+  getTweetsForTrendObjects: getTweetsForTrendObjects
+};
